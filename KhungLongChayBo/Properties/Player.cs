@@ -9,15 +9,15 @@ namespace KhungLongChayBo.Properties
 {
     class Player : GameObjects
     {
-        private Gravity playerGravity;
-        public Player(Rectangle playerShape) : base(playerShape)
+        public Player(Rectangle playerShape, int gravityFoce, GameScreen screen) 
+            : base(playerShape, gravityFoce, screen)
         {
-            playerGravity = new Gravity(1);
+            
         }
-        internal Gravity PlayerGravity { get => playerGravity; set => playerGravity = value; }
-        public void playerFallDown()
+        public Player(int x,int y, int width, int height, int gravityFoce, GameScreen screen) 
+            : base(x, y, width, height, gravityFoce, screen)
         {
-            playerGravity.fallDown(ref objectShape);
+            
         }
     }
 }

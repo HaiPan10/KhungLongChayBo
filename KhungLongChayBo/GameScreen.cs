@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.Drawing;
 using System.Windows.Forms;
 
-namespace KhungLongChayBo
+namespace KhungLongChayBo.Properties
 {
     class GameScreen
     {
@@ -24,23 +24,24 @@ namespace KhungLongChayBo
         public Graphics Pen { get => pen; set => pen = value; }
         internal List<GameObjects> ListOfGameObjects { get => listOfGameObjects; set => listOfGameObjects = value; }
 
-        public void clearScreen()
+        public void ClearScreen(Color back)
         {
-            pen.Clear(Color.White);
+            pen.Clear(back);
         }
-        public void updateFrame()
+        public void UpdateFrame(Color color)
         {
-            clearScreen();
+            ClearScreen(color);
             foreach (GameObjects item in ListOfGameObjects)
             {
-                item.display();
+                item.ObjectFallDown();
+                item.Display();
             }
         }
-        public void addGameObjects(GameObjects item)
+        public void AddGameObjects(GameObjects item)
         {
             listOfGameObjects.Add(item);
         }
-        public bool removeGameObjects(GameObjects item)
+        public bool RemoveGameObjects(GameObjects item)
         {
             foreach(GameObjects gameItem in ListOfGameObjects)
             {
@@ -51,7 +52,10 @@ namespace KhungLongChayBo
                 }
             }
             return false;
-            //Pen.back
+        }
+        public void SetBackground(Image back)
+        {
+            Screen.BackgroundImage = back;
         }
     }
 }

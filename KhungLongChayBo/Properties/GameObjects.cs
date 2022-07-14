@@ -7,26 +7,45 @@ using System.Drawing;
 using System.Collections;
 using System.Windows.Forms;
 
-namespace KhungLongChayBo
+namespace KhungLongChayBo.Properties
 {
     abstract class GameObjects
     {
-        protected Rectangle objectShape;
-        protected Image objectImage;
+        private Rectangle objectShape;
+        private Image objectImage;
         private GameScreen gameScreen;
-        public GameObjects(Rectangle objectShape, GameScreen gameScreen)
+        private Gravity objectGravity;
+        public GameObjects(Rectangle objectShape, int gravityForce, GameScreen gameScreen)
         {
             ObjectShape = objectShape;
             GameScreen = gameScreen;
+            objectGravity = new Gravity(this, gravityForce);
         }
-
-        public Rectangle ObjectShape { get => ObjectShape; set => ObjectShape = value; }
-        public Image ObjectImage { get => objectImage; set => objectImage = value; }
-        internal GameScreen GameScreen { get => gameScreen; set => gameScreen = value; }
-
-        public void display()
+        public GameObjects(int x,int y, int width, int height, int gravityForce, GameScreen gameScreen)
         {
-            gameScreen.Pen.DrawImage(objectImage, objectShape);
+            ObjectShape = new Rectangle(x, y, width, height);
+            GameScreen = gameScreen;
+            objectGravity = new Gravity(this, gravityForce);
+        }
+        
+        public Image ObjectImage { get => objectImage; set => objectImage = value; }
+        public GameScreen GameScreen { get => gameScreen; set => gameScreen = value; }
+        public Rectangle ObjectShape { get => objectShape; set => objectShape = value; }
+        internal Gravity ObjectGravity { get => objectGravity; set => objectGravity = value; }
+        public void ObjectFallDown()
+        {
+            objectGravity.FallDown();
+        }
+        public void Display()
+        {
+            if(objectImage == null)
+            {
+                gameScreen.Pen.FillRectangle(Brushes.White, ObjectShape);
+            }
+            else
+            {
+                gameScreen.Pen.DrawImage(objectImage, ObjectShape);
+            }
         }
     }
 }

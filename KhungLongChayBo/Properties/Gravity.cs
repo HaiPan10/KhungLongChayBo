@@ -10,25 +10,29 @@ namespace KhungLongChayBo.Properties
     class Gravity
     {
         private int gravitySpeed;
-        private int gravityWeight;
-
+        private int gravityForce;
+        private GameObjects target;
         public int GravitySpeed { get => gravitySpeed; set => gravitySpeed = value; }
-        public int GravityWeight { get => gravityWeight; set => gravityWeight = value; }
+        public int GravityForce { get => gravityForce; set => gravityForce = value; }
+        internal GameObjects Target { get => target; set => target = value; }
 
-        public Gravity(int gravityWeight)
+        public Gravity(GameObjects target, int gravityForce)
         {
-            GravityWeight = gravityWeight;
+            Target = target;
+            GravityForce = gravityForce;
             gravitySpeed = 0;
         }
-        public void increasingSpeed()
+        public void IncreasingSpeed()
         {
-            GravitySpeed += GravityWeight;
+            GravitySpeed += GravityForce;
         }
-        public void fallDown(ref Rectangle target)
+        public void FallDown()
         {
-            increasingSpeed();
-            int newPosY = target.Y + gravitySpeed;
-            target.Y = newPosY;
+            IncreasingSpeed();
+            int newPosY = Target.ObjectShape.Y + gravitySpeed;
+            Point newPos = new Point(Target.ObjectShape.X, newPosY);
+            Rectangle newShape = new Rectangle(newPos, Target.ObjectShape.Size);
+            Target.ObjectShape = newShape;
         }
     }
 }
