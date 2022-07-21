@@ -40,7 +40,7 @@ namespace KhungLongChayBo.Properties
         {
             if(objectImage == null)
             {
-                gameScreen.Pen.FillRectangle(Brushes.White, ObjectShape);
+                gameScreen.Pen.FillRectangle(Brushes.Transparent, ObjectShape);
             }
             else
             {

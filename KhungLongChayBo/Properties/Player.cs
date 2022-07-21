@@ -19,5 +19,25 @@ namespace KhungLongChayBo.Properties
         {
             
         }
+
+        public void KeepInBorder()
+        {
+            int newPosY = ObjectShape.Location.Y;
+            int newPosX = ObjectShape.Location.X;
+            if (ObjectShape.Location.X + ObjectShape.Width <= 0 ||
+                ObjectShape.Location.X + ObjectShape.Width >= GameScreen.Screen.Width)
+            {
+                newPosX = GameScreen.Screen.Width - ObjectShape.Width - 10;
+            }
+            else if(ObjectShape.Location.Y + ObjectShape.Height <= 0 || 
+                ObjectShape.Location.Y + ObjectShape.Height >= GameScreen.Screen.Height)
+            {
+                newPosY = GameScreen.Screen.Height - ObjectShape.Height - 10;
+            }
+            Point p = new Point(newPosX, newPosY);
+            Size s = new Size(ObjectShape.Width, ObjectShape.Height);
+            Rectangle r = new Rectangle(p, s);
+            ObjectShape = r;
+        }
     }
 }

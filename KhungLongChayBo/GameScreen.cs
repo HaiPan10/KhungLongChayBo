@@ -34,6 +34,11 @@ namespace KhungLongChayBo.Properties
             foreach (GameObjects item in ListOfGameObjects)
             {
                 item.ObjectFallDown();
+                if(item.GetType() == typeof(Player))
+                {
+                    Player dino = (Player)item;
+                    dino.KeepInBorder();
+                }
                 item.Display();
             }
         }

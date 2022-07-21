@@ -28,29 +28,19 @@ namespace KhungLongChayBo
         private void init()
         {
             PictureBox gameScreen = new PictureBox();
-            gameScreen.BackColor = Color.Red;
+            gameScreen.BackColor = Color.White;
             gameScreen.Dock = DockStyle.Fill;
             Controls.Add(gameScreen);
             mainGameScreen = new GameScreen(gameScreen);
-            Player box1 = new Player(10, 10, 100, 100, 2, mainGameScreen);
-            Player box2 = new Player(50, 50, 100, 50, 1, mainGameScreen);
-            mainGameScreen.AddGameObjects(box1);
-            mainGameScreen.AddGameObjects(box2);
-            timer.Interval = 100;
-            timer.Enabled = true;
-            timer.Tick += timer_Tick;
-            timer.Start();
+            //Create player
+            Rectangle playerShape = new Rectangle(50, 100, 80,80);
+            Player dino = new Player(playerShape, 2, mainGameScreen);
+            dino.ObjectImage = gameImageList.Images[0];
+            mainGameScreen.AddGameObjects(dino);
         }
         private void timer_Tick(object sender, EventArgs e)
         {
-            try
-            {
-                mainGameScreen.UpdateFrame(mainGameScreen.Screen.BackColor);
-            }
-            catch(NullReferenceException)
-            {
-                return;
-            }
+            mainGameScreen.UpdateFrame(mainGameScreen.Screen.BackColor);
         }
     }
 }
