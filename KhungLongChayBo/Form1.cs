@@ -34,13 +34,31 @@ namespace KhungLongChayBo
             mainGameScreen = new GameScreen(gameScreen);
             //Create player
             Rectangle playerShape = new Rectangle(50, 100, 80,80);
-            Player dino = new Player(playerShape, 2, mainGameScreen);
+            Player dino = new Player(playerShape, 10, mainGameScreen);
             dino.ObjectImage = gameImageList.Images[0];
             mainGameScreen.AddGameObjects(dino);
         }
         private void timer_Tick(object sender, EventArgs e)
         {
             mainGameScreen.UpdateFrame(mainGameScreen.Screen.BackColor);
+        }
+
+        private void Form1_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Up)
+            {
+                foreach (GameObjects ob in mainGameScreen.ListOfGameObjects)
+                {
+                    if (ob.GetType() == typeof(Player))
+                    {
+                        Player dino = (Player)ob;
+                        if(dino.isGrounded())
+                        {
+                            dino.Jumping();
+                        }
+                    }
+                }
+            }
         }
     }
 }

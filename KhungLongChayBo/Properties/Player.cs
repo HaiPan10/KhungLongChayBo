@@ -9,15 +9,19 @@ namespace KhungLongChayBo.Properties
 {
     class Player : GameObjects
     {
-        public Player(Rectangle playerShape, int gravityFoce, GameScreen screen) 
+        private int jumpingHeight = 45;
+
+        public int JumpingHeight { get => jumpingHeight; set => jumpingHeight = value; }
+
+        public Player(Rectangle playerShape, int gravityFoce, GameScreen screen)
             : base(playerShape, gravityFoce, screen)
         {
-            
+
         }
-        public Player(int x,int y, int width, int height, int gravityFoce, GameScreen screen) 
+        public Player(int x, int y, int width, int height, int gravityFoce, GameScreen screen)
             : base(x, y, width, height, gravityFoce, screen)
         {
-            
+
         }
 
         public void KeepInBorder()
@@ -27,17 +31,33 @@ namespace KhungLongChayBo.Properties
             if (ObjectShape.Location.X + ObjectShape.Width <= 0 ||
                 ObjectShape.Location.X + ObjectShape.Width >= GameScreen.Screen.Width)
             {
-                newPosX = GameScreen.Screen.Width - ObjectShape.Width - 10;
+                newPosX = GameScreen.Screen.Width - ObjectShape.Width;
             }
-            else if(ObjectShape.Location.Y + ObjectShape.Height <= 0 || 
+            else if (/*ObjectShape.Location.Y + ObjectShape.Height <= 0 ||*/
                 ObjectShape.Location.Y + ObjectShape.Height >= GameScreen.Screen.Height)
             {
-                newPosY = GameScreen.Screen.Height - ObjectShape.Height - 10;
+                newPosY = GameScreen.Screen.Height - ObjectShape.Height;
             }
             Point p = new Point(newPosX, newPosY);
-            Size s = new Size(ObjectShape.Width, ObjectShape.Height);
-            Rectangle r = new Rectangle(p, s);
+            Rectangle r = new Rectangle(p, ObjectShape.Size);
             ObjectShape = r;
+        }
+
+        public void Jumping()
+        {
+            if (ObjectGravity.GravitySpeed > 0)
+            {
+                ObjectGravity.GravitySpeed = -JumpingHeight;
+            }
+        }
+
+        public bool isGrounded()
+        {
+            int temp = GameScreen.Screen.Height - ObjectShape.Height;
+            if (ObjectShape.Y >= temp)
+                return true;
+            else
+                return false;
         }
     }
 }
