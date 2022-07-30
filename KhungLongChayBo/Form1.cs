@@ -27,6 +27,7 @@ namespace KhungLongChayBo
 
         private void init()
         {
+            //Init game screen
             PictureBox gameScreen = new PictureBox();
             gameScreen.BackColor = Color.White;
             gameScreen.Dock = DockStyle.Fill;
@@ -52,10 +53,21 @@ namespace KhungLongChayBo
                     if (ob.GetType() == typeof(Player))
                     {
                         Player dino = (Player)ob;
-                        if(dino.isGrounded())
+                        if(dino.IsGrounded())
                         {
                             dino.Jumping();
                         }
+                    }
+                }
+            }
+            else if(e.KeyCode == Keys.Space)
+            {
+                foreach (GameObjects ob in mainGameScreen.ListOfGameObjects)
+                {
+                    if (ob.GetType() == typeof(Player))
+                    {
+                        Player dino = (Player)ob;
+                        dino.Action();
                     }
                 }
             }

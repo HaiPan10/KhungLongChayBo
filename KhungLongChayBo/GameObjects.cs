@@ -7,7 +7,7 @@ using System.Drawing;
 using System.Collections;
 using System.Windows.Forms;
 
-namespace KhungLongChayBo.Properties
+namespace KhungLongChayBo
 {
     abstract class GameObjects
     {
@@ -46,6 +46,13 @@ namespace KhungLongChayBo.Properties
             {
                 gameScreen.Pen.DrawImage(objectImage, ObjectShape);
             }
+        }
+        public bool IsOutOfBorder()
+        {
+            return ObjectShape.X - ObjectShape.Width <= 0 ||
+                ObjectShape.Y - ObjectShape.Width <= 0 ||
+                ObjectShape.X + ObjectShape.Width >= GameScreen.Screen.Width ||
+                ObjectShape.Y + ObjectShape.Height >= GameScreen.Screen.Height;
         }
     }
 }

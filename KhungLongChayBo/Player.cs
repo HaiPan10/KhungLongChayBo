@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Drawing;
 
-namespace KhungLongChayBo.Properties
+namespace KhungLongChayBo
 {
     class Player : GameObjects
     {
@@ -28,12 +28,12 @@ namespace KhungLongChayBo.Properties
         {
             int newPosY = ObjectShape.Location.Y;
             int newPosX = ObjectShape.Location.X;
-            if (ObjectShape.Location.X + ObjectShape.Width <= 0 ||
+            if (ObjectShape.Location.X - ObjectShape.Width <= 0 ||
                 ObjectShape.Location.X + ObjectShape.Width >= GameScreen.Screen.Width)
             {
                 newPosX = GameScreen.Screen.Width - ObjectShape.Width;
             }
-            else if (/*ObjectShape.Location.Y + ObjectShape.Height <= 0 ||*/
+            else if (ObjectShape.Location.Y - ObjectShape.Height <= 0 ||
                 ObjectShape.Location.Y + ObjectShape.Height >= GameScreen.Screen.Height)
             {
                 newPosY = GameScreen.Screen.Height - ObjectShape.Height;
@@ -51,13 +51,17 @@ namespace KhungLongChayBo.Properties
             }
         }
 
-        public bool isGrounded()
+        public bool IsGrounded()
         {
             int temp = GameScreen.Screen.Height - ObjectShape.Height;
             if (ObjectShape.Y >= temp)
                 return true;
             else
                 return false;
+        }
+        public void Action()
+        {
+
         }
     }
 }
