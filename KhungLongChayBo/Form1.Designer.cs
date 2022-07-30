@@ -33,11 +33,11 @@ namespace KhungLongChayBo
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.timer = new System.Windows.Forms.Timer(this.components);
             this.gameImageList = new System.Windows.Forms.ImageList(this.components);
+            this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // timer
             // 
-            this.timer.Enabled = true;
             this.timer.Tick += new System.EventHandler(this.timer_Tick);
             // 
             // gameImageList
@@ -53,11 +53,22 @@ namespace KhungLongChayBo
             this.gameImageList.Images.SetKeyName(6, "TheHoodDino.png");
             this.gameImageList.Images.SetKeyName(7, "VietCongDino.png");
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(368, 50);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(149, 71);
+            this.button1.TabIndex = 0;
+            this.button1.Text = "Play";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(884, 362);
+            this.Controls.Add(this.button1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.KeyPreview = true;
             this.MaximizeBox = false;
@@ -73,6 +84,7 @@ namespace KhungLongChayBo
 
         private System.Windows.Forms.Timer timer;
         private System.Windows.Forms.ImageList gameImageList;
+        private System.Windows.Forms.Button button1;
     }
 }
 

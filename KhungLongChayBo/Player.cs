@@ -28,12 +28,12 @@ namespace KhungLongChayBo
         {
             int newPosY = ObjectShape.Location.Y;
             int newPosX = ObjectShape.Location.X;
-            if (ObjectShape.Location.X - ObjectShape.Width <= 0 ||
+            if (ObjectShape.Location.X <= 0 ||
                 ObjectShape.Location.X + ObjectShape.Width >= GameScreen.Screen.Width)
             {
                 newPosX = GameScreen.Screen.Width - ObjectShape.Width;
             }
-            else if (ObjectShape.Location.Y - ObjectShape.Height <= 0 ||
+            else if (ObjectShape.Location.Y <= 0 ||
                 ObjectShape.Location.Y + ObjectShape.Height >= GameScreen.Screen.Height)
             {
                 newPosY = GameScreen.Screen.Height - ObjectShape.Height;
@@ -59,9 +59,14 @@ namespace KhungLongChayBo
             else
                 return false;
         }
-        public void Action()
+        public virtual void Action()
         {
 
+        }
+        public override void Display()
+        {
+            KeepInBorder();
+            base.Display();
         }
     }
 }

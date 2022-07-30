@@ -36,11 +36,11 @@ namespace KhungLongChayBo
         {
             objectGravity.FallDown();
         }
-        public void Display()
+        public virtual void Display()
         {
             if(objectImage == null)
             {
-                gameScreen.Pen.FillRectangle(Brushes.Transparent, ObjectShape);
+                gameScreen.Pen.FillRectangle(Brushes.Red, ObjectShape);
             }
             else
             {
@@ -49,10 +49,11 @@ namespace KhungLongChayBo
         }
         public bool IsOutOfBorder()
         {
-            return ObjectShape.X - ObjectShape.Width <= 0 ||
-                ObjectShape.Y - ObjectShape.Width <= 0 ||
-                ObjectShape.X + ObjectShape.Width >= GameScreen.Screen.Width ||
-                ObjectShape.Y + ObjectShape.Height >= GameScreen.Screen.Height;
+            //Check if the object is completely out of the game screen
+            return ObjectShape.X <= 0 ||
+                ObjectShape.Y <= 0 ||
+                ObjectShape.X >= GameScreen.Screen.Width ||
+                ObjectShape.Y >= GameScreen.Screen.Height;
         }
     }
 }

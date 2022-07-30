@@ -14,6 +14,7 @@ namespace KhungLongChayBo
     public partial class Form1 : Form
     {
         private GameScreen mainGameScreen;
+        private Player dino;
         public Form1()
         {
             InitializeComponent();
@@ -22,7 +23,7 @@ namespace KhungLongChayBo
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            init();
+            
         }
 
         private void init()
@@ -34,8 +35,8 @@ namespace KhungLongChayBo
             Controls.Add(gameScreen);
             mainGameScreen = new GameScreen(gameScreen);
             //Create player
-            Rectangle playerShape = new Rectangle(50, 100, 80,80);
-            Player dino = new Player(playerShape, 10, mainGameScreen);
+            Rectangle playerShape = new Rectangle(35, 100, 80,80);
+            dino = new Player(playerShape, 10, mainGameScreen);
             dino.ObjectImage = gameImageList.Images[0];
             mainGameScreen.AddGameObjects(dino);
         }
@@ -46,31 +47,39 @@ namespace KhungLongChayBo
 
         private void Form1_KeyDown(object sender, KeyEventArgs e)
         {
+            e.Handled = true;
+            e.SuppressKeyPress = true;
+            if (dino == null)
+                return;
             if (e.KeyCode == Keys.Up)
             {
-                foreach (GameObjects ob in mainGameScreen.ListOfGameObjects)
+                if (dino.IsGrounded())
                 {
-                    if (ob.GetType() == typeof(Player))
-                    {
-                        Player dino = (Player)ob;
-                        if(dino.IsGrounded())
-                        {
-                            dino.Jumping();
-                        }
-                    }
+                    dino.Jumping();
                 }
             }
             else if(e.KeyCode == Keys.Space)
             {
-                foreach (GameObjects ob in mainGameScreen.ListOfGameObjects)
-                {
-                    if (ob.GetType() == typeof(Player))
-                    {
-                        Player dino = (Player)ob;
-                        dino.Action();
-                    }
-                }
+                dino.Action();
             }
+        }
+        private void ChangeToVietCongDino()
+        {
+            mainGameScreen.RemoveGameObjects(dino);
+            dino = new VietCongDino(dino.ObjectShape,
+                dino.ObjectGravity.GravityForce,
+                mainGameScreen);
+            dino.ObjectImage = gameImageList.Images[7];
+            mainGameScreen.AddGameObjects(dino);
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            init();
+            button1.Hide();
+            button1.Enabled = false;
+            timer.Enabled = true;
+            ChangeToVietCongDino();
         }
     }
 }

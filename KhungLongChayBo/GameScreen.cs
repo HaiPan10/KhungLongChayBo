@@ -34,12 +34,31 @@ namespace KhungLongChayBo
             foreach (GameObjects item in ListOfGameObjects)
             {
                 item.ObjectFallDown();
-                if(item.GetType() == typeof(Player))
-                {
-                    Player dino = (Player)item;
-                    dino.KeepInBorder();
-                }
                 item.Display();
+            }
+            Console.WriteLine(ListOfGameObjects.Count);
+            DeleteObjectsOutOfBorder();
+        }
+        public void DeleteObjectsOutOfBorder()
+        {
+            bool flag = true;
+            while(flag)
+            {
+                foreach(GameObjects item in ListOfGameObjects)
+                {
+                    if (item.IsOutOfBorder())
+                    {
+                        RemoveGameObjects(item);
+                        flag = false;
+                        break;
+                    }
+                }
+                if (!flag)
+                {
+                    flag = true;
+                }
+                else
+                    flag = false;
             }
         }
         public void AddGameObjects(GameObjects item)
