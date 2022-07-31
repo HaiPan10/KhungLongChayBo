@@ -52,7 +52,7 @@ namespace KhungLongChayBo
             else
             {
                 gameScreen.Pen.DrawImage(objectImage, ObjectShape);
-                gameScreen.Pen.DrawRectangle(Pens.Red, ObjectShape);
+                //gameScreen.Pen.DrawRectangle(Pens.Red, ObjectShape);
             }
         }
         public bool IsOutOfBorder()

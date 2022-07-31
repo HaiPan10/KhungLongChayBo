@@ -63,7 +63,7 @@ namespace KhungLongChayBo
             e.SuppressKeyPress = true;
             if (dino == null)
                 return;
-            if (e.KeyCode == Keys.Up)
+            if (e.KeyCode == Keys.W)
             {
                 if (dino.IsGrounded())
                 {
