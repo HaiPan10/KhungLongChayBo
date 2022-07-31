@@ -9,7 +9,7 @@ namespace KhungLongChayBo
 {
     class Player : GameObjects
     {
-        private int jumpingHeight = 45;
+        private int jumpingHeight = 55;
 
         public int JumpingHeight { get => jumpingHeight; set => jumpingHeight = value; }
 
@@ -45,9 +45,9 @@ namespace KhungLongChayBo
 
         public void Jumping()
         {
-            if (ObjectGravity.GravitySpeed > 0)
+            if (ObjectGravity.Speed > 0)
             {
-                ObjectGravity.GravitySpeed = -JumpingHeight;
+                ObjectGravity.Speed = -JumpingHeight;
             }
         }
 

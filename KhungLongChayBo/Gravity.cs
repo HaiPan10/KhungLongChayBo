@@ -9,27 +9,27 @@ namespace KhungLongChayBo
 {
     class Gravity
     {
-        private int gravitySpeed;
-        private int gravityForce;
+        private int speed;
+        private int force;
         private GameObjects target;
-        public int GravitySpeed { get => gravitySpeed; set => gravitySpeed = value; }
-        public int GravityForce { get => gravityForce; set => gravityForce = value; }
+        public int Speed { get => speed; set => speed = value; }
+        public int Force { get => force; set => force = value; }
         internal GameObjects Target { get => target; set => target = value; }
 
         public Gravity(GameObjects target, int gravityForce)
         {
             Target = target;
-            GravityForce = gravityForce;
-            gravitySpeed = 0;
+            Force = gravityForce;
+            speed = 0;
         }
         public void IncreasingSpeed()
         {
-            GravitySpeed += GravityForce;
+            Speed += Force;
         }
         public void FallDown()
         {
             IncreasingSpeed();
-            int newPosY = Target.ObjectShape.Y + gravitySpeed;
+            int newPosY = Target.ObjectShape.Y + speed;
             Point newPos = new Point(Target.ObjectShape.X, newPosY);
             Rectangle newShape = new Rectangle(newPos, Target.ObjectShape.Size);
             Target.ObjectShape = newShape;

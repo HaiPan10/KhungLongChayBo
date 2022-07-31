@@ -15,6 +15,8 @@ namespace KhungLongChayBo
     {
         private GameScreen mainGameScreen;
         private Player dino;
+        private static DateTime previousTime;
+        private static Random rand = new Random();
         public Form1()
         {
             InitializeComponent();
@@ -43,6 +45,16 @@ namespace KhungLongChayBo
         private void timer_Tick(object sender, EventArgs e)
         {
             mainGameScreen.UpdateFrame(mainGameScreen.Screen.BackColor);
+            DateTime now = DateTime.Now;
+            int time = rand.Next(3,10);
+            if(Convert.ToInt32((now - previousTime).TotalSeconds) == time)
+            {
+                previousTime = now;
+                Obstacle ob = new Obstacle(mainGameScreen.Screen.Width - 50, dino.ObjectShape.Y + 20, 
+                    30,80, 0, mainGameScreen);
+                ob.Speed = 30;
+                mainGameScreen.AddGameObjects(ob);
+            }
         }
 
         private void Form1_KeyDown(object sender, KeyEventArgs e)
@@ -67,7 +79,7 @@ namespace KhungLongChayBo
         {
             mainGameScreen.RemoveGameObjects(dino);
             dino = new VietCongDino(dino.ObjectShape,
-                dino.ObjectGravity.GravityForce,
+                dino.ObjectGravity.Force,
                 mainGameScreen);
             dino.ObjectImage = gameImageList.Images[7];
             mainGameScreen.AddGameObjects(dino);
@@ -79,6 +91,7 @@ namespace KhungLongChayBo
             button1.Hide();
             button1.Enabled = false;
             timer.Enabled = true;
+            previousTime = DateTime.Now;
             ChangeToVietCongDino();
         }
     }

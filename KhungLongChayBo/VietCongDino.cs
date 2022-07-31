@@ -27,7 +27,8 @@ namespace KhungLongChayBo
         }
         public void Shooting()
         {
-            Bullet b = new Bullet(ObjectShape.X + ObjectShape.Width / 4,
+            int distance = 3;
+            Bullet b = new Bullet(ObjectShape.X + ObjectShape.Width + distance,
                 ObjectShape.Y + ObjectShape.Height / 2,
                 10, 5, 0, GameScreen);
             GameScreen.AddGameObjects(b);
