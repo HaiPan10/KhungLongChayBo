@@ -38,7 +38,7 @@ namespace KhungLongChayBo
             mainGameScreen = new GameScreen(gameScreen, backGround);
             //Create player
             Rectangle playerShape = new Rectangle(35, 100, 80,80);
-            dino = new Player(playerShape, 10, mainGameScreen);
+            dino = new Player(playerShape, 5, mainGameScreen);
             dino.ObjectImage = gameImageList.Images[0];
             mainGameScreen.AddGameObjects(dino);
         }

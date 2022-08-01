@@ -11,14 +11,14 @@ namespace KhungLongChayBo
     class GameScreen
     {
         private Bitmap screen;
-        private Bitmap backGround;
+        private Bitmap background;
         private Graphics pen;
         private List<GameObjects> listOfGameObjects;
         private List<GameObjects> deletedItemCollector;
         public GameScreen(Bitmap target, Bitmap backGround)
         {
             Screen = target;
-            BackGround = backGround;
+            Background = backGround;
             Pen = Graphics.FromImage(target);
             Pen.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
             ListOfGameObjects = new List<GameObjects>();
@@ -29,12 +29,12 @@ namespace KhungLongChayBo
         public Graphics Pen { get => pen; set => pen = value; }
         internal List<GameObjects> ListOfGameObjects { get => listOfGameObjects; set => listOfGameObjects = value; }
         internal List<GameObjects> DeletedItemCollector { get => deletedItemCollector; set => deletedItemCollector = value; }
-        public Bitmap BackGround { get => backGround; set => backGround = value; }
+        public Bitmap Background { get => background; set => background = value; }
 
         public void ClearScreen()
         {
             //Draw the background for the image
-            pen.DrawImage(BackGround, new Point(0, 0));
+            pen.DrawImage(Background, new Point(0, 0));
         }
         public void UpdateFrame()
         {
@@ -42,7 +42,6 @@ namespace KhungLongChayBo
             //Draw the objects on the background
             foreach (GameObjects item in ListOfGameObjects)
             {
-                item.ObjectFallDown();
                 item.Display();
             }
             ClearUp();

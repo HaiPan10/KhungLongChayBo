@@ -26,7 +26,7 @@ namespace KhungLongChayBo
             GameObjects ob = HittingObject();
             if(ob != null)
             {
-                if(ob.GetType() != typeof(Bullet))
+                if(ob.GetType() != typeof(Bullet) && ob.GetType() != this.GetType())
                 {
                     this.Speed = 0;
                     ob.ObjectGravity.Force = 0;

@@ -9,7 +9,7 @@ namespace KhungLongChayBo
 {
     class Player : GameObjects
     {
-        private int jumpingHeight = 50;
+        private int jumpingHeight = 36;
 
         public int JumpingHeight { get => jumpingHeight; set => jumpingHeight = value; }
 
@@ -48,6 +48,7 @@ namespace KhungLongChayBo
         }
         public override void Display()
         {
+            ObjectFallDown();
             KeepInBorder();
             base.Display();
         }
