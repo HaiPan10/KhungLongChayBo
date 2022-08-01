@@ -38,6 +38,7 @@ namespace KhungLongChayBo
             // 
             // timer
             // 
+            this.timer.Interval = 20;
             this.timer.Tick += new System.EventHandler(this.timer_Tick);
             // 
             // gameImageList
@@ -52,6 +53,7 @@ namespace KhungLongChayBo
             this.gameImageList.Images.SetKeyName(5, "T_PoseDino.png");
             this.gameImageList.Images.SetKeyName(6, "TheHoodDino.png");
             this.gameImageList.Images.SetKeyName(7, "VietCongDino.png");
+            this.gameImageList.Images.SetKeyName(8, "Background.png");
             // 
             // button1
             // 
@@ -69,11 +71,13 @@ namespace KhungLongChayBo
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(884, 362);
             this.Controls.Add(this.button1);
+            this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
             this.MaximizeBox = false;
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "Dino Run";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
             this.ResumeLayout(false);

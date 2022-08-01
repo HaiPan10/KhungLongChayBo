@@ -10,30 +10,36 @@ namespace KhungLongChayBo
 {
     class GameScreen
     {
-        private Control screen;
+        private Bitmap screen;
+        private Bitmap backGround;
         private Graphics pen;
         private List<GameObjects> listOfGameObjects;
         private List<GameObjects> deletedItemCollector;
-        public GameScreen(Control target)
+        public GameScreen(Bitmap target, Bitmap backGround)
         {
             Screen = target;
-            Pen = target.CreateGraphics();
+            BackGround = backGround;
+            Pen = Graphics.FromImage(target);
+            Pen.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
             ListOfGameObjects = new List<GameObjects>();
             DeletedItemCollector = new List<GameObjects>();
         }
 
-        public Control Screen { get => screen; set => screen = value; }
+        public Bitmap Screen { get => screen; set => screen = value; }
         public Graphics Pen { get => pen; set => pen = value; }
         internal List<GameObjects> ListOfGameObjects { get => listOfGameObjects; set => listOfGameObjects = value; }
         internal List<GameObjects> DeletedItemCollector { get => deletedItemCollector; set => deletedItemCollector = value; }
+        public Bitmap BackGround { get => backGround; set => backGround = value; }
 
-        public void ClearScreen(Color back)
+        public void ClearScreen()
         {
-            pen.Clear(back);
+            //Draw the background for the image
+            pen.DrawImage(BackGround, new Point(0, 0));
         }
-        public void UpdateFrame(Color color)
+        public void UpdateFrame()
         {
-            ClearScreen(color);
+            ClearScreen();
+            //Draw the objects on the background
             foreach (GameObjects item in ListOfGameObjects)
             {
                 item.ObjectFallDown();
@@ -66,10 +72,6 @@ namespace KhungLongChayBo
                 }
             }
             return false;
-        }
-        public void SetBackground(Image back)
-        {
-            Screen.BackgroundImage = back;
         }
         public void ClearUp()
         {

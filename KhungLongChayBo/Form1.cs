@@ -17,25 +17,25 @@ namespace KhungLongChayBo
         private Player dino;
         private static DateTime previousTime;
         private static Random rand = new Random();
+        private static Graphics frame;
         public Form1()
         {
             InitializeComponent();
             mainGameScreen = null;
+            frame = this.CreateGraphics();
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            
+            SetStyle(ControlStyles.OptimizedDoubleBuffer, true);
         }
 
         private void init()
         {
             //Init game screen
-            PictureBox gameScreen = new PictureBox();
-            gameScreen.BackColor = Color.White;
-            gameScreen.Dock = DockStyle.Fill;
-            Controls.Add(gameScreen);
-            mainGameScreen = new GameScreen(gameScreen);
+            Bitmap gameScreen = new Bitmap(ClientSize.Width, ClientSize.Height);
+            Bitmap backGround = new Bitmap(gameImageList.Images[8], ClientSize.Width, ClientSize.Height);
+            mainGameScreen = new GameScreen(gameScreen, backGround);
             //Create player
             Rectangle playerShape = new Rectangle(35, 100, 80,80);
             dino = new Player(playerShape, 10, mainGameScreen);
@@ -44,17 +44,19 @@ namespace KhungLongChayBo
         }
         private void timer_Tick(object sender, EventArgs e)
         {
-            mainGameScreen.UpdateFrame(mainGameScreen.Screen.BackColor);
-            DateTime now = DateTime.Now;
-            int time = rand.Next(3,10);
-            if(Convert.ToInt32((now - previousTime).TotalSeconds) == time)
-            {
-                previousTime = now;
-                Obstacle ob = new Obstacle(mainGameScreen.Screen.Width - 50, dino.ObjectShape.Y + 20, 
-                    30,80, 0, mainGameScreen);
-                ob.Speed = 30;
-                mainGameScreen.AddGameObjects(ob);
-            }
+            frame.DrawImage(mainGameScreen.Screen, new Point(0, 0));
+            mainGameScreen.UpdateFrame();
+            //DateTime now = DateTime.Now;
+            //int time = rand.Next(3, 10);
+            //if (Convert.ToInt32((now - previousTime).TotalSeconds) == time)
+            //{
+            //    previousTime = now;
+            //    Obstacle ob = new Obstacle(mainGameScreen.Screen.Width - 50, dino.ObjectShape.Y + 20,
+            //        30, 75, 0, mainGameScreen);
+            //    ob.Speed = 30;
+            //    mainGameScreen.AddGameObjects(ob);
+            //}
+
         }
 
         private void Form1_KeyDown(object sender, KeyEventArgs e)

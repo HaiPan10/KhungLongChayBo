@@ -140,5 +140,30 @@ namespace KhungLongChayBo
             }
             return false;
         }
+        public void KeepInBorder()
+        {
+            int newPosY = ObjectShape.Location.Y;
+            int newPosX = ObjectShape.Location.X;
+            if (ObjectShape.Location.X <= 0)
+            {
+                newPosX = 0;
+            }
+            else if (ObjectShape.Location.Y <= 0)
+            {
+                newPosY = 0;
+            }
+            else if(ObjectShape.X + ObjectShape.Width >= GameScreen.Screen.Width)
+            {
+                newPosX = GameScreen.Screen.Width - ObjectShape.Width;
+            }
+            else if(ObjectShape.Y + ObjectShape.Height >= GameScreen.Screen.Height)
+            {
+                newPosY = GameScreen.Screen.Height - ObjectShape.Height;
+            }
+
+            Point p = new Point(newPosX, newPosY);
+            Rectangle r = new Rectangle(p, ObjectShape.Size);
+            ObjectShape = r;
+        }
     }
 }

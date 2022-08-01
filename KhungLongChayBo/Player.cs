@@ -9,11 +9,9 @@ namespace KhungLongChayBo
 {
     class Player : GameObjects
     {
-        private int jumpingHeight = 55;
-        private int distanceFromGround = 20;
+        private int jumpingHeight = 50;
 
         public int JumpingHeight { get => jumpingHeight; set => jumpingHeight = value; }
-        public int DistanceFromGround { get => distanceFromGround; set => distanceFromGround = value; }
 
         public Player(Rectangle playerShape, int gravityFoce, GameScreen screen)
             : base(playerShape, gravityFoce, screen)
@@ -26,24 +24,7 @@ namespace KhungLongChayBo
 
         }
 
-        public void KeepInBorder()
-        {
-            int newPosY = ObjectShape.Location.Y;
-            int newPosX = ObjectShape.Location.X;
-            if (ObjectShape.Location.X <= 0 ||
-                ObjectShape.Location.X + ObjectShape.Width >= GameScreen.Screen.Width)
-            {
-                newPosX = GameScreen.Screen.Width - ObjectShape.Width;
-            }
-            else if (ObjectShape.Location.Y <= 0 ||
-                ObjectShape.Location.Y + ObjectShape.Height >= GameScreen.Screen.Height - DistanceFromGround)
-            {
-                newPosY = GameScreen.Screen.Height - ObjectShape.Height - DistanceFromGround;
-            }
-            Point p = new Point(newPosX, newPosY);
-            Rectangle r = new Rectangle(p, ObjectShape.Size);
-            ObjectShape = r;
-        }
+        
 
         public void Jumping()
         {
@@ -55,7 +36,7 @@ namespace KhungLongChayBo
 
         public bool IsGrounded()
         {
-            int temp = GameScreen.Screen.Height - ObjectShape.Height - DistanceFromGround;
+            int temp = GameScreen.Screen.Height - ObjectShape.Height;
             if (ObjectShape.Y >= temp)
                 return true;
             else
