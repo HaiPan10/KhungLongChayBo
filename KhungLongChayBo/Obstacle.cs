@@ -23,14 +23,17 @@ namespace KhungLongChayBo
         {
             base.Display();
             MoveForward(-Speed);
-            GameObjects ob = HittingObject();
-            if(ob != null)
+            List<GameObjects> objects = HittingObjects();
+            if(objects.Count > 0)
             {
-                if(ob.GetType() != typeof(Bullet) && ob.GetType() != this.GetType())
+                foreach(GameObjects ob in objects)
                 {
-                    this.Speed = 0;
-                    ob.ObjectGravity.Force = 0;
-                    ob.ObjectGravity.Speed = 0;
+                    if (ob.GetType() != typeof(Bullet) && ob.GetType() != this.GetType())
+                    {
+                        this.Speed = 0;
+                        ob.ObjectGravity.Force = 0;
+                        ob.ObjectGravity.Speed = 0;
+                    }
                 }
 
             }

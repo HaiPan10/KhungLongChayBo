@@ -24,11 +24,19 @@ namespace KhungLongChayBo
         {
             //Display the behaviors of a bullet
             base.Display();
-            GameObjects ob = HittingObject();
-            if (ob != null && ob.GetType() != this.GetType())
+            List<GameObjects> objects = HittingObjects();
+            if (objects.Count > 0)
             {
-                GameScreen.DeletedItemCollector.Add(ob);
-                GameScreen.DeletedItemCollector.Add(this);
+                foreach(GameObjects ob in objects)
+                {
+                    if(ob.GetType() != this.GetType())
+                    {
+                        GameScreen.DeletedItemCollector.Add(ob);
+                        GameScreen.DeletedItemCollector.Add(this);
+                        break; //One bullet destroy the first object it counter with
+                    }
+                }
+                
             }
             MoveForward(Speed);
         }

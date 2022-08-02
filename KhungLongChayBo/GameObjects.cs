@@ -69,18 +69,19 @@ namespace KhungLongChayBo
             Point p = new Point(newPosX, ObjectShape.Y);
             ObjectShape = new Rectangle(p, ObjectShape.Size);
         }
-        public virtual GameObjects HittingObject()
+        public virtual List<GameObjects> HittingObjects()
         {
+            List<GameObjects> collector = new List<GameObjects>();
             //Return the GameObjects which is being hit by this object
             foreach (GameObjects ob in GameScreen.ListOfGameObjects)
             {
                 //The object in list is hittable and not this object
                 if (ob.Hittable && !ob.Equals(this) && IsHittingObject(ob))
                 {
-                    return ob;
+                    collector.Add(ob);
                 }
             }
-            return null;
+            return collector;
         }
         public bool IsHittingObject(GameObjects ob)
         {

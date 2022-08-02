@@ -53,7 +53,7 @@ namespace KhungLongChayBo
                 previousTime = now;
                 Obstacle ob = new Obstacle(mainGameScreen.Screen.Width - 50, dino.ObjectShape.Y + 20,
                     30, 75, 0, mainGameScreen);
-                ob.Speed = 10;
+                ob.Speed = 15;
                 mainGameScreen.AddGameObjects(ob);
             }
 
