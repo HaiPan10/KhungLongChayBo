@@ -140,7 +140,7 @@ namespace KhungLongChayBo
             int otherTop = ob.ObjectShape.Y;
             int otherLeft = ob.ObjectShape.X;
             int otherRight = ob.ObjectShape.X + ob.ObjectShape.Width;
-            if(thisBottom > otherTop && 
+            if(thisBottom >= otherTop && 
                 (thisLeft < otherRight || thisRight > otherLeft))
             {
                 return true;

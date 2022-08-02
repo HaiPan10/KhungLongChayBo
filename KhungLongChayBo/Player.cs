@@ -48,8 +48,7 @@ namespace KhungLongChayBo
             }
             if (g == null)
                 return null;
-            int temp = GameScreen.Screen.Height - g.ObjectShape.Y;
-            if (ObjectShape.Y >= temp)
+            if (IsOn(g))
                 return g;
             else
                 return null;
