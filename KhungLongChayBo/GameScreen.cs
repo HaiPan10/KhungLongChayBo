@@ -15,6 +15,8 @@ namespace KhungLongChayBo
         private Graphics pen;
         private List<GameObjects> listOfGameObjects;
         private List<GameObjects> deletedItemCollector;
+        private int distance = 0;
+        private int speed = 5;
         public GameScreen(Bitmap target, Bitmap backGround)
         {
             Screen = target;
@@ -34,7 +36,12 @@ namespace KhungLongChayBo
         public void ClearScreen()
         {
             //Draw the background for the image
-            pen.DrawImage(Background, new Point(0, 0));
+            distance -= speed;
+            if (distance < -Screen.Width)
+                distance = -speed;
+            //Make the background move 
+            pen.DrawImage(Background, new Point(distance, 0));
+            pen.DrawImage(Background, new Point(Screen.Width + distance - speed, 0));
         }
         public void UpdateFrame()
         {
