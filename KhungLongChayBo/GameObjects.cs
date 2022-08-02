@@ -52,16 +52,16 @@ namespace KhungLongChayBo
             else
             {
                 gameScreen.Pen.DrawImage(objectImage, ObjectShape);
-                gameScreen.Pen.DrawRectangle(Pens.Red, ObjectShape);
+                //gameScreen.Pen.DrawRectangle(Pens.Red, ObjectShape);
             }
         }
         public bool IsOutOfBorder()
         {
             //Check if the object is completely out of the game screen
-            return ObjectShape.X <= 0 ||
-                ObjectShape.Y <= 0 ||
-                ObjectShape.X >= GameScreen.Screen.Width ||
-                ObjectShape.Y >= GameScreen.Screen.Height;
+            return ObjectShape.X + ObjectShape.Width < 0 ||
+                ObjectShape.Y + ObjectShape.Height < 0 ||
+                ObjectShape.X > GameScreen.Screen.Width ||
+                ObjectShape.Y > GameScreen.Screen.Height;
         }
         public void MoveForward(int speed)
         {

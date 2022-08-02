@@ -25,6 +25,7 @@ namespace KhungLongChayBo
             Pen.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
             ListOfGameObjects = new List<GameObjects>();
             DeletedItemCollector = new List<GameObjects>();
+
         }
 
         public Bitmap Screen { get => screen; set => screen = value; }
@@ -32,16 +33,18 @@ namespace KhungLongChayBo
         internal List<GameObjects> ListOfGameObjects { get => listOfGameObjects; set => listOfGameObjects = value; }
         internal List<GameObjects> DeletedItemCollector { get => deletedItemCollector; set => deletedItemCollector = value; }
         public Bitmap Background { get => background; set => background = value; }
+        public int Distance { get => distance; set => distance = value; }
+        public int Speed { get => speed; set => speed = value; }
 
         public void ClearScreen()
         {
             //Draw the background for the image
-            distance -= speed;
-            if (distance < -Screen.Width)
-                distance = -speed;
+            Distance -= Speed;
+            if (Distance < -Screen.Width)
+                Distance = -Speed;
             //Make the background move 
-            pen.DrawImage(Background, new Point(distance, 0));
-            pen.DrawImage(Background, new Point(Screen.Width + distance - speed, 0));
+            pen.DrawImage(Background, new Point(Distance, 0));
+            pen.DrawImage(Background, new Point(Screen.Width + Distance - Speed, 0));
         }
         public void UpdateFrame()
         {

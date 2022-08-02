@@ -18,6 +18,7 @@ namespace KhungLongChayBo
         private static DateTime previousTime;
         private static Random rand = new Random();
         private static Graphics frame;
+        private Obstacle roadObstacle;
         public Form1()
         {
             InitializeComponent();
@@ -38,13 +39,30 @@ namespace KhungLongChayBo
                 @"\Dino Run\Maps\Background.png");
             Bitmap backGround = new Bitmap(temp, ClientSize.Width, ClientSize.Height);
             mainGameScreen = new GameScreen(gameScreen, backGround);
-            //Create player
-            Rectangle playerShape = new Rectangle(35, 100, 80,80);
-            dino = new Player(playerShape, 5, mainGameScreen);
-            dino.ObjectImage = gameImageList.Images[0];
-            mainGameScreen.AddGameObjects(dino);
-            Ground road = new Ground(10,ClientSize.Height-50,200,10,0,mainGameScreen);
+
+            //Create road map
+            int roadWidth = ClientSize.Width;
+            int roadHeight = 30;
+            Ground road = new Ground(0,ClientSize.Height-roadHeight,roadWidth,roadHeight,0,mainGameScreen);
+            road.ObjectImage = Image.FromFile(Application.StartupPath +
+                @"\Dino Run\Maps\ground.png");
             mainGameScreen.AddGameObjects(road);
+
+            //Create player
+            int playerHeight = 80;
+            int playerWidth = 80;
+            Rectangle playerShape = new Rectangle(35, ClientSize.Height - roadHeight - playerHeight, 
+                playerWidth, playerHeight);
+            dino = new Player(playerShape, 5, mainGameScreen);
+            dino.ObjectImage = Image.FromFile(Application.StartupPath +
+                @"\Dino Run\Dinos\Green Dino\Green dino (idle).png");
+            mainGameScreen.AddGameObjects(dino);
+
+            //Create a obstacle
+            roadObstacle = new Obstacle(mainGameScreen.Screen.Width - 50, dino.ObjectShape.Y + 20,
+                    50, 80, 0, mainGameScreen);
+            roadObstacle.ObjectImage = Image.FromFile(Application.StartupPath +
+                @"\Dino Run\Maps\Obstacles\Obstacle Tree.png");
         }
         private void timer_Tick(object sender, EventArgs e)
         {
@@ -55,10 +73,13 @@ namespace KhungLongChayBo
             if (Convert.ToInt32((now - previousTime).TotalSeconds) == time)
             {
                 previousTime = now;
-                Obstacle ob = new Obstacle(mainGameScreen.Screen.Width - 50, dino.ObjectShape.Y + 20,
-                    50, 80, 0, mainGameScreen);
-                ob.Speed = 15;
-                ob.ObjectImage = gameImageList.Images[9];
+                Obstacle ob = new Obstacle(roadObstacle.ObjectShape.X, 
+                    roadObstacle.ObjectShape.Y, 
+                    roadObstacle.ObjectShape.Width,
+                    roadObstacle.ObjectShape.Height, 0,
+                    mainGameScreen);
+                ob.ObjectImage = roadObstacle.ObjectImage;
+                ob.Speed = 20;
                 mainGameScreen.AddGameObjects(ob);
             }
 
@@ -100,7 +121,7 @@ namespace KhungLongChayBo
             button1.Enabled = false;
             timer.Enabled = true;
             previousTime = DateTime.Now;
-            ChangeToVietCongDino();
+            //ChangeToVietCongDino();
         }
     }
 }
