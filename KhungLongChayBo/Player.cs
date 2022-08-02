@@ -34,23 +34,52 @@ namespace KhungLongChayBo
             }
         }
 
-        public bool IsGrounded()
+        public Ground OnGround()
         {
-            int temp = GameScreen.Screen.Height - ObjectShape.Height;
+            List<GameObjects> objects = HittingObjects();
+            Ground g = null;
+            foreach(GameObjects ob in objects)
+            {
+                if(ob.GetType() != this.GetType() && ob.GetType() == typeof(Ground))
+                {
+                    g = (Ground)ob;
+                    break;
+                }
+            }
+            if (g == null)
+                return null;
+            int temp = GameScreen.Screen.Height - g.ObjectShape.Y;
             if (ObjectShape.Y >= temp)
-                return true;
+                return g;
             else
-                return false;
+                return null;
         }
         public virtual void Action()
         {
 
         }
+        public void KeepOnGround(Ground ground)
+        {
+            //Help to keep the player on which ground
+            if (ground == null)
+                return;
+            int groundTop = ground.ObjectShape.Y;
+            int playerBottom = ObjectShape.Y + ObjectShape.Height;
+            int newPosY = ObjectShape.Y;
+            if (playerBottom >= groundTop)
+            {
+                newPosY = groundTop - ObjectShape.Height;
+            }
+            Point p = new Point(ObjectShape.X, newPosY);
+            Size s = new Size(ObjectShape.Width, ObjectShape.Height);
+            ObjectShape = new Rectangle(p, s);
+        }
         public override void Display()
         {
+            base.Display();
             ObjectFallDown();
             KeepInBorder();
-            base.Display();
+            KeepOnGround(OnGround());
         }
     }
 }

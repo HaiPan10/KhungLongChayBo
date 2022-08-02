@@ -34,13 +34,17 @@ namespace KhungLongChayBo
         {
             //Init game screen
             Bitmap gameScreen = new Bitmap(ClientSize.Width, ClientSize.Height);
-            Bitmap backGround = new Bitmap(gameImageList.Images[8], ClientSize.Width, ClientSize.Height);
+            Image temp = Image.FromFile(Application.StartupPath +
+                @"\Dino Run\Maps\Background.png");
+            Bitmap backGround = new Bitmap(temp, ClientSize.Width, ClientSize.Height);
             mainGameScreen = new GameScreen(gameScreen, backGround);
             //Create player
             Rectangle playerShape = new Rectangle(35, 100, 80,80);
             dino = new Player(playerShape, 5, mainGameScreen);
             dino.ObjectImage = gameImageList.Images[0];
             mainGameScreen.AddGameObjects(dino);
+            Ground road = new Ground(10,ClientSize.Height-50,200,10,0,mainGameScreen);
+            mainGameScreen.AddGameObjects(road);
         }
         private void timer_Tick(object sender, EventArgs e)
         {
@@ -52,8 +56,9 @@ namespace KhungLongChayBo
             {
                 previousTime = now;
                 Obstacle ob = new Obstacle(mainGameScreen.Screen.Width - 50, dino.ObjectShape.Y + 20,
-                    30, 75, 0, mainGameScreen);
+                    50, 80, 0, mainGameScreen);
                 ob.Speed = 15;
+                ob.ObjectImage = gameImageList.Images[9];
                 mainGameScreen.AddGameObjects(ob);
             }
 
@@ -67,7 +72,7 @@ namespace KhungLongChayBo
                 return;
             if (e.KeyCode == Keys.W)
             {
-                if (dino.IsGrounded())
+                if (dino.OnGround() != null)
                 {
                     dino.Jumping();
                 }
@@ -83,7 +88,8 @@ namespace KhungLongChayBo
             dino = new VietCongDino(dino.ObjectShape,
                 dino.ObjectGravity.Force,
                 mainGameScreen);
-            dino.ObjectImage = gameImageList.Images[7];
+            dino.ObjectImage = Image.FromFile(Application.StartupPath +
+                @"\Dino Run\Dinos\Talking tree Dino\Vietcong Dino (Idle).png");
             mainGameScreen.AddGameObjects(dino);
         }
 

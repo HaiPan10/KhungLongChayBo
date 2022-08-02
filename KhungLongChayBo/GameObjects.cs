@@ -52,7 +52,7 @@ namespace KhungLongChayBo
             else
             {
                 gameScreen.Pen.DrawImage(objectImage, ObjectShape);
-                //gameScreen.Pen.DrawRectangle(Pens.Red, ObjectShape);
+                gameScreen.Pen.DrawRectangle(Pens.Red, ObjectShape);
             }
         }
         public bool IsOutOfBorder()
@@ -131,6 +131,21 @@ namespace KhungLongChayBo
             Point p = new Point(newPosX, newPosY);
             Rectangle r = new Rectangle(p, ObjectShape.Size);
             ObjectShape = r;
+        }
+        public bool IsOn(GameObjects ob) //Check if this is on the other game object
+        {
+            int thisBottom = ObjectShape.Y + ObjectShape.Height;
+            int thisLeft = ObjectShape.X;
+            int thisRight = ObjectShape.X + ObjectShape.Width;
+            int otherTop = ob.ObjectShape.Y;
+            int otherLeft = ob.ObjectShape.X;
+            int otherRight = ob.ObjectShape.X + ob.ObjectShape.Width;
+            if(thisBottom > otherTop && 
+                (thisLeft < otherRight || thisRight > otherLeft))
+            {
+                return true;
+            }
+            return false;
         }
     }
 }

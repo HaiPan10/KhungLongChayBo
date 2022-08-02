@@ -4,15 +4,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Drawing;
+using System.IO;
+using System.Windows.Forms;
 
 namespace KhungLongChayBo
 {
     class VietCongDino : Player
     {
+        
         public VietCongDino(Rectangle playerShape, int gravityFoce, GameScreen screen) : 
             base(playerShape, gravityFoce, screen)
         {
-
+            
         }
 
         public VietCongDino(int x, int y, int width, int height, int gravityFoce, GameScreen screen)

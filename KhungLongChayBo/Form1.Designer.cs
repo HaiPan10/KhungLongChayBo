@@ -54,6 +54,7 @@ namespace KhungLongChayBo
             this.gameImageList.Images.SetKeyName(6, "TheHoodDino.png");
             this.gameImageList.Images.SetKeyName(7, "VietCongDino.png");
             this.gameImageList.Images.SetKeyName(8, "Background.png");
+            this.gameImageList.Images.SetKeyName(9, "Vật cản (Đường).png");
             // 
             // button1
             // 
