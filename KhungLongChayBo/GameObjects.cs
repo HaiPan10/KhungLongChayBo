@@ -75,70 +75,36 @@ namespace KhungLongChayBo
             foreach (GameObjects ob in GameScreen.ListOfGameObjects)
             {
                 //The object in list is hittable and not this object
-                if (ob.Hittable && !ob.Equals(this))
+                if (ob.Hittable && !ob.Equals(this) && IsHittingObject(ob))
                 {
-                    if (IsHittingLeft(ob) || IsHittingRight(ob) ||
-                        IsHittedBottom(ob) || IsHittedTop(ob))
-                    {
-                        return ob;
-                    }
+                    return ob;
                 }
             }
             return null;
         }
-        public bool IsHittingLeft(GameObjects ob)
+        public bool IsHittingObject(GameObjects ob)
         {
-            int rightSide = this.ObjectShape.X + this.ObjectShape.Width + Speed; //Right side of this object
-            if (rightSide >= ob.ObjectShape.X &&
-                rightSide <= ob.ObjectShape.X + ob.Speed + ob.ObjectShape.Width &&
-                IsInRangeVertical(ob))
+            //This location
+            int thisTop = this.ObjectShape.Y;
+            int thisBottom = this.ObjectShape.Y + this.ObjectShape.Height;
+            int thisLeft = this.ObjectShape.X;
+            int thisRight = this.ObjectShape.X + this.ObjectShape.Width;
+
+            //other location
+            int otherTop = ob.ObjectShape.Y;
+            int otherBottom = ob.ObjectShape.Y + ob.ObjectShape.Height;
+            int otherLeft = ob.ObjectShape.X;
+            int otherRight = ob.ObjectShape.X + ob.ObjectShape.Width;
+
+            bool isHit = true;
+            if (thisTop > otherBottom || 
+                thisBottom < otherTop ||
+                thisLeft > otherRight ||
+                thisRight < otherLeft)
             {
-                return true;
+                isHit = false;
             }
-            return false;
-        }
-        public bool IsHittingRight(GameObjects ob)
-        {
-            int rightSide = ob.ObjectShape.X + ob.ObjectShape.Width;
-            if(IsInRangeVertical(ob) && 
-                this.ObjectShape.X <= rightSide &&
-                this.ObjectShape.X + this.ObjectShape.Width + this.Speed >= rightSide)
-            {
-                return true;
-            }
-            return false;
-        }
-        public bool IsHittedBottom(GameObjects ob)
-        {
-            return false;
-        }
-        public bool IsHittedTop(GameObjects ob)
-        {
-            
-            return false;
-        }
-        public bool IsInRangeVertical(GameObjects ob)
-        {
-            //Check if the range of the object is in game of this object in vertically
-            if((this.ObjectShape.Y >= ob.ObjectShape.Y && 
-                this.ObjectShape.Y <= ob.ObjectShape.Y + ob.ObjectShape.Height) || 
-                (this.ObjectShape.Y + this.ObjectShape.Height >= ob.ObjectShape.Y &&
-                this.ObjectShape.Y + this.ObjectShape.Height <= ob.ObjectShape.Y + ob.ObjectShape.Height))
-            {
-                return true;
-            }
-            return false;
-        }
-        public bool IsInRangeHorizontal(GameObjects ob)
-        {
-            if ((this.ObjectShape.X >= ob.ObjectShape.X &&
-                this.ObjectShape.X <= ob.ObjectShape.X + ob.ObjectShape.Width) ||
-                (this.ObjectShape.X + this.ObjectShape.Width >= ob.ObjectShape.X &&
-                this.ObjectShape.X + this.ObjectShape.Width <= ob.ObjectShape.X + ob.ObjectShape.Width))
-            {
-                return true;
-            }
-            return false;
+            return isHit;
         }
         public void KeepInBorder()
         {

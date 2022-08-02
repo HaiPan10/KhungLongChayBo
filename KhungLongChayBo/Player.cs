@@ -9,7 +9,7 @@ namespace KhungLongChayBo
 {
     class Player : GameObjects
     {
-        private int jumpingHeight = 36;
+        private int jumpingHeight = 45;
 
         public int JumpingHeight { get => jumpingHeight; set => jumpingHeight = value; }
 

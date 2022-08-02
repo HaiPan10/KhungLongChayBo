@@ -46,16 +46,16 @@ namespace KhungLongChayBo
         {
             frame.DrawImage(mainGameScreen.Screen, new Point(0, 0));
             mainGameScreen.UpdateFrame();
-            //DateTime now = DateTime.Now;
-            //int time = rand.Next(3, 10);
-            //if (Convert.ToInt32((now - previousTime).TotalSeconds) == time)
-            //{
-            //    previousTime = now;
-            //    Obstacle ob = new Obstacle(mainGameScreen.Screen.Width - 50, dino.ObjectShape.Y + 20,
-            //        30, 75, 0, mainGameScreen);
-            //    ob.Speed = 30;
-            //    mainGameScreen.AddGameObjects(ob);
-            //}
+            DateTime now = DateTime.Now;
+            int time = rand.Next(3, 10);
+            if (Convert.ToInt32((now - previousTime).TotalSeconds) == time)
+            {
+                previousTime = now;
+                Obstacle ob = new Obstacle(mainGameScreen.Screen.Width - 50, dino.ObjectShape.Y + 20,
+                    30, 75, 0, mainGameScreen);
+                ob.Speed = 10;
+                mainGameScreen.AddGameObjects(ob);
+            }
 
         }
 
