@@ -34,13 +34,18 @@ namespace KhungLongChayBo
             }
         }
 
+        
+        public virtual void Action()
+        {
+
+        }
         public Ground OnGround()
         {
             List<GameObjects> objects = HittingObjects();
             Ground g = null;
-            foreach(GameObjects ob in objects)
+            foreach (GameObjects ob in objects)
             {
-                if(ob.GetType() != this.GetType() && ob.GetType() == typeof(Ground))
+                if (ob.GetType() == typeof(Ground))
                 {
                     g = (Ground)ob;
                     break;
@@ -48,37 +53,25 @@ namespace KhungLongChayBo
             }
             if (g == null)
                 return null;
-            if (IsOn(g))
+            if (IsOnTop(g))
                 return g;
             else
                 return null;
-        }
-        public virtual void Action()
-        {
-
-        }
-        public void KeepOnGround(Ground ground)
-        {
-            //Help to keep the player on which ground
-            if (ground == null)
-                return;
-            int groundTop = ground.ObjectShape.Y;
-            int playerBottom = ObjectShape.Y + ObjectShape.Height;
-            int newPosY = ObjectShape.Y;
-            if (playerBottom >= groundTop)
-            {
-                newPosY = groundTop - ObjectShape.Height;
-            }
-            Point p = new Point(ObjectShape.X, newPosY);
-            Size s = new Size(ObjectShape.Width, ObjectShape.Height);
-            ObjectShape = new Rectangle(p, s);
         }
         public override void Display()
         {
             base.Display();
             ObjectFallDown();
             KeepInBorder();
-            KeepOnGround(OnGround());
+            List<GameObjects> objects = HittingObjects();
+            foreach(GameObjects ob in objects)
+            {
+                if(ob.GetType() == typeof(Ground) && IsOnTop(ob))
+                {
+                    KeepOnOtherTop(ob);
+                    break;
+                }
+            }
         }
     }
 }

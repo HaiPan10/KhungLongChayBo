@@ -132,7 +132,7 @@ namespace KhungLongChayBo
             Rectangle r = new Rectangle(p, ObjectShape.Size);
             ObjectShape = r;
         }
-        public bool IsOn(GameObjects ob) //Check if this is on the other game object
+        public bool IsOnTop(GameObjects ob) //Check if this is on the other game object
         {
             int thisBottom = ObjectShape.Y + ObjectShape.Height;
             int thisLeft = ObjectShape.X;
@@ -146,6 +146,22 @@ namespace KhungLongChayBo
                 return true;
             }
             return false;
+        }
+        public void KeepOnOtherTop(GameObjects ob)
+        {
+            //Help to keep the player on which ground
+            if (ob == null)
+                return;
+            int groundTop = ob.ObjectShape.Y;
+            int playerBottom = ObjectShape.Y + ObjectShape.Height;
+            int newPosY = ObjectShape.Y;
+            if (playerBottom >= groundTop)
+            {
+                newPosY = groundTop - ObjectShape.Height;
+            }
+            Point p = new Point(ObjectShape.X, newPosY);
+            Size s = new Size(ObjectShape.Width, ObjectShape.Height);
+            ObjectShape = new Rectangle(p, s);
         }
     }
 }
