@@ -22,7 +22,6 @@ namespace KhungLongChayBo
         public override void Display()
         {
             base.Display();
-            MoveForward(-Speed);
             List<GameObjects> objects = HittingObjects();
             if(objects.Count > 0)
             {
@@ -35,10 +34,13 @@ namespace KhungLongChayBo
                         this.Speed = 0;
                         ob.ObjectGravity.Force = 0;
                         ob.ObjectGravity.Speed = 0;
+                        IsDestroy = true;
                     }
                 }
 
             }
+            if(!IsDestroy)
+                MoveForward(-Speed);
         }
     }
 }

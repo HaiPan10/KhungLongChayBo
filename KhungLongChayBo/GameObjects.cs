@@ -15,6 +15,7 @@ namespace KhungLongChayBo
         private Image objectImage;
         private GameScreen gameScreen;
         private Gravity objectGravity;
+        private bool isDestroy = false;
         private int speed;
         private bool hittable = true;
         public GameObjects(Rectangle objectShape, int gravityForce, GameScreen gameScreen)
@@ -36,6 +37,7 @@ namespace KhungLongChayBo
         internal Gravity ObjectGravity { get => objectGravity; set => objectGravity = value; }
         public bool Hittable { get => hittable; set => hittable = value; }
         public int Speed { get => speed; set => speed = value; }
+        public bool IsDestroy { get => isDestroy; set => isDestroy = value; }
 
         public void ObjectFallDown()
         {

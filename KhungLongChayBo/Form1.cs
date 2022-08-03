@@ -54,10 +54,9 @@ namespace KhungLongChayBo
             Rectangle playerShape = new Rectangle(35, ClientSize.Height - roadHeight - playerHeight, 
                 playerWidth, playerHeight);
             dino = new Player(playerShape, 5, mainGameScreen);
-            dino.ObjectImage = Image.FromFile(Application.StartupPath +
-                @"\Dino Run\Dinos\Green Dino\Green dino (idle).png");
+            dino.InitAnimation();
             mainGameScreen.AddGameObjects(dino);
-
+            ChangeToTalkingTreeDino();
             //Create a obstacle
             roadObstacle = new Obstacle(mainGameScreen.Screen.Width - 50, dino.ObjectShape.Y + 20,
                     50, 80, 0, mainGameScreen);
@@ -68,20 +67,20 @@ namespace KhungLongChayBo
         {
             frame.DrawImage(mainGameScreen.Screen, new Point(0, 0));
             mainGameScreen.UpdateFrame();
-            DateTime now = DateTime.Now;
-            int time = rand.Next(3, 10);
-            if (Convert.ToInt32((now - previousTime).TotalSeconds) == time)
-            {
-                previousTime = now;
-                Obstacle ob = new Obstacle(roadObstacle.ObjectShape.X, 
-                    roadObstacle.ObjectShape.Y, 
-                    roadObstacle.ObjectShape.Width,
-                    roadObstacle.ObjectShape.Height, 0,
-                    mainGameScreen);
-                ob.ObjectImage = roadObstacle.ObjectImage;
-                ob.Speed = 20;
-                mainGameScreen.AddGameObjects(ob);
-            }
+            //DateTime now = DateTime.Now;
+            //int time = rand.Next(3, 10);
+            //if (Convert.ToInt32((now - previousTime).TotalSeconds) == time)
+            //{
+            //    previousTime = now;
+            //    Obstacle ob = new Obstacle(roadObstacle.ObjectShape.X, 
+            //        roadObstacle.ObjectShape.Y, 
+            //        roadObstacle.ObjectShape.Width,
+            //        roadObstacle.ObjectShape.Height, 0,
+            //        mainGameScreen);
+            //    ob.ObjectImage = roadObstacle.ObjectImage;
+            //    ob.Speed = 20;
+            //    mainGameScreen.AddGameObjects(ob);
+            //}
 
         }
 
@@ -91,27 +90,30 @@ namespace KhungLongChayBo
             e.SuppressKeyPress = true;
             if (dino == null)
                 return;
-            if (e.KeyCode == Keys.W)
+            switch(e.KeyCode)
             {
-                if (dino.OnGround() != null)
-                {
-                    dino.Jumping();
-                }
-            }
-            else if(e.KeyCode == Keys.Space)
-            {
-                dino.Action();
+                case Keys.W:
+                    if (dino.OnGround() != null)
+                    {
+                        dino.Jumping();
+                    }
+                    break;
+                case Keys.Space:
+                    dino.Action();
+                    break;
+                case Keys.S:
+                    dino.Crouching();
+                    break;
             }
         }
-        private void ChangeToVietCongDino()
+        private void ChangeToTalkingTreeDino()
         {
             mainGameScreen.RemoveGameObjects(dino);
-            dino = new VietCongDino(dino.ObjectShape,
+            dino = new TalkingTreeDino(dino.ObjectShape,
                 dino.ObjectGravity.Force,
                 mainGameScreen);
-            dino.ObjectImage = Image.FromFile(Application.StartupPath +
-                @"\Dino Run\Dinos\Talking tree Dino\Vietcong Dino (Idle).png");
             mainGameScreen.AddGameObjects(dino);
+            dino.InitAnimation();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -121,7 +123,21 @@ namespace KhungLongChayBo
             button1.Enabled = false;
             timer.Enabled = true;
             previousTime = DateTime.Now;
-            //ChangeToVietCongDino();
+            
+        }
+
+        private void Form1_KeyUp(object sender, KeyEventArgs e)
+        {
+            e.Handled = true;
+            e.SuppressKeyPress = true;
+            if (dino == null)
+                return;
+            switch(e.KeyCode)
+            {
+                case Keys.S:
+                    dino.StopCrouching();
+                    break;
+            }
         }
     }
 }

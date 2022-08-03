@@ -4,27 +4,49 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Drawing;
+using System.IO;
+using System.Windows.Forms;
 
 namespace KhungLongChayBo
 {
     class Player : GameObjects
     {
         private int jumpingHeight = 45;
+        private List<Image> animationStand = new List<Image>();
+        private List<Image> animationCrouch = new List<Image>();
+        private int crouch = 0; //Player alway stand
+        private int counter; //use for change animation
+        private Timer time;
 
         public int JumpingHeight { get => jumpingHeight; set => jumpingHeight = value; }
+        public List<Image> AnimationStand { get => animationStand; set => animationStand = value; }
+        public List<Image> AnimationCrouch { get => animationCrouch; set => animationCrouch = value; }
+        public int Crouch { get => crouch; set => crouch = value; }
+        public int Counter { get => counter; set => counter = value; }
+        public Timer Time { get => time; set => time = value; }
 
         public Player(Rectangle playerShape, int gravityFoce, GameScreen screen)
             : base(playerShape, gravityFoce, screen)
         {
-
+            InitClock();
         }
         public Player(int x, int y, int width, int height, int gravityFoce, GameScreen screen)
             : base(x, y, width, height, gravityFoce, screen)
         {
-
+            InitClock();
+        }
+        public void InitClock()
+        {
+            Time = new Timer();
+            Time.Interval = 100; //Do the animtion per 0.5s
+            Time.Tick += Time_Tick;
+            Time.Enabled = true;
         }
 
-        
+        private void Time_Tick(object sender, EventArgs e)
+        {
+            DoAnimation();
+        }
 
         public void Jumping()
         {
@@ -33,8 +55,62 @@ namespace KhungLongChayBo
                 ObjectGravity.Speed = -JumpingHeight;
             }
         }
-
-        
+        public void Crouching()
+        {
+            if (Crouch > 0 || OnGround() == null)
+                return; //Already crouching or is jumping
+            Crouch = 30;
+            Point p = new Point(ObjectShape.X, ObjectShape.Y + Crouch);
+            Size s = new Size(ObjectShape.Width, ObjectShape.Height - Crouch);
+            Rectangle r = new Rectangle(p, s);
+            ObjectShape = r;
+        }
+        public void StopCrouching()
+        {
+            Point p = new Point(ObjectShape.X, ObjectShape.Y - Crouch);
+            Size s = new Size(ObjectShape.Width, ObjectShape.Height + Crouch);
+            Crouch = 0;
+            Rectangle r = new Rectangle(p, s);
+            ObjectShape = r;
+        }
+        public void StopAnimation()
+        {
+            Time.Enabled = false;
+        }
+        public virtual void InitAnimation()
+        {
+            string[] filesStand = Directory.GetFiles(Application.StartupPath +
+                @"\Dino Run\Dinos\Green Dino\stand");
+            string[] filesCrouch = Directory.GetFiles(Application.StartupPath +
+                @"\Dino Run\Dinos\Green Dino\crouch");
+            foreach (string fileName in filesStand)
+            {
+                AnimationStand.Add(Image.FromFile(fileName));
+            }
+            foreach(string fileName in filesCrouch)
+            {
+                AnimationCrouch.Add(Image.FromFile(fileName));
+            }
+            ObjectImage = AnimationStand[0];
+            Counter = 0;
+        }
+        public void DoAnimation()
+        {
+            ++Counter;
+            //Do animation by changing image in list
+            if (Crouch > 0)
+            {
+                if (Counter >= AnimationCrouch.Count)
+                    Counter = 0;
+                ObjectImage = AnimationCrouch[Counter];
+            }
+            else
+            {
+                if (Counter >= AnimationStand.Count)
+                    Counter = 0;
+                ObjectImage = AnimationStand[Counter];
+            }
+        }
         public virtual void Action()
         {
 
