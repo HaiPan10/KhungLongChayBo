@@ -39,9 +39,9 @@ namespace KhungLongChayBo
         public override void InitAnimation()
         {
             string[] filesStand = Directory.GetFiles(Application.StartupPath +
-                @"\Dino run\Dinos\Talking tree Dino\stand");
+                @"\Dino Run\Dinos\Talking tree Dino\stand");
             string[] filesCrouch = Directory.GetFiles(Application.StartupPath +
-                @"\Dino run\Dinos\Talking tree Dino\crouch");
+                @"\Dino Run\Dinos\Talking tree Dino\crouch");
             foreach (string fileName in filesStand)
             {
                 AnimationStand.Add(Image.FromFile(fileName));

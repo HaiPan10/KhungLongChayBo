@@ -23,7 +23,7 @@ namespace KhungLongChayBo
         public List<Image> AnimationCrouch { get => animationCrouch; set => animationCrouch = value; }
         public int Crouch { get => crouch; set => crouch = value; }
         public int Counter { get => counter; set => counter = value; }
-        public Timer Time { get => time; set => time = value; }
+        private Timer Time { get => time; set => time = value; }
 
         public Player(Rectangle playerShape, int gravityFoce, GameScreen screen)
             : base(playerShape, gravityFoce, screen)
@@ -35,7 +35,7 @@ namespace KhungLongChayBo
         {
             InitClock();
         }
-        public void InitClock()
+        private void InitClock()
         {
             Time = new Timer();
             Time.Interval = 100; //Do the animtion per 0.5s
@@ -50,7 +50,7 @@ namespace KhungLongChayBo
 
         public void Jumping()
         {
-            if (ObjectGravity.Speed > 0)
+            if (ObjectGravity.Speed > 0 && Crouch <= 0)
             {
                 ObjectGravity.Speed = -JumpingHeight;
             }
@@ -77,6 +77,10 @@ namespace KhungLongChayBo
         {
             Time.Enabled = false;
         }
+        public void StartAnimation()
+        {
+            Time.Enabled = true;
+        }
         public virtual void InitAnimation()
         {
             string[] filesStand = Directory.GetFiles(Application.StartupPath +
@@ -96,6 +100,8 @@ namespace KhungLongChayBo
         }
         public void DoAnimation()
         {
+            if (OnGround() == null)
+                return;
             ++Counter;
             //Do animation by changing image in list
             if (Crouch > 0)
@@ -118,21 +124,14 @@ namespace KhungLongChayBo
         public Ground OnGround()
         {
             List<GameObjects> objects = HittingObjects();
-            Ground g = null;
             foreach (GameObjects ob in objects)
             {
-                if (ob.GetType() == typeof(Ground))
+                if (ob.GetType() == typeof(Ground) && IsOnTop(ob))
                 {
-                    g = (Ground)ob;
-                    break;
+                    return (Ground)ob;
                 }
             }
-            if (g == null)
-                return null;
-            if (IsOnTop(g))
-                return g;
-            else
-                return null;
+            return null;
         }
         public override void Display()
         {
@@ -145,7 +144,6 @@ namespace KhungLongChayBo
                 if(ob.GetType() == typeof(Ground) && IsOnTop(ob))
                 {
                     KeepOnOtherTop(ob);
-                    break;
                 }
             }
         }

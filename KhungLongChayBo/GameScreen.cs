@@ -16,7 +16,7 @@ namespace KhungLongChayBo
         private List<GameObjects> listOfGameObjects;
         private List<GameObjects> deletedItemCollector;
         private int distance = 0;
-        private int speed = 5;
+        private int speed = 1;
         public GameScreen(Bitmap target, Bitmap backGround)
         {
             Screen = target;

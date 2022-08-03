@@ -35,7 +35,7 @@ namespace KhungLongChayBo
             {
                 foreach(GameObjects ob in objects)
                 {
-                    if(ob.GetType() != this.GetType())
+                    if(ob.GetType() != this.GetType() && ob != null)
                     {
                         GameScreen.DeletedItemCollector.Add(ob);
                         GameScreen.DeletedItemCollector.Add(this);

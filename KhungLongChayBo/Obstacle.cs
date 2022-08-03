@@ -29,7 +29,8 @@ namespace KhungLongChayBo
                 {
                     if (ob.GetType() != typeof(Bullet) && 
                         ob.GetType() != this.GetType() && 
-                        ob.GetType() != typeof(Ground))
+                        ob.GetType() != typeof(Ground) &&
+                        ob != null)
                     {
                         this.Speed = 0;
                         ob.ObjectGravity.Force = 0;
