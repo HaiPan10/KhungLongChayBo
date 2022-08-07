@@ -50,6 +50,7 @@ namespace KhungLongChayBo
         }
         public void UpdateFrame()
         {
+            //Console.WriteLine(this.ListOfGameObjects.Count);
             ClearScreen();
             //Draw the objects on the background
             foreach (GameObjects item in ListOfGameObjects)
@@ -96,7 +97,8 @@ namespace KhungLongChayBo
         }
         private void Adding()
         {
-            if(AddedItemCollector.Count > 0)
+            //Console.WriteLine(this.AddedItemCollector.Count);
+            if (AddedItemCollector.Count > 0)
             {
                 foreach (GameObjects ob in AddedItemCollector)
                 {

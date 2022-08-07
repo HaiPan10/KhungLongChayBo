@@ -76,7 +76,7 @@
     </EmbeddedResource>
     <Compile Include="GameObjects.cs" />
     <Compile Include="Gravity.cs" />
-    <Compile Include="Player.cs" />
+    <Compile Include="GreenDino.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>

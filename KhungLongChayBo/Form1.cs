@@ -14,7 +14,7 @@ namespace KhungLongChayBo
     public partial class Form1 : Form
     {
         private GameScreen mainGameScreen;
-        private Player dino;
+        private GreenDino dino;
         private static DateTime previousTime;
         private static Random rand = new Random();
         private static Graphics frame;
@@ -53,7 +53,7 @@ namespace KhungLongChayBo
             int playerWidth = 80;
             Rectangle playerShape = new Rectangle(35, ClientSize.Height - roadHeight - playerHeight, 
                 playerWidth, playerHeight);
-            dino = new Player(playerShape, 5, mainGameScreen);
+            dino = new GreenDino(playerShape, 5, mainGameScreen);
             dino.InitAnimation();
             mainGameScreen.AddGameObjects(dino);
 
@@ -104,14 +104,14 @@ namespace KhungLongChayBo
             }
 
         }
-        private Player SearchPlayer()
+        private GreenDino SearchPlayer()
         {
             foreach (GameObjects ob in mainGameScreen.ListOfGameObjects)
             {
-                if (ob.GetType() == typeof(Player) ||
-                    ob.GetType().BaseType == typeof(Player))
+                if (ob.GetType() == typeof(GreenDino) ||
+                    ob.GetType().BaseType == typeof(GreenDino))
                 {
-                    return (Player)ob;
+                    return (GreenDino)ob;
                 }
             }
             return null;
@@ -120,7 +120,7 @@ namespace KhungLongChayBo
         {
             e.Handled = true;
             e.SuppressKeyPress = true;
-            Player p = SearchPlayer();
+            GreenDino p = SearchPlayer();
             if (p == null)
                 return;
             switch (e.KeyCode)
@@ -160,7 +160,7 @@ namespace KhungLongChayBo
         {
             e.Handled = true;
             e.SuppressKeyPress = true;
-            Player p = SearchPlayer();
+            GreenDino p = SearchPlayer();
             if (p == null)
                 return;
             switch (e.KeyCode)

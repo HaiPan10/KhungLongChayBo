@@ -24,22 +24,18 @@ namespace KhungLongChayBo
             ObjectImage = talkingTreeImage;
         }
 
-        public override void Effect(Player dino)
+        public override void Effect(GreenDino dino)
         {
             GameScreen.DeletedItemCollector.Add(dino);
             ChangeToTalkingTree(dino);
         }
-        private void ChangeToTalkingTree(Player dino)
+        private void ChangeToTalkingTree(GreenDino dino)
         {
             GameScreen.AddedItemCollector.Add(CreateTalkingTreeDino(dino));
         }
-        private TalkingTreeDino CreateTalkingTreeDino(Player dino)
+        private TalkingTreeDino CreateTalkingTreeDino(GreenDino dino)
         {
-            int width = dino.ObjectShape.Width;
-            int height = dino.ObjectShape.Height;
-            int x = dino.ObjectShape.X;
-            int y = dino.ObjectShape.Y;
-            TalkingTreeDino talkingTreeDino = new TalkingTreeDino(new Rectangle(x,y,width,height),
+            TalkingTreeDino talkingTreeDino = new TalkingTreeDino(dino.ObjectShape,
                 dino.ObjectGravity.Force, GameScreen);
             talkingTreeDino.InitAnimation();
             return talkingTreeDino;

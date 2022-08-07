@@ -9,7 +9,7 @@ using System.Windows.Forms;
 
 namespace KhungLongChayBo
 {
-    class Player : GameObjects
+    class GreenDino : GameObjects
     {
         private int jumpingHeight = 45;
         private List<Image> animationStand = new List<Image>();
@@ -25,12 +25,12 @@ namespace KhungLongChayBo
         public int Counter { get => counter; set => counter = value; }
         private Timer Time { get => time; set => time = value; }
 
-        public Player(Rectangle playerShape, int gravityFoce, GameScreen screen)
+        public GreenDino(Rectangle playerShape, int gravityFoce, GameScreen screen)
             : base(playerShape, gravityFoce, screen)
         {
             InitClock();
         }
-        public Player(int x, int y, int width, int height, int gravityFoce, GameScreen screen)
+        public GreenDino(int x, int y, int width, int height, int gravityFoce, GameScreen screen)
             : base(x, y, width, height, gravityFoce, screen)
         {
             InitClock();
@@ -161,15 +161,30 @@ namespace KhungLongChayBo
                             this.ObjectGravity.Speed = 0;
                             this.IsDestroy = true;
                         }
-                        else if(ob.GetType() == typeof(Item) ||
-                            ob.GetType().BaseType == typeof(Item))
+                        else if(ob.GetType().BaseType == typeof(Item))
                         {
                             UsingItem((Item)ob);
                             GameScreen.DeletedItemCollector.Add(ob);
                         }
                     }
                 }
+                DisplayFeatures();
             }
+        }
+        public void ChangeToGreenDino()
+        {
+            GameScreen.DeletedItemCollector.Add(this);
+            GameScreen.AddedItemCollector.Add(CreateGreenDino());
+        }
+        private GreenDino CreateGreenDino()
+        {
+            GreenDino greenDino = new GreenDino(ObjectShape, ObjectGravity.Force, GameScreen);
+            greenDino.InitAnimation();
+            return greenDino;
+        }
+        public void DisplayFeatures()
+        {
+            //Display the specifies features of GreenDino had
         }
     }
 }

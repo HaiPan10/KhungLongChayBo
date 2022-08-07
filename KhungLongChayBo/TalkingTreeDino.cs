@@ -9,9 +9,9 @@ using System.Windows.Forms;
 
 namespace KhungLongChayBo
 {
-    class TalkingTreeDino : Player
+    class TalkingTreeDino : GreenDino
     {
-        
+        private int ammo = 20;
         public TalkingTreeDino(Rectangle playerShape, int gravityFoce, GameScreen screen) : 
             base(playerShape, gravityFoce, screen)
         {
@@ -26,7 +26,11 @@ namespace KhungLongChayBo
         
         public override void Action()
         {
-            Shooting();
+            if(ammo > 0)
+            {
+                Shooting();
+                --ammo;
+            }
         }
         public void Shooting()
         {
@@ -52,6 +56,15 @@ namespace KhungLongChayBo
             }
             ObjectImage = AnimationStand[0];
             Counter = 0;
+        }
+
+        public override void Display()
+        {
+            base.Display();
+            if(ammo <= 0)
+            {
+                ChangeToGreenDino();
+            }
         }
     }
 }

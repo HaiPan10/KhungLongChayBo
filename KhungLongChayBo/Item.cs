@@ -21,7 +21,7 @@ namespace KhungLongChayBo
 
         public override void Display()
         {
-            int speed = 10;
+            int speed = 20;
             base.Display();
             if(!IsDestroy)
             {
@@ -41,6 +41,6 @@ namespace KhungLongChayBo
             }
         }
 
-        public abstract void Effect(Player dino);
+        public abstract void Effect(GreenDino dino);
     }
 }
