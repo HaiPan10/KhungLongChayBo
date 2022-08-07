@@ -62,25 +62,44 @@ namespace KhungLongChayBo
                     50, 80, 0, mainGameScreen);
             roadObstacle.ObjectImage = Image.FromFile(Application.StartupPath +
                 @"\Dino Run\Maps\Obstacles\Obstacle Tree.png");
+
+            //Add score object to game
+            int scoreWidth = 120;
+            int scoreHeight = 50;
+            int paddingRight = 0;
+            TextBox score = new Score(mainGameScreen.Screen.Width - scoreWidth - paddingRight, 
+                0 , scoreWidth, scoreHeight, 0, mainGameScreen);
+            score.StringFormat.Alignment = StringAlignment.Near;
+            score.StringFormat.LineAlignment = StringAlignment.Center;
+            score.StringFormat.FormatFlags = StringFormatFlags.NoWrap;
+            try
+            {
+                score.Font = new Font(new FontFamily("Sans-serif"), 16F);
+            }
+            catch(ArgumentException)
+            {
+                score.Font = new Font(new FontFamily("Arial"), 16F);
+            }
+            mainGameScreen.AddGameObjects(score);
         }
         private void timer_Tick(object sender, EventArgs e)
         {
             frame.DrawImage(mainGameScreen.Screen, new Point(0, 0));
             mainGameScreen.UpdateFrame();
-            //DateTime now = DateTime.Now;
-            //int time = rand.Next(3, 10);
-            //if (Convert.ToInt32((now - previousTime).TotalSeconds) == time)
-            //{
-            //    previousTime = now;
-            //    Obstacle ob = new Obstacle(roadObstacle.ObjectShape.X, 
-            //        roadObstacle.ObjectShape.Y, 
-            //        roadObstacle.ObjectShape.Width,
-            //        roadObstacle.ObjectShape.Height, 0,
-            //        mainGameScreen);
-            //    ob.ObjectImage = roadObstacle.ObjectImage;
-            //    ob.Speed = 20;
-            //    mainGameScreen.AddGameObjects(ob);
-            //}
+            DateTime now = DateTime.Now;
+            int time = rand.Next(3, 10);
+            if (Convert.ToInt32((now - previousTime).TotalSeconds) == time)
+            {
+                previousTime = now;
+                Obstacle ob = new Obstacle(roadObstacle.ObjectShape.X,
+                    roadObstacle.ObjectShape.Y,
+                    roadObstacle.ObjectShape.Width,
+                    roadObstacle.ObjectShape.Height, 0,
+                    mainGameScreen);
+                ob.ObjectImage = roadObstacle.ObjectImage;
+                ob.Speed = 20;
+                mainGameScreen.AddGameObjects(ob);
+            }
 
         }
 
@@ -114,6 +133,9 @@ namespace KhungLongChayBo
                 mainGameScreen);
             mainGameScreen.AddGameObjects(dino);
             dino.InitAnimation();
+            //Testing here
+            //dino.Hittable = false;
+            //dino.ObjectGravity.Force = 0;
         }
 
         private void button1_Click(object sender, EventArgs e)

@@ -136,14 +136,29 @@ namespace KhungLongChayBo
         public override void Display()
         {
             base.Display();
-            ObjectFallDown();
-            KeepInBorder();
-            List<GameObjects> objects = HittingObjects();
-            foreach(GameObjects ob in objects)
+            if(!IsDestroy)
             {
-                if(ob.GetType() == typeof(Ground) && IsOnTop(ob))
+                ObjectFallDown();
+                KeepInBorder();
+                if (Hittable)
                 {
-                    KeepOnOtherTop(ob);
+                    List<GameObjects> objects = HittingObjects();
+                    foreach (GameObjects ob in objects)
+                    {
+                        if (ob.GetType() == typeof(Ground) && IsOnTop(ob))
+                        {
+                            KeepOnOtherTop(ob);
+                        }
+                        else if (ob.GetType() == typeof(Obstacle))
+                        {
+                            //The player hit the obstacle
+                            ob.Speed = 0;
+                            this.ObjectGravity.Force = 0;
+                            this.ObjectGravity.Speed = 0;
+                            this.IsDestroy = true;
+                            break;
+                        }
+                    }
                 }
             }
         }

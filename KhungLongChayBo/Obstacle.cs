@@ -22,24 +22,6 @@ namespace KhungLongChayBo
         public override void Display()
         {
             base.Display();
-            List<GameObjects> objects = HittingObjects();
-            if(objects.Count > 0)
-            {
-                foreach(GameObjects ob in objects)
-                {
-                    if (ob.GetType() != typeof(Bullet) && 
-                        ob.GetType() != this.GetType() && 
-                        ob.GetType() != typeof(Ground) &&
-                        ob != null)
-                    {
-                        this.Speed = 0;
-                        ob.ObjectGravity.Force = 0;
-                        ob.ObjectGravity.Speed = 0;
-                        IsDestroy = true;
-                    }
-                }
-
-            }
             if(!IsDestroy)
                 MoveForward(-Speed);
         }
