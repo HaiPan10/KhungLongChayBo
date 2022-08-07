@@ -133,6 +133,10 @@ namespace KhungLongChayBo
             }
             return null;
         }
+        public void UsingItem(Item item)
+        {
+            item.Effect(this);
+        }
         public override void Display()
         {
             base.Display();
@@ -156,7 +160,12 @@ namespace KhungLongChayBo
                             this.ObjectGravity.Force = 0;
                             this.ObjectGravity.Speed = 0;
                             this.IsDestroy = true;
-                            break;
+                        }
+                        else if(ob.GetType() == typeof(Item) ||
+                            ob.GetType().BaseType == typeof(Item))
+                        {
+                            UsingItem((Item)ob);
+                            GameScreen.DeletedItemCollector.Add(ob);
                         }
                     }
                 }

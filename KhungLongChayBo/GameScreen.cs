@@ -15,6 +15,7 @@ namespace KhungLongChayBo
         private Graphics pen;
         private List<GameObjects> listOfGameObjects;
         private List<GameObjects> deletedItemCollector;
+        private List<GameObjects> addedItemCollector;
         private int distance = 0;
         private int speed = 1;
         public GameScreen(Bitmap target, Bitmap backGround)
@@ -25,7 +26,7 @@ namespace KhungLongChayBo
             Pen.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
             ListOfGameObjects = new List<GameObjects>();
             DeletedItemCollector = new List<GameObjects>();
-
+            AddedItemCollector = new List<GameObjects>();
         }
 
         public Bitmap Screen { get => screen; set => screen = value; }
@@ -35,6 +36,7 @@ namespace KhungLongChayBo
         public Bitmap Background { get => background; set => background = value; }
         public int Distance { get => distance; set => distance = value; }
         public int Speed { get => speed; set => speed = value; }
+        internal List<GameObjects> AddedItemCollector { get => addedItemCollector; set => addedItemCollector = value; }
 
         public void ClearScreen()
         {
@@ -55,6 +57,7 @@ namespace KhungLongChayBo
                 item.Display();
             }
             ClearUp();
+            Adding();
         }
         public void CollectOutOfBorder()
         {
@@ -82,13 +85,24 @@ namespace KhungLongChayBo
             }
             return false;
         }
-        public void ClearUp()
+        private void ClearUp()
         {
             CollectOutOfBorder();
             while(DeletedItemCollector.Count > 0)
             {
                 ListOfGameObjects.Remove(DeletedItemCollector[0]);
                 DeletedItemCollector.RemoveAt(0);
+            }
+        }
+        private void Adding()
+        {
+            if(AddedItemCollector.Count > 0)
+            {
+                foreach (GameObjects ob in AddedItemCollector)
+                {
+                    AddGameObjects(ob);
+                }
+                AddedItemCollector.Clear();
             }
         }
     }

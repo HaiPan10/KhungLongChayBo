@@ -113,11 +113,11 @@ namespace KhungLongChayBo
         {
             int newPosY = ObjectShape.Location.Y;
             int newPosX = ObjectShape.Location.X;
-            if (ObjectShape.Location.X <= 0)
+            if (ObjectShape.Location.X < 0)
             {
                 newPosX = 0;
             }
-            else if (ObjectShape.Location.Y <= 0)
+            else if (ObjectShape.Location.Y < 0)
             {
                 newPosY = 0;
             }
@@ -136,18 +136,20 @@ namespace KhungLongChayBo
         }
         public bool IsOnTop(GameObjects ob) //Check if this is on the other game object
         {
+            bool isOn = true;
             int thisBottom = ObjectShape.Y + ObjectShape.Height;
             int thisLeft = ObjectShape.X;
             int thisRight = ObjectShape.X + ObjectShape.Width;
+
             int otherTop = ob.ObjectShape.Y;
             int otherLeft = ob.ObjectShape.X;
             int otherRight = ob.ObjectShape.X + ob.ObjectShape.Width;
-            if(thisBottom >= otherTop && 
-                (thisLeft < otherRight || thisRight > otherLeft))
+
+            if(thisBottom < otherTop || otherRight < thisLeft || otherLeft > thisRight)
             {
-                return true;
+                isOn = false;
             }
-            return false;
+            return isOn;
         }
         public void KeepOnOtherTop(GameObjects ob)
         {

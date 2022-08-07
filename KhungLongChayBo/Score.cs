@@ -9,7 +9,7 @@ namespace KhungLongChayBo
 {
     class Score : TextBox
     {
-        float point = 0.2F; //point per interval milisecond
+        float point = 0.4F; //point per interval milisecond
         float totalPoint = 0F; //The total point 
 
         public float Point { get => point; set => point = value; }

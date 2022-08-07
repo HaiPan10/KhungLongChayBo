@@ -16,11 +16,13 @@ namespace KhungLongChayBo
         public TextBox(Rectangle objectShape, int gravityForce, GameScreen gameScreen) : 
             base(objectShape, gravityForce, gameScreen)
         {
+            Hittable = false;
         }
 
         public TextBox(int x, int y, int width, int height, int gravityForce, GameScreen gameScreen) : 
             base(x, y, width, height, gravityForce, gameScreen)
         {
+            Hittable = false;
         }
 
         public string Text { get => text; set => text = value; }

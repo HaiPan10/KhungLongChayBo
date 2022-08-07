@@ -56,10 +56,10 @@ namespace KhungLongChayBo
             dino = new Player(playerShape, 5, mainGameScreen);
             dino.InitAnimation();
             mainGameScreen.AddGameObjects(dino);
-            ChangeToTalkingTreeDino();
+
             //Create a obstacle
-            roadObstacle = new Obstacle(mainGameScreen.Screen.Width - 50, dino.ObjectShape.Y + 20,
-                    50, 80, 0, mainGameScreen);
+            roadObstacle = new Obstacle(mainGameScreen.Screen.Width - 50, dino.ObjectShape.Y,
+                    50, 90, 0, mainGameScreen);
             roadObstacle.ObjectImage = Image.FromFile(Application.StartupPath +
                 @"\Dino Run\Maps\Obstacles\Obstacle Tree.png");
 
@@ -91,51 +91,59 @@ namespace KhungLongChayBo
             if (Convert.ToInt32((now - previousTime).TotalSeconds) == time)
             {
                 previousTime = now;
-                Obstacle ob = new Obstacle(roadObstacle.ObjectShape.X,
-                    roadObstacle.ObjectShape.Y,
-                    roadObstacle.ObjectShape.Width,
-                    roadObstacle.ObjectShape.Height, 0,
-                    mainGameScreen);
-                ob.ObjectImage = roadObstacle.ObjectImage;
-                ob.Speed = 20;
-                mainGameScreen.AddGameObjects(ob);
+                //Obstacle ob = new Obstacle(roadObstacle.ObjectShape.X,
+                //    roadObstacle.ObjectShape.Y,
+                //    roadObstacle.ObjectShape.Width,
+                //    roadObstacle.ObjectShape.Height, 0,
+                //    mainGameScreen);
+                //ob.ObjectImage = roadObstacle.ObjectImage;
+                //ob.Speed = 20;
+                //mainGameScreen.AddGameObjects(ob);
+                Item i = new TalkingTreeItem(ClientSize.Width - 50, 0 , 50, 50, 5, mainGameScreen);
+                mainGameScreen.AddGameObjects(i);
             }
 
         }
-
+        private Player SearchPlayer()
+        {
+            foreach (GameObjects ob in mainGameScreen.ListOfGameObjects)
+            {
+                if (ob.GetType() == typeof(Player) ||
+                    ob.GetType().BaseType == typeof(Player))
+                {
+                    return (Player)ob;
+                }
+            }
+            return null;
+        }
         private void Form1_KeyDown(object sender, KeyEventArgs e)
         {
             e.Handled = true;
             e.SuppressKeyPress = true;
-            if (dino == null)
+            Player p = SearchPlayer();
+            if (p == null)
                 return;
-            switch(e.KeyCode)
+            switch (e.KeyCode)
             {
                 case Keys.W:
-                    if (dino.OnGround() != null)
+                    if (p.OnGround() != null)
                     {
-                        dino.Jumping();
+                        p.Jumping();
                     }
                     break;
                 case Keys.Space:
-                    dino.Action();
+                    if (!p.IsDestroy)
+                    {
+                        p.Action();
+                    }
                     break;
                 case Keys.S:
-                    dino.Crouching();
+                    if (!p.IsDestroy)
+                    {
+                        p.Crouching();
+                    }
                     break;
             }
-        }
-        private void ChangeToTalkingTreeDino()
-        {
-            mainGameScreen.RemoveGameObjects(dino);
-            dino = new TalkingTreeDino(dino.ObjectShape,
-                dino.ObjectGravity.Force,
-                mainGameScreen);
-            mainGameScreen.AddGameObjects(dino);
-            dino.InitAnimation();
-            //Testing here
-            //dino.Hittable = false;
-            //dino.ObjectGravity.Force = 0;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -152,12 +160,16 @@ namespace KhungLongChayBo
         {
             e.Handled = true;
             e.SuppressKeyPress = true;
-            if (dino == null)
+            Player p = SearchPlayer();
+            if (p == null)
                 return;
-            switch(e.KeyCode)
+            switch (e.KeyCode)
             {
                 case Keys.S:
-                    dino.StopCrouching();
+                    if (!p.IsDestroy)
+                    {
+                        p.StopCrouching();
+                    }
                     break;
             }
         }
