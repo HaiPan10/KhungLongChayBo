@@ -12,15 +12,11 @@ namespace KhungLongChayBo
     class GreenDino : GameObjects
     {
         private int jumpingHeight = 45;
-        private List<Image> animationStand = new List<Image>();
-        private List<Image> animationCrouch = new List<Image>();
         private int crouch = 0; //Player alway stand
         private int counter; //use for change animation
         private Timer time;
 
         public int JumpingHeight { get => jumpingHeight; set => jumpingHeight = value; }
-        public List<Image> AnimationStand { get => animationStand; set => animationStand = value; }
-        public List<Image> AnimationCrouch { get => animationCrouch; set => animationCrouch = value; }
         public int Crouch { get => crouch; set => crouch = value; }
         public int Counter { get => counter; set => counter = value; }
         private Timer Time { get => time; set => time = value; }
@@ -28,17 +24,19 @@ namespace KhungLongChayBo
         public GreenDino(Rectangle playerShape, int gravityFoce, GameScreen screen)
             : base(playerShape, gravityFoce, screen)
         {
-            InitClock();
+            //InitClock();
+            //InitAnimation();
         }
         public GreenDino(int x, int y, int width, int height, int gravityFoce, GameScreen screen)
             : base(x, y, width, height, gravityFoce, screen)
         {
-            InitClock();
+            //InitClock();
+            //InitAnimation();
         }
         private void InitClock()
         {
             Time = new Timer();
-            Time.Interval = 100; //Do the animtion per 0.5s
+            Time.Interval = 100;
             Time.Tick += Time_Tick;
             Time.Enabled = true;
         }
@@ -73,49 +71,43 @@ namespace KhungLongChayBo
             Rectangle r = new Rectangle(p, s);
             ObjectShape = r;
         }
-        public void StopAnimation()
-        {
-            Time.Enabled = false;
-        }
-        public void StartAnimation()
-        {
-            Time.Enabled = true;
-        }
         public virtual void InitAnimation()
         {
-            string[] filesStand = Directory.GetFiles(Application.StartupPath +
-                @"\Dino Run\Dinos\Green Dino\stand");
-            string[] filesCrouch = Directory.GetFiles(Application.StartupPath +
-                @"\Dino Run\Dinos\Green Dino\crouch");
-            foreach (string fileName in filesStand)
-            {
-                AnimationStand.Add(Image.FromFile(fileName));
-            }
-            foreach(string fileName in filesCrouch)
-            {
-                AnimationCrouch.Add(Image.FromFile(fileName));
-            }
-            ObjectImage = AnimationStand[0];
-            Counter = 0;
+            //string[] filesStand = Directory.GetFiles(Application.StartupPath +
+            //    @"\Dino Run\Dinos\Green Dino\stand");
+            //string[] filesCrouch = Directory.GetFiles(Application.StartupPath +
+            //    @"\Dino Run\Dinos\Green Dino\crouch");
+            //foreach (string fileName in filesStand)
+            //{
+            //    AnimationStand.Add(Image.FromFile(fileName));
+            //}
+            //foreach (string fileName in filesCrouch)
+            //{
+            //    AnimationCrouch.Add(Image.FromFile(fileName));
+            //}
+            //ObjectImage = AnimationStand[0];
+            //Counter = 0;
         }
         public void DoAnimation()
         {
-            if (OnGround() == null)
-                return;
-            ++Counter;
-            //Do animation by changing image in list
-            if (Crouch > 0)
-            {
-                if (Counter >= AnimationCrouch.Count)
-                    Counter = 0;
-                ObjectImage = AnimationCrouch[Counter];
-            }
-            else
-            {
-                if (Counter >= AnimationStand.Count)
-                    Counter = 0;
-                ObjectImage = AnimationStand[Counter];
-            }
+            //if (OnGround() == null)
+            //    return;
+            //++Counter;
+            ////Do animation by changing image in list
+            //if (Crouch > 0 && AnimationCrouch.Count > 0)
+            //{
+            //    if (Counter >= AnimationCrouch.Count)
+            //        Counter = 0;
+            //    ObjectImage = AnimationCrouch[Counter];
+            //}
+            //else
+            //{
+            //    if (AnimationStand.Count <= 0)
+            //        return;
+            //    if (Counter >= AnimationStand.Count)
+            //        Counter = 0;
+            //    ObjectImage = AnimationStand[Counter];
+            //}
         }
         public virtual void Action()
         {
@@ -171,16 +163,21 @@ namespace KhungLongChayBo
                 DisplayFeatures();
             }
         }
-        public void ChangeToGreenDino()
+        public void ChangeToGreenDino(GreenDino dino)
         {
-            GameScreen.DeletedItemCollector.Add(this);
+            GameScreen.DeletedItemCollector.Add(dino);
             GameScreen.AddedItemCollector.Add(CreateGreenDino());
         }
         private GreenDino CreateGreenDino()
         {
+            if (Crouch > 0)
+            {
+                ObjectShape = new Rectangle(ObjectShape.X, ObjectShape.Y, ObjectShape.Width,
+                    ObjectShape.Height + Crouch);
+            }
             GreenDino greenDino = new GreenDino(ObjectShape, ObjectGravity.Force, GameScreen);
-            greenDino.InitAnimation();
             return greenDino;
+           
         }
         public void DisplayFeatures()
         {

@@ -42,20 +42,20 @@ namespace KhungLongChayBo
         }
         public override void InitAnimation()
         {
-            string[] filesStand = Directory.GetFiles(Application.StartupPath +
-                @"\Dino Run\Dinos\Talking tree Dino\stand");
-            string[] filesCrouch = Directory.GetFiles(Application.StartupPath +
-                @"\Dino Run\Dinos\Talking tree Dino\crouch");
-            foreach (string fileName in filesStand)
-            {
-                AnimationStand.Add(Image.FromFile(fileName));
-            }
-            foreach (string fileName in filesCrouch)
-            {
-                AnimationCrouch.Add(Image.FromFile(fileName));
-            }
-            ObjectImage = AnimationStand[0];
-            Counter = 0;
+            //string[] filesStand = Directory.GetFiles(Application.StartupPath +
+            //    @"\Dino Run\Dinos\Talking tree Dino\stand");
+            //string[] filesCrouch = Directory.GetFiles(Application.StartupPath +
+            //    @"\Dino Run\Dinos\Talking tree Dino\crouch");
+            //foreach (string fileName in filesStand)
+            //{
+            //    AnimationStand.Add(Image.FromFile(fileName));
+            //}
+            //foreach (string fileName in filesCrouch)
+            //{
+            //    AnimationCrouch.Add(Image.FromFile(fileName));
+            //}
+            //ObjectImage = AnimationStand[0];
+            //Counter = 0;
         }
 
         public override void Display()
@@ -63,7 +63,7 @@ namespace KhungLongChayBo
             base.Display();
             if(ammo <= 0)
             {
-                ChangeToGreenDino();
+                ChangeToGreenDino(this);
             }
         }
     }

@@ -54,7 +54,6 @@ namespace KhungLongChayBo
             Rectangle playerShape = new Rectangle(35, ClientSize.Height - roadHeight - playerHeight, 
                 playerWidth, playerHeight);
             dino = new GreenDino(playerShape, 5, mainGameScreen);
-            dino.InitAnimation();
             mainGameScreen.AddGameObjects(dino);
 
             //Create a obstacle

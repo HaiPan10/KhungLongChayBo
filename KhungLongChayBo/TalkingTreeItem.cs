@@ -35,9 +35,13 @@ namespace KhungLongChayBo
         }
         private TalkingTreeDino CreateTalkingTreeDino(GreenDino dino)
         {
+            if (dino.Crouch > 0)
+            {
+                dino.ObjectShape = new Rectangle(dino.ObjectShape.X, dino.ObjectShape.Y,
+                   dino.ObjectShape.Width, dino.ObjectShape.Height + dino.Crouch);
+            }
             TalkingTreeDino talkingTreeDino = new TalkingTreeDino(dino.ObjectShape,
                 dino.ObjectGravity.Force, GameScreen);
-            talkingTreeDino.InitAnimation();
             return talkingTreeDino;
         }
     }
