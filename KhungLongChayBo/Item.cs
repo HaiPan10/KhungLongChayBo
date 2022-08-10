@@ -12,29 +12,33 @@ namespace KhungLongChayBo
         public Item(Rectangle objectShape, int gravityForce, GameScreen gameScreen) : 
             base(objectShape, gravityForce, gameScreen)
         {
+            Speed = 20;
         }
 
         public Item(int x, int y, int width, int height, int gravityForce, GameScreen gameScreen) : 
             base(x, y, width, height, gravityForce, gameScreen)
         {
+            Speed = 20;
         }
 
         public override void Display()
         {
-            int speed = 20;
             base.Display();
             if(!IsDestroy)
             {
                 ObjectFallDown();
-                MoveForward(-speed);
+                MoveForward(-Speed);
                 KeepInBorder();
                 List<GameObjects> list = HittingObjects();
                 foreach (GameObjects ob in list)
                 {
-                    if (ob.GetType() != this.GetType() && IsOnTop(ob))
+                    //Keep Item on any top but except player top
+                    if (ob.GetType() != this.GetType() && 
+                        IsOnTop(ob) && 
+                        ob.GetType() != typeof(GreenDino) &&
+                        ob.GetType().BaseType != typeof(GreenDino))
                     {
                         KeepOnOtherTop(ob);
-                        break;
                     }
                 }
                 

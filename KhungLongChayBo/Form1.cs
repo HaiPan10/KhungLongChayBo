@@ -54,11 +54,12 @@ namespace KhungLongChayBo
             Rectangle playerShape = new Rectangle(35, ClientSize.Height - roadHeight - playerHeight, 
                 playerWidth, playerHeight);
             dino = new GreenDino(playerShape, 5, mainGameScreen);
+            //dino.Hittable = false;
             mainGameScreen.AddGameObjects(dino);
 
             //Create a obstacle
             roadObstacle = new Obstacle(mainGameScreen.Screen.Width - 50, dino.ObjectShape.Y,
-                    50, 90, 0, mainGameScreen);
+                    80, 100, 0, mainGameScreen);
             roadObstacle.ObjectImage = Image.FromFile(Application.StartupPath +
                 @"\Dino Run\Maps\Obstacles\Obstacle Tree.png");
 
@@ -90,15 +91,16 @@ namespace KhungLongChayBo
             if (Convert.ToInt32((now - previousTime).TotalSeconds) == time)
             {
                 previousTime = now;
-                //Obstacle ob = new Obstacle(roadObstacle.ObjectShape.X,
-                //    roadObstacle.ObjectShape.Y,
-                //    roadObstacle.ObjectShape.Width,
-                //    roadObstacle.ObjectShape.Height, 0,
-                //    mainGameScreen);
-                //ob.ObjectImage = roadObstacle.ObjectImage;
-                //ob.Speed = 20;
-                //mainGameScreen.AddGameObjects(ob);
-                Item i = new TalkingTreeItem(ClientSize.Width - 50, 0 , 50, 50, 5, mainGameScreen);
+                Obstacle ob = new Obstacle(roadObstacle.ObjectShape.X,
+                    roadObstacle.ObjectShape.Y,
+                    roadObstacle.ObjectShape.Width,
+                    roadObstacle.ObjectShape.Height, 0,
+                    mainGameScreen);
+                ob.ObjectImage = roadObstacle.ObjectImage;
+                ob.Speed = 25;
+                mainGameScreen.AddGameObjects(ob);
+                //Item i = new SoldierItem(ClientSize.Width - 50, 0, 50, 50, 5, mainGameScreen);
+                Item i = new ArmorItem(ClientSize.Width - 50, 0, 50, 50, 5, mainGameScreen);
                 mainGameScreen.AddGameObjects(i);
             }
 

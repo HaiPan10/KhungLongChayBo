@@ -57,8 +57,8 @@ namespace KhungLongChayBo
             {
                 item.Display();
             }
-            ClearUp();
             Adding();
+            ClearUp();
         }
         public void CollectOutOfBorder()
         {

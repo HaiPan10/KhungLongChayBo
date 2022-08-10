@@ -176,6 +176,7 @@ namespace KhungLongChayBo
                     List<GameObjects> objects = HittingObjects();
                     foreach (GameObjects ob in objects)
                     {
+                        Console.WriteLine(ob);
                         if (ob.GetType() == typeof(Ground) && IsOnTop(ob))
                         {
                             KeepOnOtherTop(ob);
@@ -184,34 +185,48 @@ namespace KhungLongChayBo
                         {
                             //The player hit the obstacle
                             //The game will end
-                            ob.Speed = 0;
-                            this.ObjectGravity.Force = 0;
-                            this.ObjectGravity.Speed = 0;
-                            this.IsDestroy = true;
-                            StopClock();
+                            if(ArmorItem.NumberOfDinoArmor > 0)
+                            {
+                                //Console.WriteLine(ArmorItem.NumberOfDinoArmor);
+                                ArmorItem.DecreaseArmor(this);
+                                GameScreen.DeletedItemCollector.Add(ob);
+                                
+                            }
+                            else
+                            {
+                                ob.Speed = 0;
+                                this.ObjectGravity.Force = 0;
+                                this.ObjectGravity.Speed = 0;
+                                this.IsDestroy = true;
+                                StopClock();
+                            }
                         }
                         else if(ob.GetType().BaseType == typeof(Item))
                         {
                             UsingItem((Item)ob);
                             GameScreen.DeletedItemCollector.Add(ob);
-                            ClearUp();
+                            if(ob.GetType() == typeof(SoldierItem))
+                            {
+                                ClearUp();
+                            }
+                            Console.WriteLine(ArmorItem.NumberOfDinoArmor);
                         }
                     }
                 }
             }
         }
-        public void ChangeToGreenDino()
+        public void ChangeToGreenDino(GreenDino dino)
         {
-            GameScreen.AddedItemCollector.Add(CreateGreenDino());
+            GameScreen.AddedItemCollector.Add(CreateGreenDino(dino));
         }
-        private GreenDino CreateGreenDino()
+        private static GreenDino CreateGreenDino(GreenDino dino)
         {
-            if (Crouch > 0)
+            if (dino.Crouch > 0)
             {
-                ObjectShape = new Rectangle(ObjectShape.X, ObjectShape.Y, ObjectShape.Width,
-                    ObjectShape.Height + Crouch);
+                dino.ObjectShape = new Rectangle(dino.ObjectShape.X, dino.ObjectShape.Y, dino.ObjectShape.Width,
+                    dino.ObjectShape.Height + dino.Crouch);
             }
-            GreenDino greenDino = new GreenDino(ObjectShape, ObjectGravity.Force, GameScreen);
+            GreenDino greenDino = new GreenDino(dino.ObjectShape, dino.ObjectGravity.Force, dino.GameScreen);
             return greenDino;
            
         }

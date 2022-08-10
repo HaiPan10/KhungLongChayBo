@@ -1,59 +1,52 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
 
 namespace KhungLongChayBo
 {
-    class TalkingTreeDino : GreenDino
+    class SoldierDino : GreenDino
     {
-        private static List<Image> talkingTreeAnimationStand = InitAnimationStand();
-        private static List<Image> talkingTreeAnimationCrouch = InitAnimaionCrouch();
+        private static List<Image> soldierAnimationStand = InitAnimationStand();
+        private static List<Image> soldierAnimationCrouch = InitAnimaionCrouch();
         private int ammo = 20; //Number of bullets used
         private int baseAmmo = 20; //Max number of bullets
         private TextBox textBoxAmmo;
 
-        public static List<Image> TalkingTreeAnimationStand
+        public static List<Image> SoldierAnimationStand
         {
-            get => talkingTreeAnimationStand;
-            set => talkingTreeAnimationStand = value;
+            get => soldierAnimationStand;
+            set => soldierAnimationStand = value;
         }
-        public static List<Image> TalkingTreeAnimationCrouch
+        public static List<Image> SoldierAnimationCrouch
         {
-            get => talkingTreeAnimationCrouch;
-            set => talkingTreeAnimationCrouch = value;
+            get => soldierAnimationCrouch;
+            set => soldierAnimationCrouch = value;
         }
 
         internal TextBox TextBoxAmmo { get => textBoxAmmo; set => textBoxAmmo = value; }
         public int BaseAmmo { get => baseAmmo; set => baseAmmo = value; }
         public int Ammo { get => ammo; set => ammo = value; }
 
-        public TalkingTreeDino(Rectangle playerShape, int gravityFoce, GameScreen screen) : 
+        public SoldierDino(Rectangle playerShape, int gravityFoce, GameScreen screen) : 
             base(playerShape, gravityFoce, screen)
         {
-            ObjectImage = TalkingTreeAnimationStand[0];
+            ObjectImage = SoldierAnimationStand[0];
             InitTextBoxAmmo();
         }
 
-        public TalkingTreeDino(int x, int y, int width, int height, int gravityFoce, GameScreen screen)
+        public SoldierDino(int x, int y, int width, int height, int gravityFoce, GameScreen screen)
             : base(x, y, width, height, gravityFoce, screen)
         {
-            ObjectImage = TalkingTreeAnimationStand[0];
+            ObjectImage = SoldierAnimationStand[0];
             InitTextBoxAmmo();
         }
 
         public void InitTextBoxAmmo()
-        {
-            int width = 100;
-            int height = 50;
-            int x = 0;
-            int y = 0;
-
-            TextBoxAmmo = new TextBox(x, y, width, height, 0, GameScreen);
+        { 
+            TextBoxAmmo = new TextBox(SoldierItem.TextBoxAmmoX, SoldierItem.TextBoxAmmoY, 
+                SoldierItem.TextBoxAmmoWidth, SoldierItem.TextBoxAmmoHeight, 0, GameScreen);
             TextBoxAmmo.Text = String.Format("{0}/{1}", Ammo, BaseAmmo);
             TextBoxAmmo.Hittable = false;
             TextBoxAmmo.StringFormat.Alignment = StringAlignment.Center;
@@ -67,7 +60,7 @@ namespace KhungLongChayBo
             {
                 List<Image> animationStand = new List<Image>();
                 string[] filesStand = Directory.GetFiles(Application.StartupPath +
-                    @"\Dino Run\Dinos\Talking tree Dino\stand");
+                    @"\Dino Run\Dinos\Soldier Dino\stand");
                 foreach (string fileName in filesStand)
                 {
                     animationStand.Add(Image.FromFile(fileName));
@@ -87,7 +80,7 @@ namespace KhungLongChayBo
             {
                 List<Image> animationCrouch = new List<Image>();
                 string[] filesCrouch = Directory.GetFiles(Application.StartupPath +
-                    @"\Dino Run\Dinos\Talking tree Dino\crouch");
+                    @"\Dino Run\Dinos\Soldier Dino\crouch");
                 foreach (string fileName in filesCrouch)
                 {
                     animationCrouch.Add(Image.FromFile(fileName));
@@ -127,19 +120,19 @@ namespace KhungLongChayBo
                 return;
             ++Counter;
             //Do animation by changing image in list
-            if (Crouch > 0 && TalkingTreeAnimationCrouch.Count > 0)
+            if (Crouch > 0 && SoldierAnimationCrouch.Count > 0)
             {
-                if (Counter >= TalkingTreeAnimationCrouch.Count)
+                if (Counter >= SoldierAnimationCrouch.Count)
                     Counter = 0;
-                ObjectImage = TalkingTreeAnimationCrouch[Counter];
+                ObjectImage = SoldierAnimationCrouch[Counter];
             }
             else
             {
-                if (TalkingTreeAnimationStand.Count <= 0)
+                if (SoldierAnimationStand.Count <= 0)
                     return;
-                if (Counter >= TalkingTreeAnimationStand.Count)
+                if (Counter >= SoldierAnimationStand.Count)
                     Counter = 0;
-                ObjectImage = TalkingTreeAnimationStand[Counter];
+                ObjectImage = SoldierAnimationStand[Counter];
             }
         }
 
@@ -149,7 +142,7 @@ namespace KhungLongChayBo
             if(Ammo <= 0)
             {
                 //Delete all the thing here
-                ChangeToGreenDino();
+                ChangeToGreenDino(this);
                 ClearUp();
             }
         }
