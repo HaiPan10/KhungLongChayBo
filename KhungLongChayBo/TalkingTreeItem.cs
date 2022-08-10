@@ -26,7 +26,6 @@ namespace KhungLongChayBo
 
         public override void Effect(GreenDino dino)
         {
-            GameScreen.DeletedItemCollector.Add(dino);
             ChangeToTalkingTree(dino);
         }
         private void ChangeToTalkingTree(GreenDino dino)

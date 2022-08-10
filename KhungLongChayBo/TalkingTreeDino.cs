@@ -13,29 +13,52 @@ namespace KhungLongChayBo
     {
         private static List<Image> talkingTreeAnimationStand = InitAnimationStand();
         private static List<Image> talkingTreeAnimationCrouch = InitAnimaionCrouch();
-        private int ammo = 20;
+        private int ammo = 20; //Number of bullets used
+        private int baseAmmo = 20; //Max number of bullets
+        private TextBox textBoxAmmo;
 
-        public static List<Image> TalkingTreeAnimationStand 
-        { 
-            get => talkingTreeAnimationStand; 
-            set => talkingTreeAnimationStand = value; 
+        public static List<Image> TalkingTreeAnimationStand
+        {
+            get => talkingTreeAnimationStand;
+            set => talkingTreeAnimationStand = value;
         }
-        public static List<Image> TalkingTreeAnimationCrouch 
-        { 
-            get => talkingTreeAnimationCrouch; 
-            set => talkingTreeAnimationCrouch = value; 
+        public static List<Image> TalkingTreeAnimationCrouch
+        {
+            get => talkingTreeAnimationCrouch;
+            set => talkingTreeAnimationCrouch = value;
         }
+
+        internal TextBox TextBoxAmmo { get => textBoxAmmo; set => textBoxAmmo = value; }
+        public int BaseAmmo { get => baseAmmo; set => baseAmmo = value; }
+        public int Ammo { get => ammo; set => ammo = value; }
 
         public TalkingTreeDino(Rectangle playerShape, int gravityFoce, GameScreen screen) : 
             base(playerShape, gravityFoce, screen)
         {
-            
+            ObjectImage = TalkingTreeAnimationStand[0];
+            InitTextBoxAmmo();
         }
 
         public TalkingTreeDino(int x, int y, int width, int height, int gravityFoce, GameScreen screen)
             : base(x, y, width, height, gravityFoce, screen)
         {
+            ObjectImage = TalkingTreeAnimationStand[0];
+            InitTextBoxAmmo();
+        }
 
+        public void InitTextBoxAmmo()
+        {
+            int width = 100;
+            int height = 50;
+            int x = 0;
+            int y = 0;
+
+            TextBoxAmmo = new TextBox(x, y, width, height, 0, GameScreen);
+            TextBoxAmmo.Text = String.Format("{0}/{1}", Ammo, BaseAmmo);
+            TextBoxAmmo.Hittable = false;
+            TextBoxAmmo.StringFormat.Alignment = StringAlignment.Center;
+            TextBoxAmmo.StringFormat.LineAlignment = StringAlignment.Center;
+            GameScreen.AddedItemCollector.Add(TextBoxAmmo);
         }
 
         private static List<Image> InitAnimationStand()
@@ -80,19 +103,22 @@ namespace KhungLongChayBo
 
         public override void Action()
         {
-            if(ammo > 0)
+            if(Ammo > 0)
             {
                 Shooting();
-                --ammo;
             }
         }
         public void Shooting()
         {
-            int distance = 3;
-            Bullet b = new Bullet(ObjectShape.X + ObjectShape.Width + distance,
-                ObjectShape.Y + ObjectShape.Height / 2,
-                10, 5, 0, GameScreen);
-            GameScreen.AddGameObjects(b);
+            if(Ammo > 0)
+            {
+                int distance = 3;
+                Bullet b = new Bullet(ObjectShape.X + ObjectShape.Width + distance,
+                    ObjectShape.Y + ObjectShape.Height / 2,
+                    10, 5, 0, GameScreen);
+                GameScreen.AddGameObjects(b);
+                textBoxAmmo.Text = String.Format("{0}/{1}", --Ammo, BaseAmmo);
+            }
         }
 
         public override void DoAnimation()
@@ -120,11 +146,18 @@ namespace KhungLongChayBo
         public override void Display()
         {
             base.Display();
-            if(ammo <= 0)
+            if(Ammo <= 0)
             {
-                ChangeToGreenDino(this);
-                StopClock();
+                //Delete all the thing here
+                ChangeToGreenDino();
+                ClearUp();
             }
+        }
+
+        public override void ClearUp()
+        {
+            base.ClearUp();
+            GameScreen.DeletedItemCollector.Add(TextBoxAmmo);
         }
     }
 }

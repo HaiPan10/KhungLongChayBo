@@ -34,11 +34,13 @@ namespace KhungLongChayBo
             : base(playerShape, gravityFoce, screen)
         {
             InitClock();
+            ObjectImage = GreenDinoAnimationStand[0];
         }
         public GreenDino(int x, int y, int width, int height, int gravityFoce, GameScreen screen)
             : base(x, y, width, height, gravityFoce, screen)
         {
             InitClock();
+            ObjectImage = GreenDinoAnimationStand[0];
         }
         private void InitClock()
         {
@@ -181,6 +183,7 @@ namespace KhungLongChayBo
                         else if (ob.GetType() == typeof(Obstacle))
                         {
                             //The player hit the obstacle
+                            //The game will end
                             ob.Speed = 0;
                             this.ObjectGravity.Force = 0;
                             this.ObjectGravity.Speed = 0;
@@ -191,16 +194,14 @@ namespace KhungLongChayBo
                         {
                             UsingItem((Item)ob);
                             GameScreen.DeletedItemCollector.Add(ob);
-                            StopClock();
+                            ClearUp();
                         }
                     }
                 }
-                DisplayFeatures();
             }
         }
-        public void ChangeToGreenDino(GreenDino dino)
+        public void ChangeToGreenDino()
         {
-            GameScreen.DeletedItemCollector.Add(dino);
             GameScreen.AddedItemCollector.Add(CreateGreenDino());
         }
         private GreenDino CreateGreenDino()
@@ -214,9 +215,11 @@ namespace KhungLongChayBo
             return greenDino;
            
         }
-        public void DisplayFeatures()
+
+        public virtual void ClearUp()
         {
-            //Display the specifies features of GreenDino had
+            GameScreen.DeletedItemCollector.Add(this);
+            StopClock();
         }
     }
 }

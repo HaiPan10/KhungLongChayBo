@@ -11,7 +11,7 @@ namespace KhungLongChayBo
     {
         string text = String.Empty;
         Brush brush = Brushes.Black;
-        Font font = new Font("Arial",12F); //Default font
+        Font font = new Font("Arial",16F); //Default font
         StringFormat stringFormat = new StringFormat();
         public TextBox(Rectangle objectShape, int gravityForce, GameScreen gameScreen) : 
             base(objectShape, gravityForce, gameScreen)
