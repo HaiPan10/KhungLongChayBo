@@ -85,7 +85,7 @@ namespace KhungLongChayBo
         private void timer_Tick(object sender, EventArgs e)
         {
             frame.DrawImage(mainGameScreen.Screen, new Point(0, 0));
-            mainGameScreen.UpdateFrame();
+            bool isContinue = mainGameScreen.UpdateFrame();
             DateTime now = DateTime.Now;
             int time = rand.Next(3, 10);
             if (Convert.ToInt32((now - previousTime).TotalSeconds) == time)
@@ -103,7 +103,6 @@ namespace KhungLongChayBo
                 Item i = new ArmorItem(ClientSize.Width - 50, 0, 50, 50, 5, mainGameScreen);
                 mainGameScreen.AddGameObjects(i);
             }
-
         }
         private GreenDino SearchPlayer()
         {
@@ -144,7 +143,28 @@ namespace KhungLongChayBo
                         p.Crouching();
                     }
                     break;
+                case Keys.Escape:
+                    PauseGame();
+                    break;
             }
+        }
+
+        private void PauseGame()
+        {
+            if (timer.Enabled == true)
+                timer.Stop();
+            else
+                timer.Start();
+        }
+
+        private void ShowPauseMenu()
+        {
+
+        }
+
+        private void ShowMenu()
+        {
+
         }
 
         private void button1_Click(object sender, EventArgs e)

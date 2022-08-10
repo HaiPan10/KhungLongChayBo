@@ -48,7 +48,7 @@ namespace KhungLongChayBo
             pen.DrawImage(Background, new Point(Distance, 0));
             pen.DrawImage(Background, new Point(Screen.Width + Distance - Speed, 0));
         }
-        public void UpdateFrame()
+        public bool UpdateFrame()
         {
             //Console.WriteLine(this.ListOfGameObjects.Count);
             ClearScreen();
@@ -56,9 +56,16 @@ namespace KhungLongChayBo
             foreach (GameObjects item in ListOfGameObjects)
             {
                 item.Display();
+                if((item.GetType().BaseType == typeof(GreenDino) || 
+                    item.GetType() == typeof(GreenDino)) && item.IsDestroy)
+                {
+                    EndGame();
+                    return false;
+                }
             }
             Adding();
             ClearUp();
+            return true;
         }
         public void CollectOutOfBorder()
         {
@@ -106,6 +113,18 @@ namespace KhungLongChayBo
                 }
                 AddedItemCollector.Clear();
             }
+        }
+        public void ClearAll()
+        {
+            ListOfGameObjects.Clear();
+            AddedItemCollector.Clear();
+            DeletedItemCollector.Clear();
+        }
+        public void EndGame()
+        {
+            int endGameWidth = 100;
+            int endGameHeight = 50;
+
         }
     }
 }

@@ -10,7 +10,7 @@ namespace KhungLongChayBo
     class Ground : GameObjects
     {
         private int distance = 0;
-        private int speed = 20;
+        private int speedMove = 10;
         public Ground(Rectangle objectShape, int gravityForce, GameScreen gameScreen) : 
             base(objectShape, gravityForce, gameScreen)
         {
@@ -22,14 +22,14 @@ namespace KhungLongChayBo
         }
 
         public int Distance { get => distance; set => distance = value; }
-        public int Speed1 { get => speed; set => speed = value; }
+        public int SpeedMove { get => speedMove; set => speedMove = value; }
 
         public override void Display()
         {
             //Make the road move
             if (ObjectImage != null)
             {
-                distance -= speed;
+                distance -= speedMove;
                 if (-distance >= ObjectShape.Width)
                     distance = 0;
                 Size s = new Size(ObjectShape.Width, ObjectShape.Height);
