@@ -11,7 +11,21 @@ namespace KhungLongChayBo
 {
     class TalkingTreeDino : GreenDino
     {
+        private static List<Image> talkingTreeAnimationStand = InitAnimationStand();
+        private static List<Image> talkingTreeAnimationCrouch = InitAnimaionCrouch();
         private int ammo = 20;
+
+        public static List<Image> TalkingTreeAnimationStand 
+        { 
+            get => talkingTreeAnimationStand; 
+            set => talkingTreeAnimationStand = value; 
+        }
+        public static List<Image> TalkingTreeAnimationCrouch 
+        { 
+            get => talkingTreeAnimationCrouch; 
+            set => talkingTreeAnimationCrouch = value; 
+        }
+
         public TalkingTreeDino(Rectangle playerShape, int gravityFoce, GameScreen screen) : 
             base(playerShape, gravityFoce, screen)
         {
@@ -23,7 +37,47 @@ namespace KhungLongChayBo
         {
 
         }
-        
+
+        private static List<Image> InitAnimationStand()
+        {
+            try
+            {
+                List<Image> animationStand = new List<Image>();
+                string[] filesStand = Directory.GetFiles(Application.StartupPath +
+                    @"\Dino Run\Dinos\Talking tree Dino\stand");
+                foreach (string fileName in filesStand)
+                {
+                    animationStand.Add(Image.FromFile(fileName));
+                }
+                return animationStand;
+            }
+            catch
+            {
+
+            }
+            return null;
+        }
+
+        private static List<Image> InitAnimaionCrouch()
+        {
+            try
+            {
+                List<Image> animationCrouch = new List<Image>();
+                string[] filesCrouch = Directory.GetFiles(Application.StartupPath +
+                    @"\Dino Run\Dinos\Talking tree Dino\crouch");
+                foreach (string fileName in filesCrouch)
+                {
+                    animationCrouch.Add(Image.FromFile(fileName));
+                }
+                return animationCrouch;
+            }
+            catch
+            {
+
+            }
+            return null;
+        }
+
         public override void Action()
         {
             if(ammo > 0)
@@ -40,22 +94,27 @@ namespace KhungLongChayBo
                 10, 5, 0, GameScreen);
             GameScreen.AddGameObjects(b);
         }
-        public override void InitAnimation()
+
+        public override void DoAnimation()
         {
-            //string[] filesStand = Directory.GetFiles(Application.StartupPath +
-            //    @"\Dino Run\Dinos\Talking tree Dino\stand");
-            //string[] filesCrouch = Directory.GetFiles(Application.StartupPath +
-            //    @"\Dino Run\Dinos\Talking tree Dino\crouch");
-            //foreach (string fileName in filesStand)
-            //{
-            //    AnimationStand.Add(Image.FromFile(fileName));
-            //}
-            //foreach (string fileName in filesCrouch)
-            //{
-            //    AnimationCrouch.Add(Image.FromFile(fileName));
-            //}
-            //ObjectImage = AnimationStand[0];
-            //Counter = 0;
+            if (OnGround() == null)
+                return;
+            ++Counter;
+            //Do animation by changing image in list
+            if (Crouch > 0 && TalkingTreeAnimationCrouch.Count > 0)
+            {
+                if (Counter >= TalkingTreeAnimationCrouch.Count)
+                    Counter = 0;
+                ObjectImage = TalkingTreeAnimationCrouch[Counter];
+            }
+            else
+            {
+                if (TalkingTreeAnimationStand.Count <= 0)
+                    return;
+                if (Counter >= TalkingTreeAnimationStand.Count)
+                    Counter = 0;
+                ObjectImage = TalkingTreeAnimationStand[Counter];
+            }
         }
 
         public override void Display()
@@ -64,6 +123,7 @@ namespace KhungLongChayBo
             if(ammo <= 0)
             {
                 ChangeToGreenDino(this);
+                StopClock();
             }
         }
     }

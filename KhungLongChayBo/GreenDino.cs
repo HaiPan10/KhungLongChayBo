@@ -13,25 +13,32 @@ namespace KhungLongChayBo
     {
         private int jumpingHeight = 45;
         private int crouch = 0; //Player alway stand
-        private int counter; //use for change animation
+        private int counter = 0; //use for change animation
         private Timer time;
-
+        private static List<Image> greenDinoAnimationStand = InitAnimationStand();
+        private static List<Image> greenDinoAnimationCrouch = InitAnimationCrouch();
         public int JumpingHeight { get => jumpingHeight; set => jumpingHeight = value; }
         public int Crouch { get => crouch; set => crouch = value; }
         public int Counter { get => counter; set => counter = value; }
         private Timer Time { get => time; set => time = value; }
+        public static List<Image> GreenDinoAnimationStand 
+        { 
+            get => greenDinoAnimationStand; 
+        }
+        public static List<Image> GreenDinoAnimationCrouch 
+        { 
+            get => greenDinoAnimationCrouch; 
+        }
 
         public GreenDino(Rectangle playerShape, int gravityFoce, GameScreen screen)
             : base(playerShape, gravityFoce, screen)
         {
-            //InitClock();
-            //InitAnimation();
+            InitClock();
         }
         public GreenDino(int x, int y, int width, int height, int gravityFoce, GameScreen screen)
             : base(x, y, width, height, gravityFoce, screen)
         {
-            //InitClock();
-            //InitAnimation();
+            InitClock();
         }
         private void InitClock()
         {
@@ -44,6 +51,11 @@ namespace KhungLongChayBo
         private void Time_Tick(object sender, EventArgs e)
         {
             DoAnimation();
+        }
+
+        public void StopClock()
+        {
+            time.Stop();
         }
 
         public void Jumping()
@@ -71,43 +83,64 @@ namespace KhungLongChayBo
             Rectangle r = new Rectangle(p, s);
             ObjectShape = r;
         }
-        public virtual void InitAnimation()
+        private static List<Image> InitAnimationStand()
         {
-            //string[] filesStand = Directory.GetFiles(Application.StartupPath +
-            //    @"\Dino Run\Dinos\Green Dino\stand");
-            //string[] filesCrouch = Directory.GetFiles(Application.StartupPath +
-            //    @"\Dino Run\Dinos\Green Dino\crouch");
-            //foreach (string fileName in filesStand)
-            //{
-            //    AnimationStand.Add(Image.FromFile(fileName));
-            //}
-            //foreach (string fileName in filesCrouch)
-            //{
-            //    AnimationCrouch.Add(Image.FromFile(fileName));
-            //}
-            //ObjectImage = AnimationStand[0];
-            //Counter = 0;
+            try
+            {
+                List<Image> animationStand = new List<Image>();
+                string[] filesStand = Directory.GetFiles(Application.StartupPath +
+                    @"\Dino Run\Dinos\Green Dino\stand");
+                foreach (string fileName in filesStand)
+                {
+                    animationStand.Add(Image.FromFile(fileName));
+                }
+                return animationStand;
+            }
+            catch
+            {
+
+            }
+            return null;
         }
-        public void DoAnimation()
+        private static List<Image> InitAnimationCrouch()
         {
-            //if (OnGround() == null)
-            //    return;
-            //++Counter;
-            ////Do animation by changing image in list
-            //if (Crouch > 0 && AnimationCrouch.Count > 0)
-            //{
-            //    if (Counter >= AnimationCrouch.Count)
-            //        Counter = 0;
-            //    ObjectImage = AnimationCrouch[Counter];
-            //}
-            //else
-            //{
-            //    if (AnimationStand.Count <= 0)
-            //        return;
-            //    if (Counter >= AnimationStand.Count)
-            //        Counter = 0;
-            //    ObjectImage = AnimationStand[Counter];
-            //}
+            try
+            {
+                List<Image> animationCrouch = new List<Image>();
+                string[] filesCrouch = Directory.GetFiles(Application.StartupPath +
+                    @"\Dino Run\Dinos\Green Dino\crouch");
+                foreach (string fileName in filesCrouch)
+                {
+                    animationCrouch.Add(Image.FromFile(fileName));
+                }
+                return animationCrouch;
+            }
+            catch
+            {
+
+            }
+            return null;
+        }
+        public virtual void DoAnimation()
+        {
+            if (OnGround() == null)
+                return;
+            ++Counter;
+            //Do animation by changing image in list
+            if (Crouch > 0 && GreenDinoAnimationCrouch.Count > 0)
+            {
+                if (Counter >= GreenDinoAnimationCrouch.Count)
+                    Counter = 0;
+                ObjectImage = GreenDinoAnimationCrouch[Counter];
+            }
+            else
+            {
+                if (GreenDinoAnimationStand.Count <= 0)
+                    return;
+                if (Counter >= GreenDinoAnimationStand.Count)
+                    Counter = 0;
+                ObjectImage = GreenDinoAnimationStand[Counter];
+            }
         }
         public virtual void Action()
         {
@@ -152,11 +185,13 @@ namespace KhungLongChayBo
                             this.ObjectGravity.Force = 0;
                             this.ObjectGravity.Speed = 0;
                             this.IsDestroy = true;
+                            StopClock();
                         }
                         else if(ob.GetType().BaseType == typeof(Item))
                         {
                             UsingItem((Item)ob);
                             GameScreen.DeletedItemCollector.Add(ob);
+                            StopClock();
                         }
                     }
                 }

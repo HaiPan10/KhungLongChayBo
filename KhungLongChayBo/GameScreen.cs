@@ -50,7 +50,7 @@ namespace KhungLongChayBo
         }
         public void UpdateFrame()
         {
-            //Console.WriteLine(this.ListOfGameObjects.Count);
+            Console.WriteLine(this.ListOfGameObjects.Count);
             ClearScreen();
             //Draw the objects on the background
             foreach (GameObjects item in ListOfGameObjects)
