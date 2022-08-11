@@ -56,7 +56,7 @@ namespace KhungLongChayBo
             foreach (GameObjects item in ListOfGameObjects)
             {
                 item.Display();
-                if((item.GetType().BaseType == typeof(GreenDino) || 
+                if ((item.GetType().BaseType == typeof(GreenDino) ||
                     item.GetType() == typeof(GreenDino)) && item.IsDestroy)
                 {
                     EndGame();
@@ -71,7 +71,7 @@ namespace KhungLongChayBo
         {
             foreach (GameObjects item in ListOfGameObjects)
             {
-                if(item.IsOutOfBorder())
+                if (item.IsOutOfBorder())
                 {
                     DeletedItemCollector.Add(item);
                 }
@@ -83,9 +83,9 @@ namespace KhungLongChayBo
         }
         public bool RemoveGameObjects(GameObjects item)
         {
-            foreach(GameObjects gameItem in ListOfGameObjects)
+            foreach (GameObjects gameItem in ListOfGameObjects)
             {
-                if(gameItem.Equals(item))
+                if (gameItem.Equals(item))
                 {
                     ListOfGameObjects.Remove(gameItem);
                     return true;
@@ -96,7 +96,7 @@ namespace KhungLongChayBo
         private void ClearUp()
         {
             CollectOutOfBorder();
-            while(DeletedItemCollector.Count > 0)
+            while (DeletedItemCollector.Count > 0)
             {
                 ListOfGameObjects.Remove(DeletedItemCollector[0]);
                 DeletedItemCollector.RemoveAt(0);
@@ -122,9 +122,14 @@ namespace KhungLongChayBo
         }
         public void EndGame()
         {
+            //Adding the textbox game over message
             int endGameWidth = 100;
             int endGameHeight = 50;
-
+            int x = this.Screen.Width / 2 - endGameWidth;
+            int y = this.Screen.Height / 2 - endGameHeight;
+            Rectangle r = new Rectangle(x, y, endGameWidth, endGameHeight);
+            TextBox textBoxEndGame = new TextBox(r, 0, this);
+            AddGameObjects(textBoxEndGame);
         }
     }
 }
