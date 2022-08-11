@@ -50,6 +50,7 @@ namespace KhungLongChayBo
         }
         public bool UpdateFrame()
         {
+            bool isEndGame = false;
             //Console.WriteLine(this.ListOfGameObjects.Count);
             ClearScreen();
             //Draw the objects on the background
@@ -60,12 +61,12 @@ namespace KhungLongChayBo
                     item.GetType() == typeof(GreenDino)) && item.IsDestroy)
                 {
                     EndGame();
-                    return false;
+                    isEndGame = true;
                 }
             }
             Adding();
             ClearUp();
-            return true;
+            return isEndGame;
         }
         public void CollectOutOfBorder()
         {
@@ -123,13 +124,17 @@ namespace KhungLongChayBo
         public void EndGame()
         {
             //Adding the textbox game over message
-            int endGameWidth = 100;
+            int endGameWidth = 200;
             int endGameHeight = 50;
-            int x = this.Screen.Width / 2 - endGameWidth;
-            int y = this.Screen.Height / 2 - endGameHeight;
+            int x = this.Screen.Width / 2 - endGameWidth / 2;
+            int y = this.Screen.Height / 3 - endGameHeight;
             Rectangle r = new Rectangle(x, y, endGameWidth, endGameHeight);
             TextBox textBoxEndGame = new TextBox(r, 0, this);
-            AddGameObjects(textBoxEndGame);
+            textBoxEndGame.Text = "GAME OVER";
+            textBoxEndGame.StringFormat.Alignment = StringAlignment.Center;
+            textBoxEndGame.StringFormat.LineAlignment = StringAlignment.Center;
+            textBoxEndGame.Brush = Brushes.Black;
+            textBoxEndGame.Display();
         }
     }
 }

@@ -34,9 +34,9 @@ namespace KhungLongChayBo
             this.timer = new System.Windows.Forms.Timer(this.components);
             this.button1 = new System.Windows.Forms.Button();
             this.panelPause = new System.Windows.Forms.Panel();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
             this.panelPause.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -66,15 +66,16 @@ namespace KhungLongChayBo
             this.panelPause.Name = "panelPause";
             this.panelPause.Size = new System.Drawing.Size(409, 100);
             this.panelPause.TabIndex = 1;
+            this.panelPause.Visible = false;
             // 
-            // button2
+            // button4
             // 
-            this.button2.Location = new System.Drawing.Point(29, 25);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(113, 50);
-            this.button2.TabIndex = 0;
-            this.button2.Text = "Play Again";
-            this.button2.UseVisualStyleBackColor = true;
+            this.button4.Location = new System.Drawing.Point(267, 25);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(113, 50);
+            this.button4.TabIndex = 2;
+            this.button4.Text = "Screenshot";
+            this.button4.UseVisualStyleBackColor = true;
             // 
             // button3
             // 
@@ -85,14 +86,14 @@ namespace KhungLongChayBo
             this.button3.Text = "Main Menu";
             this.button3.UseVisualStyleBackColor = true;
             // 
-            // button4
+            // button2
             // 
-            this.button4.Location = new System.Drawing.Point(267, 25);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(113, 50);
-            this.button4.TabIndex = 2;
-            this.button4.Text = "Screenshot";
-            this.button4.UseVisualStyleBackColor = true;
+            this.button2.Location = new System.Drawing.Point(29, 25);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(113, 50);
+            this.button2.TabIndex = 0;
+            this.button2.Text = "Play Again";
+            this.button2.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 

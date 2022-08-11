@@ -18,6 +18,7 @@ namespace KhungLongChayBo
         private bool isDestroy = false;
         private int speed;
         private bool hittable = true;
+        private int hitBoxPadding = 5;
         public GameObjects(Rectangle objectShape, int gravityForce, GameScreen gameScreen)
         {
             ObjectShape = objectShape;
@@ -38,6 +39,7 @@ namespace KhungLongChayBo
         public bool Hittable { get => hittable; set => hittable = value; }
         public int Speed { get => speed; set => speed = value; }
         public bool IsDestroy { get => isDestroy; set => isDestroy = value; }
+        public int HitBoxPadding { get => hitBoxPadding; set => hitBoxPadding = value; }
 
         public void ObjectFallDown()
         {
@@ -88,16 +90,16 @@ namespace KhungLongChayBo
         public bool IsHittingObject(GameObjects ob)
         {
             //This location
-            int thisTop = this.ObjectShape.Y;
-            int thisBottom = this.ObjectShape.Y + this.ObjectShape.Height;
-            int thisLeft = this.ObjectShape.X;
-            int thisRight = this.ObjectShape.X + this.ObjectShape.Width;
+            int thisTop = this.ObjectShape.Y + HitBoxPadding;
+            int thisBottom = this.ObjectShape.Y + this.ObjectShape.Height - HitBoxPadding;
+            int thisLeft = this.ObjectShape.X + HitBoxPadding;
+            int thisRight = this.ObjectShape.X + this.ObjectShape.Width - HitBoxPadding;
 
             //other location
-            int otherTop = ob.ObjectShape.Y;
-            int otherBottom = ob.ObjectShape.Y + ob.ObjectShape.Height;
-            int otherLeft = ob.ObjectShape.X;
-            int otherRight = ob.ObjectShape.X + ob.ObjectShape.Width;
+            int otherTop = ob.ObjectShape.Y + HitBoxPadding;
+            int otherBottom = ob.ObjectShape.Y + ob.ObjectShape.Height - HitBoxPadding;
+            int otherLeft = ob.ObjectShape.X + HitBoxPadding;
+            int otherRight = ob.ObjectShape.X + ob.ObjectShape.Width - HitBoxPadding;
 
             bool isHit = true;
             if (thisTop > otherBottom || 
@@ -145,10 +147,11 @@ namespace KhungLongChayBo
             int otherLeft = ob.ObjectShape.X;
             int otherRight = ob.ObjectShape.X + ob.ObjectShape.Width;
 
-            if(thisBottom < otherTop || otherRight < thisLeft || otherLeft > thisRight)
+            if(thisBottom <= otherTop || otherRight < thisLeft || otherLeft > thisRight)
             {
                 isOn = false;
             }
+            //Console.WriteLine(isOn);
             return isOn;
         }
         public void KeepOnOtherTop(GameObjects ob)
@@ -156,12 +159,12 @@ namespace KhungLongChayBo
             //Help to keep the player on which ground
             if (ob == null)
                 return;
-            int groundTop = ob.ObjectShape.Y;
-            int playerBottom = ObjectShape.Y + ObjectShape.Height;
+            int groundTop = ob.ObjectShape.Y + HitBoxPadding;
+            int playerBottom = ObjectShape.Y + ObjectShape.Height - HitBoxPadding;
             int newPosY = ObjectShape.Y;
             if (playerBottom >= groundTop)
             {
-                newPosY = groundTop - ObjectShape.Height;
+                newPosY = groundTop - ObjectShape.Height + HitBoxPadding;
             }
             Point p = new Point(ObjectShape.X, newPosY);
             Size s = new Size(ObjectShape.Width, ObjectShape.Height);

@@ -155,9 +155,12 @@ namespace KhungLongChayBo
             {
                 if (ob.GetType() == typeof(Ground) && IsOnTop(ob))
                 {
+                    
                     return (Ground)ob;
                 }
             }
+
+            
             return null;
         }
         public void UsingItem(Item item)
@@ -176,7 +179,7 @@ namespace KhungLongChayBo
                     List<GameObjects> objects = HittingObjects();
                     foreach (GameObjects ob in objects)
                     {
-                        Console.WriteLine(ob);
+                        //Console.WriteLine(ob);
                         if (ob.GetType() == typeof(Ground) && IsOnTop(ob))
                         {
                             KeepOnOtherTop(ob);

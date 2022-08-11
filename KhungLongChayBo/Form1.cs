@@ -34,11 +34,16 @@ namespace KhungLongChayBo
         private void init()
         {
             //Init game screen
-            Bitmap gameScreen = new Bitmap(ClientSize.Width, ClientSize.Height);
-            Image temp = Image.FromFile(Application.StartupPath +
-                @"\Dino Run\Maps\Background.png");
-            Bitmap backGround = new Bitmap(temp, ClientSize.Width, ClientSize.Height);
-            mainGameScreen = new GameScreen(gameScreen, backGround);
+            if (mainGameScreen != null) //If the main game screen is already init just clear all
+                mainGameScreen.ClearAll();
+            else
+            {
+                Bitmap gameScreen = new Bitmap(ClientSize.Width, ClientSize.Height);
+                Image temp = Image.FromFile(Application.StartupPath +
+                    @"\Dino Run\Maps\Background.png");
+                Bitmap backGround = new Bitmap(temp, ClientSize.Width, ClientSize.Height);
+                mainGameScreen = new GameScreen(gameScreen, backGround);
+            }
 
             //Create road map
             int roadWidth = ClientSize.Width;
@@ -86,6 +91,12 @@ namespace KhungLongChayBo
         {
             frame.DrawImage(mainGameScreen.Screen, new Point(0, 0));
             bool isContinue = mainGameScreen.UpdateFrame();
+            if (isContinue)    
+            {
+                //Draw a final picture
+                frame.DrawImage(mainGameScreen.Screen, new Point(0, 0));
+                PauseGame();
+            }
             DateTime now = DateTime.Now;
             int time = rand.Next(3, 10);
             if (Convert.ToInt32((now - previousTime).TotalSeconds) == time)
