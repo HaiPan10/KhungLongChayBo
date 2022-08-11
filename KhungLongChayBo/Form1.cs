@@ -20,6 +20,8 @@ namespace KhungLongChayBo
         private static Graphics frame;
         private Obstacle roadObstacle;
         private int highestScore = 100;
+        private TextBox highScore;
+        private bool isEndGame = false;
         public Form1()
         {
             InitializeComponent();
@@ -89,7 +91,7 @@ namespace KhungLongChayBo
             mainGameScreen.AddGameObjects(score);
 
             //Add highest score to game
-            TextBox highScore = new Score(score.ObjectShape.X - scoreWidth,
+            highScore = new Score(score.ObjectShape.X - scoreWidth,
                 0, scoreWidth, scoreHeight,0, mainGameScreen);
             highScore.StringFormat.Alignment = StringAlignment.Near;
             highScore.StringFormat.LineAlignment = StringAlignment.Center;
@@ -97,16 +99,32 @@ namespace KhungLongChayBo
             Score.HighestPoint = highestScore;
             highScore.Text = String.Format("{0}", Score.HighestPoint);
             mainGameScreen.AddGameObjects(highScore);
+
+            //Init the timer & hide main menu
+            HideMainMenu();
+            timer.Enabled = true;
+            previousTime = DateTime.Now;
+
+        }
+        private void EndGame()
+        {
+            PauseGame();
+            ShowPauseMenu();
+            int score = Convert.ToInt32(highScore.Text);
+            if (score > highestScore)
+            {
+                highestScore = score;
+            }
         }
         private void timer_Tick(object sender, EventArgs e)
         {
             frame.DrawImage(mainGameScreen.Screen, new Point(0, 0));
-            bool isContinue = mainGameScreen.UpdateFrame();
-            if (isContinue)    
+            isEndGame = mainGameScreen.UpdateFrame();
+            if (isEndGame)    
             {
                 //Draw a final picture
                 frame.DrawImage(mainGameScreen.Screen, new Point(0, 0));
-                PauseGame();
+                EndGame();
             }
             DateTime now = DateTime.Now;
             int time = rand.Next(3, 10);
@@ -166,7 +184,11 @@ namespace KhungLongChayBo
                     }
                     break;
                 case Keys.Escape:
-                    PauseGame();
+                    if(!isEndGame)
+                    {
+                        PauseGame();
+                        ShowPauseMenu();
+                    }
                     break;
             }
         }
@@ -181,10 +203,24 @@ namespace KhungLongChayBo
 
         private void ShowPauseMenu()
         {
-
+            if (panelPause.Enabled)
+                HidePanel();
+            else
+            {
+                panelPause.Visible = true;
+                panelPause.Enabled = true;
+            }
         }
 
-        private void ShowMenu()
+        private void HideMainMenu()
+        {
+            button1.Visible = false;
+            button1.Enabled = false;
+            textBoxGuide.Enabled = false;
+            textBoxGuide.Visible = false;
+        }
+
+        private void ShowMainMenu()
         {
 
         }
@@ -192,11 +228,6 @@ namespace KhungLongChayBo
         private void button1_Click(object sender, EventArgs e)
         {
             init();
-            button1.Hide();
-            button1.Enabled = false;
-            timer.Enabled = true;
-            previousTime = DateTime.Now;
-            
         }
 
         private void Form1_KeyUp(object sender, KeyEventArgs e)
@@ -215,6 +246,19 @@ namespace KhungLongChayBo
                     }
                     break;
             }
+        }
+
+        private void HidePanel()
+        {
+            panelPause.Visible = false;
+            panelPause.Enabled = false;
+        }
+
+        private void playAgainButton_Click(object sender, EventArgs e)
+        {
+            mainGameScreen.ClearAll();
+            HidePanel();
+            init();
         }
     }
 }
