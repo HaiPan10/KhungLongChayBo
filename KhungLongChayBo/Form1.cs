@@ -21,11 +21,18 @@ namespace KhungLongChayBo
         private int highestScore = 100;
         private TextBox highScore;
         private bool isEndGame = false;
+        private Panel picture;
         public Form1()
         {
             InitializeComponent();
             mainGameScreen = null;
-            frame = this.CreateGraphics();
+            picture = new Panel();
+            picture.Width = ClientRectangle.Width;
+            picture.Height = ClientRectangle.Height;
+            picture.Visible = false;
+            picture.Enabled = false;
+            this.Controls.Add(picture);
+            frame = picture.CreateGraphics();
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -36,9 +43,13 @@ namespace KhungLongChayBo
         private void init()
         {
             isEndGame = false;
+            picture.Enabled = true;
+            picture.Visible = true;
             //Init game screen
-            if (mainGameScreen != null) //If the main game screen is already init just clear all
-                mainGameScreen.ClearAll();
+            if (mainGameScreen != null) //If the main game screen is already init just clear all              
+            {
+                ClearAllGameScreen();
+            }
             else
             {
                 Bitmap gameScreen = new Bitmap(ClientSize.Width, ClientSize.Height);
@@ -101,17 +112,16 @@ namespace KhungLongChayBo
             highScore.Text = String.Format("{0}", Score.HighestPoint);
             mainGameScreen.AddGameObjects(highScore);
 
-            //Init the timer & hide main menu
-            HideMainMenu();
+            //Init the timer
             timer.Enabled = true;
             previousTime = DateTime.Now;
 
         }
         private void EndGame()
         {
+            isEndGame = true;
             //Console.WriteLine(mainGameScreen.ListOfGameObjects.Count);
             PauseGame();
-            ShowPauseMenu();
             GC.GetTotalMemory(true);
             int score = Convert.ToInt32(highScore.Text);
             if (score > highestScore)
@@ -123,11 +133,12 @@ namespace KhungLongChayBo
         {
             frame.DrawImage(mainGameScreen.Screen, new Point(0, 0));
             isEndGame = mainGameScreen.UpdateFrame();
-            if (isEndGame)    
+            if (isEndGame)
             {
                 //Draw a final picture
                 frame.DrawImage(mainGameScreen.Screen, new Point(0, 0));
                 EndGame();
+                ShowPauseMenu();
             }
             DateTime now = DateTime.Now;
             int time = rand.Next(3, 10);
@@ -149,6 +160,8 @@ namespace KhungLongChayBo
         }
         private GreenDino SearchPlayer()
         {
+            if (mainGameScreen == null)
+                return null;
             foreach (GameObjects ob in mainGameScreen.ListOfGameObjects)
             {
                 if (ob.GetType() == typeof(GreenDino) ||
@@ -217,24 +230,6 @@ namespace KhungLongChayBo
             }
         }
 
-        private void HideMainMenu()
-        {
-            button1.Visible = false;
-            button1.Enabled = false;
-            textBoxGuide.Enabled = false;
-            textBoxGuide.Visible = false;
-        }
-
-        private void ShowMainMenu()
-        {
-
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            init();
-        }
-
         private void Form1_KeyUp(object sender, KeyEventArgs e)
         {
             e.Handled = true;
@@ -264,7 +259,44 @@ namespace KhungLongChayBo
             if(!isEndGame)
                 EndGame();
             HidePanel();
+            ClearAllGameScreen();
             init();
+        }
+
+        public void ClearAllGameScreen()
+        {
+            mainGameScreen.ClearAll();
+        }
+
+        private void buttonMainMenu_Click(object sender, EventArgs e)
+        {
+            ClearAllGameScreen();
+            PauseGame();
+            EndGame();
+            HidePanel();
+            ShowMainMenu();
+        }
+
+        private void buttonPlay_Click(object sender, EventArgs e)
+        {
+            HideMainMenu();
+            init();
+        }
+
+        private void HideMainMenu()
+        {
+            buttonPlay.Visible = false;
+            buttonPlay.Enabled = false;
+            textBoxGuide.Visible = false;
+        }
+
+        private void ShowMainMenu()
+        {
+            buttonPlay.Visible = true;
+            buttonPlay.Enabled = true;
+            textBoxGuide.Visible = true;
+            picture.Enabled = false;
+            picture.Visible = false;
         }
     }
 }
