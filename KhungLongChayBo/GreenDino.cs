@@ -11,12 +11,13 @@ namespace KhungLongChayBo
 {
     class GreenDino : GameObjects
     {
-        private int jumpingHeight = 45;
+        private int jumpingHeight = 40;
         private int crouch = 0; //Player alway stand
         private int counter = 0; //use for change animation
         private Timer time;
         private static List<Image> greenDinoAnimationStand = InitAnimationStand();
         private static List<Image> greenDinoAnimationCrouch = InitAnimationCrouch();
+        private int baseGravity; //The base gravity of dino
         public int JumpingHeight { get => jumpingHeight; set => jumpingHeight = value; }
         public int Crouch { get => crouch; set => crouch = value; }
         public int Counter { get => counter; set => counter = value; }
@@ -29,18 +30,21 @@ namespace KhungLongChayBo
         { 
             get => greenDinoAnimationCrouch; 
         }
+        public int BaseGravity { get => baseGravity; set => baseGravity = value; }
 
         public GreenDino(Rectangle playerShape, int gravityFoce, GameScreen screen)
             : base(playerShape, gravityFoce, screen)
         {
             InitClock();
             ObjectImage = GreenDinoAnimationStand[0];
+            BaseGravity = gravityFoce;
         }
         public GreenDino(int x, int y, int width, int height, int gravityFoce, GameScreen screen)
             : base(x, y, width, height, gravityFoce, screen)
         {
             InitClock();
             ObjectImage = GreenDinoAnimationStand[0];
+            BaseGravity = gravityFoce;
         }
         private void InitClock()
         {
@@ -69,6 +73,8 @@ namespace KhungLongChayBo
         }
         public void Crouching()
         {
+            //Increasing the Gravity when crouching even not on the ground
+            ObjectGravity.Force += 10;
             if (Crouch > 0 || OnGround() == null)
                 return; //Already crouching or is jumping
             Crouch = 30;
@@ -84,6 +90,7 @@ namespace KhungLongChayBo
             Crouch = 0;
             Rectangle r = new Rectangle(p, s);
             ObjectShape = r;
+            ObjectGravity.Force = baseGravity;
         }
         private static List<Image> InitAnimationStand()
         {

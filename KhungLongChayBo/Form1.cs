@@ -14,15 +14,31 @@ namespace KhungLongChayBo
     public partial class Form1 : Form
     {
         private GameScreen mainGameScreen;
-        private static DateTime previousTime;
-        private static 
-        private static Random rand = new Random();
-        private static Graphics frame;
+        private DateTime spawnObstacleTime;
+        private DateTime speedUpTime;
+        private DateTime spawnItemTime;
+        private Random rand = new Random();
+        private Graphics frame;
         private Obstacle roadObstacle;
         private int highestScore = 100;
         private TextBox highScore;
         private bool isEndGame = false;
         private Panel picture;
+        private GreenDino dino;
+        private int baseSpeed = 12;
+        private int maxSpeed = 25;
+        private Ground road;
+        private int roadSpeedBonus = 3;
+        private int flySpeedBonus = 5;
+
+        //
+        private int obstacleTime;
+        private int itemTime;
+        private int obstacleMaxTime = 5;
+        private int obstacleMinTime = 2;
+        private int itemMaxTime = 30;
+        private int itemMinTime = 10;
+
         public Form1()
         {
             InitializeComponent();
@@ -32,8 +48,14 @@ namespace KhungLongChayBo
             picture.Height = ClientRectangle.Height;
             picture.Visible = false;
             picture.Enabled = false;
+            picture.Paint += Picture_Paint;
             this.Controls.Add(picture);
             frame = picture.CreateGraphics();
+        }
+
+        private void Picture_Paint(object sender, PaintEventArgs e)
+        {
+            e.Graphics.DrawImage(mainGameScreen.Screen, new Point(0, 0));
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -43,6 +65,9 @@ namespace KhungLongChayBo
 
         private void init()
         {
+            //init speed
+            baseSpeed = 12;
+
             isEndGame = false;
             picture.Enabled = true;
             picture.Visible = true;
@@ -63,26 +88,26 @@ namespace KhungLongChayBo
             //Create road map
             int roadWidth = ClientSize.Width;
             int roadHeight = 30;
-            Ground road = new Ground(0,ClientSize.Height-roadHeight,roadWidth,roadHeight,0,mainGameScreen);
+            road = new Ground(0,ClientSize.Height-roadHeight,roadWidth,roadHeight,0,mainGameScreen);
             road.ObjectImage = Image.FromFile(Application.StartupPath +
                 @"\Dino Run\Maps\ground.png");
             mainGameScreen.AddGameObjects(road);
+            road.SpeedMove = baseSpeed + roadSpeedBonus;
 
             //Create player
-            GreenDino dino;
             int playerHeight = 80;
             int playerWidth = 80;
             Rectangle playerShape = new Rectangle(35, ClientSize.Height - roadHeight - playerHeight, 
                 playerWidth, playerHeight);
-            dino = new GreenDino(playerShape, 5, mainGameScreen);
+            dino = new GreenDino(playerShape, 4, mainGameScreen);
             //dino.Hittable = false;
             mainGameScreen.AddGameObjects(dino);
 
-            //Create a obstacle
+            //Create a tree obstacle for later use
+            int treeWidth = 80;
+            int treeHeight = 100;
             roadObstacle = new Obstacle(mainGameScreen.Screen.Width - 50, dino.ObjectShape.Y,
-                    80, 100, 0, mainGameScreen);
-            roadObstacle.ObjectImage = Image.FromFile(Application.StartupPath +
-                @"\Dino Run\Maps\Obstacles\Obstacle Tree.png");
+                    treeWidth, treeHeight, 0, mainGameScreen);
 
             //Add score object to game
             int scoreWidth = 120;
@@ -115,8 +140,16 @@ namespace KhungLongChayBo
 
             //Init the timer
             timer.Enabled = true;
-            previousTime = DateTime.Now;
+            spawnObstacleTime = DateTime.Now;
+            speedUpTime = DateTime.Now;
+            spawnItemTime = DateTime.Now;
 
+            //Init time to spawn obstacle
+            obstacleTime = rand.Next(obstacleMinTime, obstacleMaxTime);
+            itemTime = rand.Next(itemMinTime, itemMaxTime);
+
+            //Create first item for dino
+            mainGameScreen.AddGameObjects(CreateItem(baseSpeed));
         }
         private void EndGame()
         {
@@ -137,26 +170,34 @@ namespace KhungLongChayBo
             if (isEndGame)
             {
                 //Draw a final picture
-                frame.DrawImage(mainGameScreen.Screen, new Point(0, 0));
+                picture.Invalidate();
                 EndGame();
                 ShowPauseMenu();
             }
             DateTime now = DateTime.Now;
-            int time = rand.Next(3, 10);
-            if (Convert.ToInt32((now - previousTime).TotalSeconds) == time)
+            if ((Convert.ToInt32((now - spawnObstacleTime).TotalSeconds) + 1) % obstacleTime == 0)
             {
-                previousTime = now;
-                Obstacle ob = new Obstacle(roadObstacle.ObjectShape.X,
-                    roadObstacle.ObjectShape.Y,
-                    roadObstacle.ObjectShape.Width,
-                    roadObstacle.ObjectShape.Height, 0,
-                    mainGameScreen);
-                ob.ObjectImage = roadObstacle.ObjectImage;
-                ob.Speed = 25;
-                mainGameScreen.AddGameObjects(ob);
-                //Item i = new SoldierItem(ClientSize.Width - 50, 0, 50, 50, 5, mainGameScreen);
-                Item i = new ArmorItem(ClientSize.Width - 50, 0, 50, 50, 5, mainGameScreen);
-                mainGameScreen.AddGameObjects(i);
+                spawnObstacleTime = now;
+                mainGameScreen.AddGameObjects(CreateObstalce(baseSpeed));
+                obstacleTime = rand.Next(obstacleMinTime, obstacleMaxTime);
+                //Console.WriteLine(baseSpeed);
+            }
+            if((Convert.ToInt32((now - spawnItemTime).TotalSeconds) + 1) % itemTime == 0)
+            {
+                spawnItemTime = now;
+                mainGameScreen.AddGameObjects(CreateItem(baseSpeed));
+                itemTime = rand.Next(itemMinTime, itemMaxTime);
+            }
+            //Speed up the game
+            if((Convert.ToInt32((now - speedUpTime).TotalSeconds + 1) % 5 == 0))
+            {
+                speedUpTime = now;
+                Console.WriteLine(road.SpeedMove);
+                if(baseSpeed < maxSpeed)
+                {
+                    baseSpeed++;
+                    road.SpeedMove = baseSpeed + roadSpeedBonus;
+                }
             }
         }
         private GreenDino SearchPlayer()
@@ -229,6 +270,7 @@ namespace KhungLongChayBo
                 panelPause.Visible = true;
                 panelPause.Enabled = true;
             }
+            
         }
 
         private void Form1_KeyUp(object sender, KeyEventArgs e)
@@ -298,6 +340,63 @@ namespace KhungLongChayBo
             textBoxGuide.Visible = true;
             picture.Enabled = false;
             picture.Visible = false;
+        }
+        private Obstacle CreateObstalce(int speed)
+        {
+            int flyHeight = 120;
+            int flyWidth = 60;
+            Obstacle obstacle = null;
+            int i = rand.Next(1, 3);
+            switch(i)
+            {
+                case 1: //tree
+                    obstacle = new Obstacle(roadObstacle.ObjectShape, 0, mainGameScreen);
+                    int j = rand.Next(1, 3);
+                    switch(j)
+                    {
+                        case 1:
+                            obstacle.ObjectImage = Obstacle.Tree1;
+                            break;
+                        case 2:
+                            obstacle.ObjectImage = Obstacle.Tree2;
+                            break;
+                    }
+                    obstacle.Speed = speed;
+                    break;
+                case 2: //fly
+                    int x = ClientRectangle.Width - flyWidth / 2;
+                    int y = rand.Next(10, ClientRectangle.Height/2);
+                    Rectangle r = new Rectangle(x, y, flyWidth, flyHeight);
+                    obstacle = new Obstacle(r, 0, mainGameScreen);
+                    obstacle.ObjectImage = Obstacle.FlyObstacle;
+                    obstacle.Speed = speed + flySpeedBonus;
+                    break;
+            }
+            return obstacle;
+        }
+
+        private Item CreateItem(int speed)
+        {
+            int gravityForce = 10;
+            Item item = null;
+            int itemWidth = 50;
+            int itemHeight = 50;
+            int x = ClientRectangle.Width - itemWidth / 2;
+            int y = 0;
+            int i = rand.Next(1, 3);
+            Rectangle r = new Rectangle(x, y, itemWidth, itemHeight);
+            switch(i)
+            {
+                case 1:
+                    item = new ArmorItem(r, gravityForce, mainGameScreen);
+                    item.Speed = speed;
+                    break;
+                case 2:
+                    item = new SoldierItem(r, gravityForce, mainGameScreen);
+                    item.Speed = speed;
+                    break;
+            }
+            return item;
         }
     }
 }
