@@ -40,6 +40,7 @@ namespace KhungLongChayBo
         }
         private static void ChangeToSoldier(GreenDino dino)
         {
+            dino.StopCrouching();
             dino.GameScreen.AddedItemCollector.Add(CreateSoldierDino(dino));
         }
         private static SoldierDino CreateSoldierDino(GreenDino dino)

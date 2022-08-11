@@ -37,6 +37,7 @@ namespace KhungLongChayBo
             this.buttonMainMenu = new System.Windows.Forms.Button();
             this.playAgainButton = new System.Windows.Forms.Button();
             this.textBoxGuide = new System.Windows.Forms.TextBox();
+            this.textBoxAuthor = new System.Windows.Forms.TextBox();
             this.panelPause.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -48,11 +49,11 @@ namespace KhungLongChayBo
             // buttonPlay
             // 
             this.buttonPlay.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
-            this.buttonPlay.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonPlay.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonPlay.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            this.buttonPlay.Location = new System.Drawing.Point(510, 50);
+            this.buttonPlay.Location = new System.Drawing.Point(493, 50);
             this.buttonPlay.Name = "buttonPlay";
-            this.buttonPlay.Size = new System.Drawing.Size(149, 71);
+            this.buttonPlay.Size = new System.Drawing.Size(182, 83);
             this.buttonPlay.TabIndex = 0;
             this.buttonPlay.Text = "Play";
             this.buttonPlay.UseVisualStyleBackColor = false;
@@ -110,6 +111,20 @@ namespace KhungLongChayBo
             this.textBoxGuide.Text = "W to jump\r\nEsc to pause game\r\nSpace to use ability";
             this.textBoxGuide.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
+            // textBoxAuthor
+            // 
+            this.textBoxAuthor.BackColor = System.Drawing.Color.White;
+            this.textBoxAuthor.Enabled = false;
+            this.textBoxAuthor.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxAuthor.Location = new System.Drawing.Point(798, 306);
+            this.textBoxAuthor.Multiline = true;
+            this.textBoxAuthor.Name = "textBoxAuthor";
+            this.textBoxAuthor.ReadOnly = true;
+            this.textBoxAuthor.Size = new System.Drawing.Size(358, 104);
+            this.textBoxAuthor.TabIndex = 5;
+            this.textBoxAuthor.Text = "Coder: Phan Thanh Hải\r\nArtist: Tý Thiều Thuận An\r\nGameplay: Hải + An";
+            this.textBoxAuthor.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -117,6 +132,7 @@ namespace KhungLongChayBo
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1168, 422);
+            this.Controls.Add(this.textBoxAuthor);
             this.Controls.Add(this.textBoxGuide);
             this.Controls.Add(this.panelPause);
             this.Controls.Add(this.buttonPlay);
@@ -144,6 +160,7 @@ namespace KhungLongChayBo
         private System.Windows.Forms.Button buttonMainMenu;
         private System.Windows.Forms.Button playAgainButton;
         private System.Windows.Forms.TextBox textBoxGuide;
+        private System.Windows.Forms.TextBox textBoxAuthor;
     }
 }
 

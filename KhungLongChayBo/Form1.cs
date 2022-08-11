@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using KhungLongChayBo.Properties;
+using System.IO;
 
 namespace KhungLongChayBo
 {
@@ -20,7 +21,7 @@ namespace KhungLongChayBo
         private Random rand = new Random();
         private Graphics frame;
         private Obstacle roadObstacle;
-        private int highestScore = 100;
+        private int highestScore = 0;
         private TextBox highScore;
         private bool isEndGame = false;
         private Panel picture;
@@ -65,6 +66,24 @@ namespace KhungLongChayBo
 
         private void init()
         {
+            ////init highest score
+            //try
+            //{
+            //    highestScore = Convert.ToInt32(File.ReadAllText(Application.StartupPath +
+            //        @"\highestScore.txt"));
+            //}
+            //catch
+            //{
+            //    File.GetAccessControl((Application.StartupPath +
+            //            @"\highestScore.txt"));
+            //    highestScore = 0;
+            //    using (File.Create(Application.StartupPath +
+            //            @"\highestScore.txt"))
+            //    {
+
+            //    }
+            //}
+
             //init speed
             baseSpeed = 12;
 
@@ -156,11 +175,25 @@ namespace KhungLongChayBo
             isEndGame = true;
             //Console.WriteLine(mainGameScreen.ListOfGameObjects.Count);
             PauseGame();
-            GC.GetTotalMemory(true);
+            GC.GetTotalMemory(true); //Make the gabarage collector collect weak reference
             int score = Convert.ToInt32(highScore.Text);
             if (score > highestScore)
             {
                 highestScore = score;
+                //try
+                //{
+                //    File.GetAccessControl(Application.StartupPath +
+                //        @"\highestScore.txt");
+                //    using (StreamWriter writer = new StreamWriter(Application.StartupPath +
+                //        @"\highestScore.txt"))
+                //    {
+                //        writer.Write(highestScore);
+                //    }
+                //}
+                //catch(NullReferenceException)
+                //{
+                    
+                //}
             }
         }
         private void timer_Tick(object sender, EventArgs e)
@@ -192,7 +225,7 @@ namespace KhungLongChayBo
             if((Convert.ToInt32((now - speedUpTime).TotalSeconds + 1) % 5 == 0))
             {
                 speedUpTime = now;
-                Console.WriteLine(road.SpeedMove);
+                //Console.WriteLine(road.SpeedMove);
                 if(baseSpeed < maxSpeed)
                 {
                     baseSpeed++;
@@ -303,7 +336,14 @@ namespace KhungLongChayBo
                 EndGame();
             HidePanel();
             ClearAllGameScreen();
-            init();
+            try
+            {
+                init();
+            }
+            catch(NullReferenceException)
+            {
+                Close();
+            }
         }
 
         public void ClearAllGameScreen()
@@ -323,7 +363,14 @@ namespace KhungLongChayBo
         private void buttonPlay_Click(object sender, EventArgs e)
         {
             HideMainMenu();
-            init();
+            try
+            {
+                init();
+            }
+            catch(NullReferenceException)
+            {
+                Close();
+            }
         }
 
         private void HideMainMenu()
@@ -331,6 +378,7 @@ namespace KhungLongChayBo
             buttonPlay.Visible = false;
             buttonPlay.Enabled = false;
             textBoxGuide.Visible = false;
+            textBoxAuthor.Visible = false;
         }
 
         private void ShowMainMenu()
@@ -340,6 +388,7 @@ namespace KhungLongChayBo
             textBoxGuide.Visible = true;
             picture.Enabled = false;
             picture.Visible = false;
+            textBoxAuthor.Visible = true;
         }
         private Obstacle CreateObstalce(int speed)
         {

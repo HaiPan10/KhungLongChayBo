@@ -227,6 +227,7 @@ namespace KhungLongChayBo
         }
         public void ChangeToGreenDino(GreenDino dino)
         {
+            dino.StopCrouching();
             GameScreen.AddedItemCollector.Add(CreateGreenDino(dino));
         }
         private static GreenDino CreateGreenDino(GreenDino dino)
