@@ -169,7 +169,6 @@ namespace KhungLongChayBo
         }
         public override void Display()
         {
-            base.Display();
             if(!IsDestroy)
             {
                 ObjectFallDown();
@@ -212,10 +211,11 @@ namespace KhungLongChayBo
                             {
                                 ClearUp();
                             }
-                            Console.WriteLine(ArmorItem.NumberOfDinoArmor);
+                            //Console.WriteLine(ArmorItem.NumberOfDinoArmor);
                         }
                     }
                 }
+                base.Display();
             }
         }
         public void ChangeToGreenDino(GreenDino dino)
