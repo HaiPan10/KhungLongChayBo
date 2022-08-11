@@ -30,7 +30,7 @@ namespace KhungLongChayBo
         private int maxSpeed = 25;
         private Ground road;
         private int roadSpeedBonus = 3;
-        private int flySpeedBonus = 5;
+        private int flySpeedBonus = 0;
 
         //
         private int obstacleTime;

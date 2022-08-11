@@ -15,32 +15,170 @@
     {
         "Entry"
         {
+        "MsmKey" = "8:_03843439DF2048AFBF63C96CFDF8C467"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_03FD0CB376434DB5BF8895E34BBEB3C3"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_0840DF21F211489FB3976DBB6DA270C4"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_1DCA3562F6B34F0C9B4367B0136BC9B1"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_41A590EA2DA94BE299789679588E8F93"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_4462AE37DC5B49F5A99F9B53A0E4C1AE"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_463AAA939DCE4FE0AED3EE470076C202"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_49D4A1DA9B1747E3A60917B199A048B0"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_6276BE1E17D443FF981CF70BEBB05623"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_6A5B7DA595AB424B9FD601D11D2BD85F"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_6B8A4B476B3343389E5F290F78BF624D"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_7474A3D930FC4B6FADE58FD25777A2B7"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_7F00D3D3175547A0B04ED714D0035AFD"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_83EA2E994A4F411EBDA7A32D29FC9583"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_89CF8E3B9CAB458A86E161C79106B556"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_8A1AFC5F37484CA6B86B429FA6106833"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_94EBFBAF4FA7CF37279D06D2E1DE90B6"
-        "OwnerKey" = "8:_DEF4BBD5256447D1B6E48FB97CAD6E89"
+        "OwnerKey" = "8:_8A1AFC5F37484CA6B86B429FA6106833"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_BBBBF05119544A2FB930B439EF07F306"
+        "MsmKey" = "8:_9D2ABA0CBF534BB0838257C91CB89EC4"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_DEF4BBD5256447D1B6E48FB97CAD6E89"
+        "MsmKey" = "8:_A1526729C94F4F0D8BDA186317B121A8"
         "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_AB36C153F2EC41049E5F1B7D3C8EBD6C"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_B01E7F69C9794B858A6ABA615ED0ADD0"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_C0BDE587A1AB468EB12B023256537475"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_C1C1C0565AD7467D9A08DD82CB2E381F"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_C6C3793A2D3F48F6B7557245F8044E14"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_CDE634AD0F094BD4ABEE61377BC7462B"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_F170FD27BA004E17BCF9E6B778D512D0"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_8A1AFC5F37484CA6B86B429FA6106833"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_94EBFBAF4FA7CF37279D06D2E1DE90B6"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_DEF4BBD5256447D1B6E48FB97CAD6E89"
         "MsmSig" = "8:_UNDEFINED"
         }
     }
@@ -61,6 +199,22 @@
         "PrivateKeyFile" = "8:"
         "TimeStampServer" = "8:"
         "InstallerBootstrapper" = "3:2"
+            "BootstrapperCfg:{63ACBE69-63AA-4F98-B2B6-99F9E24495F2}"
+            {
+            "Enabled" = "11:TRUE"
+            "PromptEnabled" = "11:TRUE"
+            "PrerequisitesLocation" = "2:1"
+            "Url" = "8:"
+            "ComponentsUrl" = "8:"
+                "Items"
+                {
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:.NETFramework,Version=v4.7.2"
+                    {
+                    "Name" = "8:Microsoft .NET Framework 4.7.2 (x86 and x64)"
+                    "ProductCode" = "8:.NETFramework,Version=v4.7.2"
+                    }
+                }
+            }
         }
         "Release"
         {
@@ -77,6 +231,22 @@
         "PrivateKeyFile" = "8:"
         "TimeStampServer" = "8:"
         "InstallerBootstrapper" = "3:2"
+            "BootstrapperCfg:{63ACBE69-63AA-4F98-B2B6-99F9E24495F2}"
+            {
+            "Enabled" = "11:TRUE"
+            "PromptEnabled" = "11:TRUE"
+            "PrerequisitesLocation" = "2:1"
+            "Url" = "8:"
+            "ComponentsUrl" = "8:"
+                "Items"
+                {
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:.NETFramework,Version=v4.7.2"
+                    {
+                    "Name" = "8:Microsoft .NET Framework 4.7.2 (x86 and x64)"
+                    "ProductCode" = "8:.NETFramework,Version=v4.7.2"
+                    }
+                }
+            }
         }
     }
     "Deployable"
@@ -106,6 +276,306 @@
         }
         "File"
         {
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_03843439DF2048AFBF63C96CFDF8C467"
+            {
+            "SourcePath" = "8:..\\KhungLongChayBo\\bin\\Debug\\Dino Run\\Items\\Armor symbol.png"
+            "TargetName" = "8:Armor symbol.png"
+            "Tag" = "8:"
+            "Folder" = "8:_4B6D161BB6EA46ACBEA254B3BD03BABE"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_03FD0CB376434DB5BF8895E34BBEB3C3"
+            {
+            "SourcePath" = "8:..\\KhungLongChayBo\\bin\\Debug\\Dino Run\\Dinos\\Soldier Dino\\crouch\\Vietnamese Dino (Duck, Right step).png"
+            "TargetName" = "8:Vietnamese Dino (Duck, Right step).png"
+            "Tag" = "8:"
+            "Folder" = "8:_27208977434B417289165268B0B9487A"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_0840DF21F211489FB3976DBB6DA270C4"
+            {
+            "SourcePath" = "8:..\\KhungLongChayBo\\bin\\Debug\\Dino Run\\Dinos\\Green Dino\\stand\\Green dino (Left step).png"
+            "TargetName" = "8:Green dino (Left step).png"
+            "Tag" = "8:"
+            "Folder" = "8:_F0BA4FB771FB4829B5D2231B334D344C"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_1DCA3562F6B34F0C9B4367B0136BC9B1"
+            {
+            "SourcePath" = "8:..\\KhungLongChayBo\\bin\\Debug\\Dino Run\\Dinos\\Soldier Dino\\stand\\Vietnamese Dino (Left step).png"
+            "TargetName" = "8:Vietnamese Dino (Left step).png"
+            "Tag" = "8:"
+            "Folder" = "8:_6D86874CC6CC41AAB1A2BC1CBDBB2F19"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_41A590EA2DA94BE299789679588E8F93"
+            {
+            "SourcePath" = "8:..\\KhungLongChayBo\\bin\\Debug\\Dino Run\\Items\\Bullet.png"
+            "TargetName" = "8:Bullet.png"
+            "Tag" = "8:"
+            "Folder" = "8:_4B6D161BB6EA46ACBEA254B3BD03BABE"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_4462AE37DC5B49F5A99F9B53A0E4C1AE"
+            {
+            "SourcePath" = "8:..\\KhungLongChayBo\\bin\\Debug\\Dino Run\\Dinos\\Soldier Dino\\Khả năng.txt"
+            "TargetName" = "8:Khả năng.txt"
+            "Tag" = "8:"
+            "Folder" = "8:_D764D3B5106B4BE4A00520012E7A7A5C"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_463AAA939DCE4FE0AED3EE470076C202"
+            {
+            "SourcePath" = "8:..\\KhungLongChayBo\\bin\\Debug\\Dino Run\\Dinos\\Green Dino\\crouch\\Green dino (Duck, Right step).png"
+            "TargetName" = "8:Green dino (Duck, Right step).png"
+            "Tag" = "8:"
+            "Folder" = "8:_F2AD933584B843989D90FAF9619C21A3"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_49D4A1DA9B1747E3A60917B199A048B0"
+            {
+            "SourcePath" = "8:..\\KhungLongChayBo\\bin\\Debug\\Dino Run\\Maps\\Obstacles\\Obstacle Fly.png"
+            "TargetName" = "8:Obstacle Fly.png"
+            "Tag" = "8:"
+            "Folder" = "8:_32D99B3405CC496292A1C2345A8A0292"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_6276BE1E17D443FF981CF70BEBB05623"
+            {
+            "SourcePath" = "8:..\\KhungLongChayBo\\bin\\Debug\\Dino Run\\Dinos\\Green Dino\\crouch\\Green dino (Duck, Idle).png"
+            "TargetName" = "8:Green dino (Duck, Idle).png"
+            "Tag" = "8:"
+            "Folder" = "8:_F2AD933584B843989D90FAF9619C21A3"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_6A5B7DA595AB424B9FD601D11D2BD85F"
+            {
+            "SourcePath" = "8:..\\KhungLongChayBo\\bin\\Debug\\Dino Run\\Dinos\\Soldier Dino\\crouch\\Vietnamese Dino (Duck, Idle).png"
+            "TargetName" = "8:Vietnamese Dino (Duck, Idle).png"
+            "Tag" = "8:"
+            "Folder" = "8:_27208977434B417289165268B0B9487A"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_6B8A4B476B3343389E5F290F78BF624D"
+            {
+            "SourcePath" = "8:..\\KhungLongChayBo\\bin\\Debug\\Dino Run\\Items\\Armor.png"
+            "TargetName" = "8:Armor.png"
+            "Tag" = "8:"
+            "Folder" = "8:_4B6D161BB6EA46ACBEA254B3BD03BABE"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_7474A3D930FC4B6FADE58FD25777A2B7"
+            {
+            "SourcePath" = "8:..\\KhungLongChayBo\\bin\\Debug\\Dino Run\\Maps\\Obstacles\\Obstacle Tree.png"
+            "TargetName" = "8:Obstacle Tree.png"
+            "Tag" = "8:"
+            "Folder" = "8:_32D99B3405CC496292A1C2345A8A0292"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_7F00D3D3175547A0B04ED714D0035AFD"
+            {
+            "SourcePath" = "8:..\\KhungLongChayBo\\bin\\Debug\\Dino Run\\Dinos\\Soldier Dino\\stand\\Vietnamese Dino (Right step).png"
+            "TargetName" = "8:Vietnamese Dino (Right step).png"
+            "Tag" = "8:"
+            "Folder" = "8:_6D86874CC6CC41AAB1A2BC1CBDBB2F19"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_83EA2E994A4F411EBDA7A32D29FC9583"
+            {
+            "SourcePath" = "8:..\\KhungLongChayBo\\bin\\Debug\\Dino Run\\Dinos\\Soldier Dino\\crouch\\Vietnamese Dino (Duck, Left step).png"
+            "TargetName" = "8:Vietnamese Dino (Duck, Left step).png"
+            "Tag" = "8:"
+            "Folder" = "8:_27208977434B417289165268B0B9487A"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_89CF8E3B9CAB458A86E161C79106B556"
+            {
+            "SourcePath" = "8:..\\KhungLongChayBo\\bin\\Debug\\Dino Run\\Dinos\\Green Dino\\stand\\Green dino (Right step).png"
+            "TargetName" = "8:Green dino (Right step).png"
+            "Tag" = "8:"
+            "Folder" = "8:_F0BA4FB771FB4829B5D2231B334D344C"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_94EBFBAF4FA7CF37279D06D2E1DE90B6"
             {
             "AssemblyRegister" = "3:1"
@@ -122,7 +592,7 @@
             "SourcePath" = "8:System.Net.Http.dll"
             "TargetName" = "8:"
             "Tag" = "8:"
-            "Folder" = "8:_C3F81BBDDD6F405D8815FB9394520799"
+            "Folder" = "8:_DE038347E027403BAEB1AA2E9263B5C0"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -137,12 +607,172 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_BBBBF05119544A2FB930B439EF07F306"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_9D2ABA0CBF534BB0838257C91CB89EC4"
             {
-            "SourcePath" = "8:C:\\Users\\Administrator\\Pictures\\greenDino.ico"
+            "SourcePath" = "8:..\\KhungLongChayBo\\bin\\Debug\\Dino Run\\Items\\Soldier.png"
+            "TargetName" = "8:Soldier.png"
+            "Tag" = "8:"
+            "Folder" = "8:_4B6D161BB6EA46ACBEA254B3BD03BABE"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_A1526729C94F4F0D8BDA186317B121A8"
+            {
+            "SourcePath" = "8:..\\KhungLongChayBo\\bin\\Debug\\Dino Run\\Maps\\Obstacles\\Obstacle Tree 2.png"
+            "TargetName" = "8:Obstacle Tree 2.png"
+            "Tag" = "8:"
+            "Folder" = "8:_32D99B3405CC496292A1C2345A8A0292"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_AB36C153F2EC41049E5F1B7D3C8EBD6C"
+            {
+            "SourcePath" = "8:..\\KhungLongChayBo\\bin\\Debug\\Dino Run\\Maps\\ground.png"
+            "TargetName" = "8:ground.png"
+            "Tag" = "8:"
+            "Folder" = "8:_1F4F29ABC5AE4CDD98593E76C24C8651"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_B01E7F69C9794B858A6ABA615ED0ADD0"
+            {
+            "SourcePath" = "8:..\\KhungLongChayBo\\bin\\Debug\\Dino Run\\Dinos\\Green Dino\\crouch\\Green dino (Duck, Left step).png"
+            "TargetName" = "8:Green dino (Duck, Left step).png"
+            "Tag" = "8:"
+            "Folder" = "8:_F2AD933584B843989D90FAF9619C21A3"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_C0BDE587A1AB468EB12B023256537475"
+            {
+            "SourcePath" = "8:..\\KhungLongChayBo\\bin\\Debug\\Dino Run\\Maps\\Background.png"
+            "TargetName" = "8:Background.png"
+            "Tag" = "8:"
+            "Folder" = "8:_1F4F29ABC5AE4CDD98593E76C24C8651"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_C1C1C0565AD7467D9A08DD82CB2E381F"
+            {
+            "SourcePath" = "8:..\\KhungLongChayBo\\bin\\Debug\\Dino Run\\Dinos\\Soldier Dino\\stand\\Vietnamese Dino (Idle).png"
+            "TargetName" = "8:Vietnamese Dino (Idle).png"
+            "Tag" = "8:"
+            "Folder" = "8:_6D86874CC6CC41AAB1A2BC1CBDBB2F19"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_C6C3793A2D3F48F6B7557245F8044E14"
+            {
+            "SourcePath" = "8:..\\KhungLongChayBo\\greenDino.ico"
             "TargetName" = "8:greenDino.ico"
             "Tag" = "8:"
-            "Folder" = "8:_C3F81BBDDD6F405D8815FB9394520799"
+            "Folder" = "8:_DE038347E027403BAEB1AA2E9263B5C0"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_CDE634AD0F094BD4ABEE61377BC7462B"
+            {
+            "SourcePath" = "8:..\\KhungLongChayBo\\bin\\Debug\\Dino Run\\Dinos\\Green Dino\\Khả năng.txt"
+            "TargetName" = "8:Khả năng.txt"
+            "Tag" = "8:"
+            "Folder" = "8:_4D1DFEDAEEBA4F7E962A79202F2A66D2"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_F170FD27BA004E17BCF9E6B778D512D0"
+            {
+            "SourcePath" = "8:..\\KhungLongChayBo\\bin\\Debug\\Dino Run\\Dinos\\Green Dino\\stand\\Green dino (idle).png"
+            "TargetName" = "8:Green dino (idle).png"
+            "Tag" = "8:"
+            "Folder" = "8:_F0BA4FB771FB4829B5D2231B334D344C"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -195,15 +825,136 @@
             "Property" = "8:TARGETDIR"
                 "Folders"
                 {
-                    "{9EF0B969-E518-4E46-987F-47570745A589}:_C3F81BBDDD6F405D8815FB9394520799"
+                    "{9EF0B969-E518-4E46-987F-47570745A589}:_DE038347E027403BAEB1AA2E9263B5C0"
                     {
                     "Name" = "8:Dino Run"
                     "AlwaysCreate" = "11:FALSE"
                     "Condition" = "8:"
                     "Transitive" = "11:FALSE"
-                    "Property" = "8:_FEDA249F91CB4558B8B2FB82D587A93B"
+                    "Property" = "8:_B12C0830ECAC4B62BE24D69A958F5E54"
                         "Folders"
                         {
+                            "{9EF0B969-E518-4E46-987F-47570745A589}:_74A1D2EA5D604482BEFA05D7D961FDBD"
+                            {
+                            "Name" = "8:Dino Run"
+                            "AlwaysCreate" = "11:FALSE"
+                            "Condition" = "8:"
+                            "Transitive" = "11:FALSE"
+                            "Property" = "8:_9A8B9B58CEF047A09EF76C0305478BBE"
+                                "Folders"
+                                {
+                                    "{9EF0B969-E518-4E46-987F-47570745A589}:_0442A2924459490FB1163AE79ABEBE20"
+                                    {
+                                    "Name" = "8:Dinos"
+                                    "AlwaysCreate" = "11:FALSE"
+                                    "Condition" = "8:"
+                                    "Transitive" = "11:FALSE"
+                                    "Property" = "8:_A8598414E9824710AD61F92E0FA4A218"
+                                        "Folders"
+                                        {
+                                            "{9EF0B969-E518-4E46-987F-47570745A589}:_4D1DFEDAEEBA4F7E962A79202F2A66D2"
+                                            {
+                                            "Name" = "8:Green Dino"
+                                            "AlwaysCreate" = "11:FALSE"
+                                            "Condition" = "8:"
+                                            "Transitive" = "11:FALSE"
+                                            "Property" = "8:_5E5EBF4BED5E4B1C984BD37E93E2716E"
+                                                "Folders"
+                                                {
+                                                    "{9EF0B969-E518-4E46-987F-47570745A589}:_F0BA4FB771FB4829B5D2231B334D344C"
+                                                    {
+                                                    "Name" = "8:stand"
+                                                    "AlwaysCreate" = "11:FALSE"
+                                                    "Condition" = "8:"
+                                                    "Transitive" = "11:FALSE"
+                                                    "Property" = "8:_19782C5942694F908E3C701DD609DB99"
+                                                        "Folders"
+                                                        {
+                                                        }
+                                                    }
+                                                    "{9EF0B969-E518-4E46-987F-47570745A589}:_F2AD933584B843989D90FAF9619C21A3"
+                                                    {
+                                                    "Name" = "8:crouch"
+                                                    "AlwaysCreate" = "11:FALSE"
+                                                    "Condition" = "8:"
+                                                    "Transitive" = "11:FALSE"
+                                                    "Property" = "8:_0884A58E3EBB4E7D84CE8710DA41CCAC"
+                                                        "Folders"
+                                                        {
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                            "{9EF0B969-E518-4E46-987F-47570745A589}:_D764D3B5106B4BE4A00520012E7A7A5C"
+                                            {
+                                            "Name" = "8:Soldier Dino"
+                                            "AlwaysCreate" = "11:FALSE"
+                                            "Condition" = "8:"
+                                            "Transitive" = "11:FALSE"
+                                            "Property" = "8:_FC70854B4A8E419689D1545DD5FD9F53"
+                                                "Folders"
+                                                {
+                                                    "{9EF0B969-E518-4E46-987F-47570745A589}:_27208977434B417289165268B0B9487A"
+                                                    {
+                                                    "Name" = "8:crouch"
+                                                    "AlwaysCreate" = "11:FALSE"
+                                                    "Condition" = "8:"
+                                                    "Transitive" = "11:FALSE"
+                                                    "Property" = "8:_755E86B889BC49D4BF377F67508DA74C"
+                                                        "Folders"
+                                                        {
+                                                        }
+                                                    }
+                                                    "{9EF0B969-E518-4E46-987F-47570745A589}:_6D86874CC6CC41AAB1A2BC1CBDBB2F19"
+                                                    {
+                                                    "Name" = "8:stand"
+                                                    "AlwaysCreate" = "11:FALSE"
+                                                    "Condition" = "8:"
+                                                    "Transitive" = "11:FALSE"
+                                                    "Property" = "8:_172EF3C79ABE486881AB7BFBDC232456"
+                                                        "Folders"
+                                                        {
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                    "{9EF0B969-E518-4E46-987F-47570745A589}:_1F4F29ABC5AE4CDD98593E76C24C8651"
+                                    {
+                                    "Name" = "8:Maps"
+                                    "AlwaysCreate" = "11:FALSE"
+                                    "Condition" = "8:"
+                                    "Transitive" = "11:FALSE"
+                                    "Property" = "8:_F51B7B441AFC41FBB87B97065210D35F"
+                                        "Folders"
+                                        {
+                                            "{9EF0B969-E518-4E46-987F-47570745A589}:_32D99B3405CC496292A1C2345A8A0292"
+                                            {
+                                            "Name" = "8:Obstacles"
+                                            "AlwaysCreate" = "11:FALSE"
+                                            "Condition" = "8:"
+                                            "Transitive" = "11:FALSE"
+                                            "Property" = "8:_E8E683E4243A4A388984F944EE35B9CF"
+                                                "Folders"
+                                                {
+                                                }
+                                            }
+                                        }
+                                    }
+                                    "{9EF0B969-E518-4E46-987F-47570745A589}:_4B6D161BB6EA46ACBEA254B3BD03BABE"
+                                    {
+                                    "Name" = "8:Items"
+                                    "AlwaysCreate" = "11:FALSE"
+                                    "Condition" = "8:"
+                                    "Transitive" = "11:FALSE"
+                                    "Property" = "8:_33E37BD8729E4081B03B7940B486D93A"
+                                        "Folders"
+                                        {
+                                        }
+                                    }
+                                }
+                            }
                         }
                     }
                 }
@@ -225,7 +976,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:Dino Run"
         "ProductCode" = "8:{7E2713B4-B78F-4F36-AFC0-8E9F1C234A13}"
-        "PackageCode" = "8:{48352CAD-5E92-4297-A5E3-1FC617C58B10}"
+        "PackageCode" = "8:{6480E642-4C4E-4239-9C52-CF93BFC5D3E9}"
         "UpgradeCode" = "8:{9FE693D8-65E7-4DF7-A253-64F5502D6519}"
         "AspNetVersion" = "8:2.0.50727.0"
         "RestartWWWService" = "11:FALSE"
@@ -345,7 +1096,7 @@
         }
         "Shortcut"
         {
-            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_6144E9CFDA4F404BB9A90C170245C75C"
+            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_9E94158D31634DBA99D4473C2C8361C0"
             {
             "Name" = "8:Dino Run"
             "Arguments" = "8:"
@@ -353,10 +1104,10 @@
             "ShowCmd" = "3:1"
             "IconIndex" = "3:0"
             "Transitive" = "11:FALSE"
-            "Target" = "8:_DEF4BBD5256447D1B6E48FB97CAD6E89"
+            "Target" = "8:_8A1AFC5F37484CA6B86B429FA6106833"
             "Folder" = "8:_A4FB336C13E44BF2A619BA09E79E29E7"
             "WorkingFolder" = "8:_F1FE8BC83DB74ED0BE42FAA4A6D779C5"
-            "Icon" = "8:_BBBBF05119544A2FB930B439EF07F306"
+            "Icon" = "8:_C6C3793A2D3F48F6B7557245F8044E14"
             "Feature" = "8:"
             }
         }
@@ -758,12 +1509,12 @@
         }
         "ProjectOutput"
         {
-            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_DEF4BBD5256447D1B6E48FB97CAD6E89"
+            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_8A1AFC5F37484CA6B86B429FA6106833"
             {
             "SourcePath" = "8:..\\KhungLongChayBo\\obj\\Debug\\KhungLongChayBo.exe"
             "TargetName" = "8:"
             "Tag" = "8:"
-            "Folder" = "8:_C3F81BBDDD6F405D8815FB9394520799"
+            "Folder" = "8:_DE038347E027403BAEB1AA2E9263B5C0"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
