@@ -15,6 +15,7 @@ namespace KhungLongChayBo
     {
         private GameScreen mainGameScreen;
         private static DateTime previousTime;
+        private static 
         private static Random rand = new Random();
         private static Graphics frame;
         private Obstacle roadObstacle;
@@ -213,7 +214,7 @@ namespace KhungLongChayBo
 
         private void PauseGame()
         {
-            if (timer.Enabled == true)
+            if (timer.Enabled)
                 timer.Stop();
             else
                 timer.Start();

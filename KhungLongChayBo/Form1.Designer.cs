@@ -34,7 +34,6 @@ namespace KhungLongChayBo
             this.timer = new System.Windows.Forms.Timer(this.components);
             this.buttonPlay = new System.Windows.Forms.Button();
             this.panelPause = new System.Windows.Forms.Panel();
-            this.button4 = new System.Windows.Forms.Button();
             this.buttonMainMenu = new System.Windows.Forms.Button();
             this.playAgainButton = new System.Windows.Forms.Button();
             this.textBoxGuide = new System.Windows.Forms.TextBox();
@@ -62,34 +61,21 @@ namespace KhungLongChayBo
             // panelPause
             // 
             this.panelPause.BackColor = System.Drawing.Color.White;
-            this.panelPause.Controls.Add(this.button4);
             this.panelPause.Controls.Add(this.buttonMainMenu);
             this.panelPause.Controls.Add(this.playAgainButton);
             this.panelPause.Enabled = false;
-            this.panelPause.Location = new System.Drawing.Point(335, 162);
+            this.panelPause.Location = new System.Drawing.Point(409, 162);
             this.panelPause.Name = "panelPause";
-            this.panelPause.Size = new System.Drawing.Size(499, 100);
+            this.panelPause.Size = new System.Drawing.Size(350, 100);
             this.panelPause.TabIndex = 1;
             this.panelPause.Visible = false;
-            // 
-            // button4
-            // 
-            this.button4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
-            this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            this.button4.Location = new System.Drawing.Point(333, 21);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(150, 59);
-            this.button4.TabIndex = 2;
-            this.button4.Text = "Screenshot";
-            this.button4.UseVisualStyleBackColor = false;
             // 
             // buttonMainMenu
             // 
             this.buttonMainMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
             this.buttonMainMenu.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonMainMenu.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            this.buttonMainMenu.Location = new System.Drawing.Point(174, 21);
+            this.buttonMainMenu.Location = new System.Drawing.Point(180, 21);
             this.buttonMainMenu.Name = "buttonMainMenu";
             this.buttonMainMenu.Size = new System.Drawing.Size(150, 59);
             this.buttonMainMenu.TabIndex = 1;
@@ -102,7 +88,7 @@ namespace KhungLongChayBo
             this.playAgainButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
             this.playAgainButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.playAgainButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            this.playAgainButton.Location = new System.Drawing.Point(15, 21);
+            this.playAgainButton.Location = new System.Drawing.Point(21, 21);
             this.playAgainButton.Name = "playAgainButton";
             this.playAgainButton.Size = new System.Drawing.Size(150, 59);
             this.playAgainButton.TabIndex = 0;
@@ -155,7 +141,6 @@ namespace KhungLongChayBo
         private System.Windows.Forms.Timer timer;
         private System.Windows.Forms.Button buttonPlay;
         private System.Windows.Forms.Panel panelPause;
-        private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button buttonMainMenu;
         private System.Windows.Forms.Button playAgainButton;
         private System.Windows.Forms.TextBox textBoxGuide;
