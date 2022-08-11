@@ -19,6 +19,7 @@ namespace KhungLongChayBo
         private static Random rand = new Random();
         private static Graphics frame;
         private Obstacle roadObstacle;
+        private int highestScore = 100;
         public Form1()
         {
             InitializeComponent();
@@ -86,6 +87,16 @@ namespace KhungLongChayBo
                 score.Font = new Font(new FontFamily("Arial"), 16F);
             }
             mainGameScreen.AddGameObjects(score);
+
+            //Add highest score to game
+            TextBox highScore = new Score(score.ObjectShape.X - scoreWidth,
+                0, scoreWidth, scoreHeight,0, mainGameScreen);
+            highScore.StringFormat.Alignment = StringAlignment.Near;
+            highScore.StringFormat.LineAlignment = StringAlignment.Center;
+            highScore.StringFormat.FormatFlags = StringFormatFlags.NoWrap;
+            Score.HighestPoint = highestScore;
+            highScore.Text = String.Format("{0}", Score.HighestPoint);
+            mainGameScreen.AddGameObjects(highScore);
         }
         private void timer_Tick(object sender, EventArgs e)
         {

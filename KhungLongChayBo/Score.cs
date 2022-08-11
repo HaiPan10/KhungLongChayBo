@@ -10,9 +10,11 @@ namespace KhungLongChayBo
     class Score : TextBox
     {
         private static float point = 0.4F; //point per interval milisecond
-        private static float totalPoint = 0F; //The total point 
+        private float totalPoint = 0F; //The total point 
+        private static int highestPoint;
 
-        public float Point { get => point; set => point = value; }
+        public static float Point { get => point; set => point = value; }
+        public static int HighestPoint { get => highestPoint; set => highestPoint = value; }
         public float TotalPoint { get => totalPoint; set => totalPoint = value; }
 
         public Score(Rectangle objectShape, int gravityForce, GameScreen gameScreen) : 
