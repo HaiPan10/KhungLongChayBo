@@ -117,6 +117,14 @@ namespace KhungLongChayBo
         }
         public void ClearAll()
         {
+            foreach(GameObjects ob in ListOfGameObjects)
+            {
+                if(ob.GetType() == typeof(GreenDino) || ob.GetType().BaseType == typeof(GreenDino))
+                {
+                    GreenDino dino = (GreenDino)ob;
+                    dino.ClearUp();
+                }
+            }
             ListOfGameObjects.Clear();
             AddedItemCollector.Clear();
             DeletedItemCollector.Clear();

@@ -14,7 +14,6 @@ namespace KhungLongChayBo
     public partial class Form1 : Form
     {
         private GameScreen mainGameScreen;
-        private GreenDino dino;
         private static DateTime previousTime;
         private static Random rand = new Random();
         private static Graphics frame;
@@ -36,6 +35,7 @@ namespace KhungLongChayBo
 
         private void init()
         {
+            isEndGame = false;
             //Init game screen
             if (mainGameScreen != null) //If the main game screen is already init just clear all
                 mainGameScreen.ClearAll();
@@ -57,6 +57,7 @@ namespace KhungLongChayBo
             mainGameScreen.AddGameObjects(road);
 
             //Create player
+            GreenDino dino;
             int playerHeight = 80;
             int playerWidth = 80;
             Rectangle playerShape = new Rectangle(35, ClientSize.Height - roadHeight - playerHeight, 
@@ -108,8 +109,10 @@ namespace KhungLongChayBo
         }
         private void EndGame()
         {
+            //Console.WriteLine(mainGameScreen.ListOfGameObjects.Count);
             PauseGame();
             ShowPauseMenu();
+            GC.GetTotalMemory(true);
             int score = Convert.ToInt32(highScore.Text);
             if (score > highestScore)
             {
@@ -158,6 +161,8 @@ namespace KhungLongChayBo
         }
         private void Form1_KeyDown(object sender, KeyEventArgs e)
         {
+            if (mainGameScreen == null)
+                return;
             e.Handled = true;
             e.SuppressKeyPress = true;
             GreenDino p = SearchPlayer();
@@ -256,7 +261,8 @@ namespace KhungLongChayBo
 
         private void playAgainButton_Click(object sender, EventArgs e)
         {
-            mainGameScreen.ClearAll();
+            if(!isEndGame)
+                EndGame();
             HidePanel();
             init();
         }
