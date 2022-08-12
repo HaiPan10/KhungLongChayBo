@@ -10,8 +10,8 @@ namespace KhungLongChayBo
     {
         private static List<Image> soldierAnimationStand = InitAnimationStand();
         private static List<Image> soldierAnimationCrouch = InitAnimaionCrouch();
-        private int ammo = 20; //Number of bullets used
-        private int baseAmmo = 20; //Max number of bullets
+        private int ammo = 10; //Number of bullets used
+        private int baseAmmo = 10; //Max number of bullets
         private TextBox textBoxAmmo;
 
         public static List<Image> SoldierAnimationStand
