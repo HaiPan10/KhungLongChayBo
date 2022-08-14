@@ -87,6 +87,10 @@ namespace KhungLongChayBo
             //init speed
             baseSpeed = 12;
 
+            //Clear Armor
+            ArmorItem.NumberOfDinoArmor = 0;
+            ArmorItem.Armors.Clear();
+
             isEndGame = false;
             picture.Enabled = true;
             picture.Visible = true;
