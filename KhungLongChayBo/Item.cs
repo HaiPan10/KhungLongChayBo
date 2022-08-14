@@ -26,9 +26,8 @@ namespace KhungLongChayBo
             base.Display();
             if(!IsDestroy)
             {
-                ObjectFallDown();
+                bool isOnOtherTop = false;
                 MoveForward(-Speed);
-                KeepInBorder();
                 List<GameObjects> list = HittingObjects();
                 foreach (GameObjects ob in list)
                 {
@@ -39,9 +38,13 @@ namespace KhungLongChayBo
                         ob.GetType().BaseType != typeof(GreenDino))
                     {
                         KeepOnOtherTop(ob);
+                        isOnOtherTop = true;
                     }
                 }
-                
+                if(!isOnOtherTop)
+                {
+                    ObjectFallDown();
+                }
             }
         }
 

@@ -106,9 +106,9 @@ namespace KhungLongChayBo
             this.textBoxGuide.Multiline = true;
             this.textBoxGuide.Name = "textBoxGuide";
             this.textBoxGuide.ReadOnly = true;
-            this.textBoxGuide.Size = new System.Drawing.Size(358, 104);
+            this.textBoxGuide.Size = new System.Drawing.Size(358, 135);
             this.textBoxGuide.TabIndex = 4;
-            this.textBoxGuide.Text = "W to jump\r\nEsc to pause game\r\nSpace to use ability";
+            this.textBoxGuide.Text = "W to jump\r\nS to crouch\r\nEsc to pause game\r\nSpace to use ability";
             this.textBoxGuide.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // textBoxAuthor

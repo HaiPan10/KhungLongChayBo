@@ -159,12 +159,12 @@ namespace KhungLongChayBo
             //Help to keep the player on which ground
             if (ob == null)
                 return;
-            int groundTop = ob.ObjectShape.Y + HitBoxPadding;
+            int otherTop = ob.ObjectShape.Y + HitBoxPadding;
             int playerBottom = ObjectShape.Y + ObjectShape.Height - HitBoxPadding;
             int newPosY = ObjectShape.Y;
-            if (playerBottom >= groundTop)
+            if (playerBottom >= otherTop)
             {
-                newPosY = groundTop - ObjectShape.Height + HitBoxPadding;
+                newPosY = otherTop - ObjectShape.Height + HitBoxPadding;
             }
             Point p = new Point(ObjectShape.X, newPosY);
             Size s = new Size(ObjectShape.Width, ObjectShape.Height);
